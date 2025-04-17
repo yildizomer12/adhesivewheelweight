@@ -179,10 +179,10 @@ export function Contact() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">{t('company.contact.uk.name')}</h3>
                       <p className="text-gray-600 mb-1.5">{t('company.contact.uk.location')}</p>
-                      <div className="flex flex-col gap-1">
+                      <div className="flex flex-col gap-1"> {/* Re-added gap-1 */}
                         <a
                           href="tel:+447585353603"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
+                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" // Removed mb-1
                         >
                           <Phone className="h-4 w-4 text-[#0065A1]" />
                           <span>+44 758 535 3603</span>
@@ -201,10 +201,10 @@ export function Contact() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">{t('company.contact.tr.name')}</h3>
                       <p className="text-gray-600 mb-1.5">{t('company.contact.tr.location')}</p>
-                      <div className="flex flex-col gap-1">
+                      <div className="flex flex-col gap-1"> {/* Re-added gap-1 */}
                         <a
                           href="tel:+905494300020"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
+                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" // Removed mb-1
                         >
                           <Phone className="h-4 w-4 text-[#0065A1]" />
                           <span>+90 549 430 0020</span>
@@ -223,21 +223,19 @@ export function Contact() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">{t('company.contact.in.name')}</h3>
                       <p className="text-gray-600 mb-1.5">{t('company.contact.in.location')}</p>
-                      <div className="flex flex-col gap-1">
+                      <div className="flex flex-col"> {/* Removed gap-1 */}
                         <a
                           href="tel:+919815232199"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
+                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" // Added mb-1 like Algeria
                         >
                           <Phone className="h-4 w-4 text-[#0065A1]" />
                           <span>+91 981 523 2199</span>
                         </a>
-                        <a
-                          href="mailto:india.rep@yilsa.com.tr"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
-                        >
-                          <Mail className="h-4 w-4 text-[#0065A1]" />
-                          <span>india.rep@yilsa.com.tr</span>
-                        </a>
+                        {/* Email section removed */}
+                        <div className="flex items-center gap-3 text-gray-400 cursor-not-allowed group"> {/* Mimic Algeria's empty mail section */}
+                          <Mail className="h-4 w-4 text-gray-400" />
+                          {/* Empty span or placeholder if needed */}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -245,20 +243,22 @@ export function Contact() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">{t('company.contact.dz.name')}</h3>
                       <p className="text-gray-600 mb-1.5">{t('company.contact.dz.location')}</p>
-                      <div className="flex flex-col gap-1">
+                      <div className="flex flex-col"> {/* Removed gap-1 */}
                         <a
                           href="tel:+213662806228"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
+                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" // Added mb-1
                         >
                           <Phone className="h-4 w-4 text-[#0065A1]" />
                           <span>+213 662 80 62 28</span>
                         </a>
-                        <div
-                          className="flex items-center gap-3 text-gray-400 cursor-not-allowed" // Style as disabled/placeholder
+                        <a
+                          href="#" // Add dummy href for structural parity
+                          onClick={(e) => e.preventDefault()} // Prevent default link behavior
+                          className="flex items-center gap-3 text-gray-400 cursor-not-allowed group" // Removed explicit margin-top
                         >
                           <Mail className="h-4 w-4 text-gray-400" />
-                          {/* Email intentionally left blank */}
-                        </div>
+                          {/* Removed placeholder text */}
+                        </a>
                       </div>
                     </div>
                   )}

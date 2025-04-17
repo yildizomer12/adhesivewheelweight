@@ -13,11 +13,6 @@ export const metadata = {
       'tr-TR': '/tr',
     },
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   icons: {
     icon: '/yilsa-logo.svg',
     shortcut: '/yilsa-logo.svg',
@@ -38,6 +33,14 @@ export const metadata = {
     },
   },
 };
+
+export function generateViewport() {
+  return {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  };
+}
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
@@ -60,7 +63,6 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/yilsa-logo.svg" />
         {i18n.locales.map((locale) => (
           <link
@@ -79,7 +81,10 @@ export default async function RootLayout({
           name="google-site-verification"
           content="AiSiarEPNKXsp4SKrEwvPx_eSv9P2V1NtrBNgM1Gosw"
         />
-        <div dangerouslySetInnerHTML={{ __html: generateOrganizationSchema(locale) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: generateOrganizationSchema(locale) }}
+        />
       </head>
       <body>
         <ClientLayout dictionary={dictionary} locale={locale}>
