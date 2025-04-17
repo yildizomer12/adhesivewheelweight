@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-type Location = 'uk' | 'tr' | 'in';
+type Location = 'uk' | 'tr' | 'in' | 'dz';
 
 interface LocationContextType {
   location: Location;
@@ -12,13 +12,14 @@ interface LocationContextType {
 const LocationContext = createContext<LocationContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'preferred_location';
-const AVAILABLE_LOCATIONS: Location[] = ['uk', 'tr', 'in'];
+const AVAILABLE_LOCATIONS: Location[] = ['uk', 'tr', 'in', 'dz'];
 
 const COUNTRY_CODES: { [key: string]: Location } = {
   GB: 'uk',
   UK: 'uk',
   TR: 'tr',
-  IN: 'in'
+  IN: 'in',
+  DZ: 'dz' // Added Algeria
 };
 
 export function LocationProvider({ children }: { children: ReactNode }) {

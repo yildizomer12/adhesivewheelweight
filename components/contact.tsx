@@ -163,6 +163,16 @@ export function Contact() {
                       className="w-full h-full object-cover"
                     />
                   </button>
+                  <button
+                    className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${location === 'dz' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
+                    onClick={() => setLocation('dz')}
+                  >
+                    <img
+                      src="/images/flags/dz.svg"
+                      alt="Algeria flag"
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
                   </div>
                   <div className="flex flex-col flex-grow">
                   {location === 'uk' && (
@@ -228,6 +238,27 @@ export function Contact() {
                           <Mail className="h-4 w-4 text-[#0065A1]" />
                           <span>india.rep@yilsa.com.tr</span>
                         </a>
+                      </div>
+                    </div>
+                  )}
+                  {location === 'dz' && (
+                    <div>
+                      <h3 className="font-semibold text-lg mb-1">{t('company.contact.dz.name')}</h3>
+                      <p className="text-gray-600 mb-1.5">{t('company.contact.dz.location')}</p>
+                      <div className="flex flex-col gap-1">
+                        <a
+                          href="tel:+213662806228"
+                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
+                        >
+                          <Phone className="h-4 w-4 text-[#0065A1]" />
+                          <span>+213 662 80 62 28</span>
+                        </a>
+                        <div
+                          className="flex items-center gap-3 text-gray-400 cursor-not-allowed" // Style as disabled/placeholder
+                        >
+                          <Mail className="h-4 w-4 text-gray-400" />
+                          {/* Email intentionally left blank */}
+                        </div>
                       </div>
                     </div>
                   )}
