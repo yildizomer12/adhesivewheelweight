@@ -32,7 +32,7 @@ export function generateOrganizationSchema(locale: string): string {
     ]
   };
 
-  return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+  return JSON.stringify(schema);
 }
 
 export function generateProductSchema(product: Product, locale: string): string {
@@ -67,7 +67,7 @@ export function generateProductSchema(product: Product, locale: string): string 
     }
   };
 
-  return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+  return JSON.stringify(schema);
 }
 
 export function generateBreadcrumbSchema(items: { name: string; url: string }[], locale: string): string {
@@ -82,5 +82,5 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[],
     }))
   };
 
-  return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+  return JSON.stringify(schema);
 }
