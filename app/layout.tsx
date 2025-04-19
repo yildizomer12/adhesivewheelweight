@@ -64,19 +64,6 @@ export default async function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/yilsa-logo.svg" />
-        {i18n.locales.map((locale) => (
-          <link
-            key={locale}
-            rel="alternate"
-            hrefLang={locale}
-            href={`/${locale}`}
-          />
-        ))}
-        <link
-          rel="alternate"
-          href="https://www.adhesivewheelweight.com"
-          hrefLang="x-default"
-        />
         <meta
           name="google-site-verification"
           content="v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY"
