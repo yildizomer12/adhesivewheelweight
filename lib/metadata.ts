@@ -33,9 +33,10 @@ export function generateSEOMetadata({
     acc[lang] = `${url}/${lang}${path}`;
     return acc;
   }, {});
+  languageAlternates['x-default'] = `${url}${path}`;
 
-  // Generate canonical URL - always use default locale for canonical
-  const canonical = `${url}${path}`;
+  // Generate canonical URL for the specific language version of the page
+  const canonical = `${url}/${locale}${path}`;
 
   return {
     title: `${title} | YILSA Wheel Weight Machines`,
