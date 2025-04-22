@@ -100,7 +100,7 @@ export function Header() {
             </Link>
 
             <Link
-              href="/blogs"
+              href={`/${locale}/blogs`}
               className="text-gray-700 hover:text-gray-900 transition-colors"
             >
               {t('menu.blog')}
@@ -171,7 +171,7 @@ export function Header() {
                 {t('menu.contact')}
               </Link>
               <Link
-                href="/blog"
+                href={`/${locale}/blog`}
                 className="text-xl text-gray-600 hover:text-gray-900"
                 onClick={() => setIsMenuOpen(false)}
               >
