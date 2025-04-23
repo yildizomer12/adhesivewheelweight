@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import { type Locale, i18n } from '@/i18n-config';
 import { getDictionary } from '@/lib/dictionary';
 import { generateOrganizationSchema } from '@/lib/schema';
@@ -62,16 +63,6 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ1XCRQE7F"></script>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WQ1XCRQE7F');
-          `}
-        </script>
         <meta charSet="utf-8" />
         <link rel="icon" href="/yilsa-logo.svg" />
         <meta
@@ -84,6 +75,21 @@ export default async function RootLayout({
         />
       </head>
       <body>
+        {/* Google Tag Manager - Global site tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-WQ1XCRQE7F`}
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WQ1XCRQE7F', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
         <ClientLayout dictionary={dictionary} locale={locale}>
           {children}
         </ClientLayout>
