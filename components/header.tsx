@@ -171,7 +171,7 @@ export function Header() {
                 {t('menu.contact')}
               </Link>
               <Link
-                href={`/${locale}/blog`}
+                href={`/${locale}/blogs`}
                 className="text-xl text-gray-600 hover:text-gray-900"
                 onClick={() => setIsMenuOpen(false)}
               >
