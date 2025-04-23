@@ -11,14 +11,6 @@ export function Footer() {
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} YILSA. {t('footer.allRightsReserved')}
         </p>
-        <div className="flex space-x-4">
-          <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition">
-            {t('footer.privacyPolicy')}
-          </Link>
-          <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary transition">
-            {t('footer.terms')}
-          </Link>
-        </div>
       </div>
     </footer>
   )

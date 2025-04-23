@@ -62,6 +62,16 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ1XCRQE7F"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WQ1XCRQE7F');
+          `}
+        </script>
         <meta charSet="utf-8" />
         <link rel="icon" href="/yilsa-logo.svg" />
         <meta
