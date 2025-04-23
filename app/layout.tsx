@@ -5,36 +5,6 @@ import { generateOrganizationSchema } from '@/lib/schema';
 import { ClientLayout } from './client-layout';
 import './globals.css';
 
-export const metadata = {
-  metadataBase: new URL('https://www.adhesivewheelweight.com'),
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/en',
-      'tr-TR': '/tr',
-    },
-  },
-  icons: {
-    icon: '/yilsa-logo.svg',
-    shortcut: '/yilsa-logo.svg',
-    apple: '/yilsa-logo.svg',
-  },
-  verification: {
-    google: 'AiSiarEPNKXsp4SKrEwvPx_eSv9P2V1NtrBNgM1Gosw',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-};
-
 export function generateViewport() {
   return {
     width: 'device-width',

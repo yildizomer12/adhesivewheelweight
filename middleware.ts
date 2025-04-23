@@ -44,6 +44,7 @@ export function middleware(request: NextRequest) {
   // Add language information to request headers
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-current-locale', pathnameLocale);
+  requestHeaders.set('x-pathname', pathname); // Add pathname header
 
   // Create response with updated headers
   const response = NextResponse.next({
