@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // useRouter'ı next/navigation'dan içe aktar
 
 export default function LocalizedNotFound() {
+  const router = useRouter(); // useRouter hook'unu kullan
+
   useEffect(() => {
-    // Belirtilen URL'ye yönlendir
-    window.location.href = 'https://www.adhesivewheelweight.com/tr/chopping-and-marking-machine';
-  }, []); // Boş bağımlılık dizisi, etkinin yalnızca bileşen monte edildiğinde çalışmasını sağlar
+    // Belirtilen URL'ye yönlendir (replace kullanarak tarayıcı geçmişine eklenmesini önle)
+    router.replace('https://www.adhesivewheelweight.com/tr/chopping-and-marking-machine');
+  }, [router]); // router'ı bağımlılık dizisine ekle
 
   // Yönlendirme gerçekleşirken isteğe bağlı olarak bir yükleme mesajı veya null döndür
   return (
