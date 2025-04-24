@@ -1,19 +1,17 @@
+"use client";
+
+import { useEffect } from 'react';
+
 export default function LocalizedNotFound() {
+  useEffect(() => {
+    // Belirtilen URL'ye yönlendir
+    window.location.href = 'https://www.adhesivewheelweight.com/tr/chopping-and-marking-machine';
+  }, []); // Boş bağımlılık dizisi, etkinin yalnızca bileşen monte edildiğinde çalışmasını sağlar
+
+  // Yönlendirme gerçekleşirken isteğe bağlı olarak bir yükleme mesajı veya null döndür
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="space-y-4 text-center">
-        <h2 className="text-2xl font-semibold">
-          Sayfa Bulunamadı
-        </h2>
-        <div className="flex justify-center">
-          <a
-            href="/"
-            className="rounded-md bg-blue-500 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-600"
-          >
-            Ana Sayfaya Dön
-          </a>
-        </div>
-      </div>
+      <p>Yönlendiriliyor...</p>
     </div>
   );
 }
