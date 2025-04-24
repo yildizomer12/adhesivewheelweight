@@ -5,6 +5,14 @@ import { i18n, isValidLocale, getPreferredLocale } from './i18n-config';
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  // Redirect /index.php to root
+  if (pathname === '/index.php') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
+    // Use 308 for permanent redirect, preserving the request method
+    return NextResponse.redirect(url, 308);
+  }
+
   // Skip if requesting non-page resources
   if (
     pathname.includes('.') ||
