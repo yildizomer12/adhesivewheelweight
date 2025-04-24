@@ -1,17 +1,23 @@
 "use client";
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // useRouter'ı next/navigation'dan içe aktar
+import { useRouter } from 'next/navigation';
 
-export default function LocalizedNotFound() {
-  const router = useRouter(); // useRouter hook'unu kullan
+// Bileşen props'una params ekleyerek lang değerini alalım
+export default function LocalizedNotFound({ params }: { params: { lang: string } }) {
+  const router = useRouter();
+  const { lang } = params; // Dil parametresini al
 
   useEffect(() => {
-    // Belirtilen URL'ye yönlendir (replace kullanarak tarayıcı geçmişine eklenmesini önle)
-    router.replace('https://www.adhesivewheelweight.com/tr/chopping-and-marking-machine');
-  }, [router]); // router'ı bağımlılık dizisine ekle
+    if (lang) { // lang değeri mevcutsa yönlendirme yap
+      // Mevcut dile göre dinamik URL oluştur ve yönlendir
+      router.replace(`/${lang}/taping-and-packaging-machine`);
+    }
+    // lang yoksa veya beklenmedik bir durum olursa diye bir fallback düşünülebilir,
+    // ancak App Router yapısında [lang] segmenti zorunlu olduğu için genelde lang bulunur.
+  }, [router, lang]); // router ve lang'ı bağımlılık dizisine ekle
 
-  // Yönlendirme gerçekleşirken isteğe bağlı olarak bir yükleme mesajı veya null döndür
+  // Yönlendirme gerçekleşirken bir yükleme mesajı göster
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <p>Yönlendiriliyor...</p>
