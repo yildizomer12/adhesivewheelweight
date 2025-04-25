@@ -1,7 +1,5 @@
 'use client';
 
-'use client';
-
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "@/hooks/use-translations";
 import { Locale } from "@/i18n-config";
@@ -33,12 +31,20 @@ export function TechnologySection({ lang }: TechnologySectionProps) {
             </h2>
           </div>
 
-          <div className="mt-8 grid grid-cols-3 gap-8 items-center">
-            <div className="flex flex-col items-center">
+          {/* Ana Kapsayıcı: Mobil için flex-col (order ile sıralı), Masaüstü için grid (order ile sıralı) */}
+          <div className="mt-8 flex flex-col md:grid md:grid-cols-3 gap-8 items-center">
+            {/* İlk GIF: Mobil sıra 1, Masaüstü sıra 1 */}
+            <div className="flex flex-col items-center order-1 md:order-1">
               <div className="text-center font-semibold text-[#0066a1] mb-2">Rotary Punch</div>
               <img src="/images/Rotary_Punch_Animation.gif" alt="Rotary Punch Animation" className="max-w-[80%] h-auto" />
             </div>
-            <div className="text-justify text-gray-600">
+            {/* İkinci GIF: Mobil sıra 2, Masaüstü sıra 3 */}
+            <div className="flex flex-col items-center order-2 md:order-3">
+              <div className="text-center font-semibold text-[#0066a1] mb-2">Punch Press</div>
+              <img src="/images/Punch_Press_Animation.gif" alt="Punch Press Animation" className="max-w-[80%] h-auto" />
+            </div>
+            {/* Yazı Bloğu: Mobil sıra 3, Masaüstü sıra 2 (orta) */}
+            <div className="text-justify text-gray-600 order-3 md:order-2">
               {t('machines.rotaryPunch.description.intro').split('(link)').map((part, i) => {
                 if (i === 0) {
                   return <span key="first">{part}</span>;
@@ -57,10 +63,6 @@ export function TechnologySection({ lang }: TechnologySectionProps) {
                   </span>
               );
               })}
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="text-center font-semibold text-[#0066a1] mb-2">Punch Press</div>
-              <img src="/images/Punch_Press_Animation.gif" alt="Punch Press Animation" className="max-w-[80%] h-auto" />
             </div>
           </div>
           <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4 text-justify">
