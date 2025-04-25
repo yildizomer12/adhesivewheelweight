@@ -4,7 +4,7 @@ import { Facebook, Instagram, Youtube } from 'lucide-react';
 
 export function SocialBar() {
   return (
-    <div className="fixed left-6 top-1/2 -translate-y-1/2 z-[100]">
+    <div className="hidden md:block fixed left-6 top-1/2 -translate-y-1/2 z-[100]">
       <div className="flex flex-col gap-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg py-3 px-2 hover:bg-white transition-colors duration-300">
         <a
           href="https://www.facebook.com/wheelweightsmachine"

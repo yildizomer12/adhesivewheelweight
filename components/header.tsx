@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, ChevronDown } from 'lucide-react'; // Removed X
+import { Menu, ChevronDown, Facebook, Instagram, Youtube } from 'lucide-react'; // Added social icons
 import { LanguageSwitcher } from '@/components/language-switcher';
 import {
   DropdownMenu,
@@ -230,6 +230,52 @@ export function Header() {
                           </Button>
                         </DialogTrigger>
                       </QuoteDialog>
+                      {/* Mobile Social Links */}
+                      <div className="flex justify-center items-center space-x-4 pt-4 border-t border-gray-200 dark:border-gray-700 mt-4">
+                         <a
+                          href="https://www.facebook.com/wheelweightsmachine"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Facebook"
+                          className="text-gray-600 hover:text-[#0065A1] transition-colors dark:text-gray-400 dark:hover:text-blue-400"
+                        >
+                          <Facebook className="w-5 h-5" /> {/* Slightly larger icon */}
+                        </a>
+                        <a
+                          href="https://x.com/wheelweightsmac"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="X (Twitter)"
+                           className="text-gray-600 hover:text-[#0065A1] transition-colors dark:text-gray-400 dark:hover:text-blue-400"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                            className="w-5 h-5" /* Slightly larger icon */
+                            fill="currentColor"
+                          >
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                          </svg>
+                        </a>
+                        <a
+                          href="https://www.instagram.com/wheelweightsmachine/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Instagram"
+                           className="text-gray-600 hover:text-[#0065A1] transition-colors dark:text-gray-400 dark:hover:text-blue-400"
+                        >
+                          <Instagram className="w-5 h-5" /> {/* Slightly larger icon */}
+                        </a>
+                        <a
+                          href="https://www.youtube.com/@yldzendustriyel7549"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Youtube"
+                           className="text-gray-600 hover:text-[#0065A1] transition-colors dark:text-gray-400 dark:hover:text-blue-400"
+                        >
+                          <Youtube className="w-5 h-5" /> {/* Slightly larger icon */}
+                        </a>
+                      </div>
                     </div>
                   </nav>
                 </SheetContent>
