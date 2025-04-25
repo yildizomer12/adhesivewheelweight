@@ -157,7 +157,7 @@ export function ProductionLine() {
         <div className="relative py-4">
           <button
             onClick={scrollPrev}
-            className="fixed-nav-button left-0 -translate-x-1/2"
+            className="fixed-nav-button left-0 -translate-x-1/2 hidden md:flex"
             style={{ zIndex: 10 }}
           >
             <ChevronLeft className="w-6 h-6" />
@@ -165,22 +165,59 @@ export function ProductionLine() {
           
           <button
             onClick={scrollNext}
-            className="fixed-nav-button right-0 translate-x-1/2"
+            className="fixed-nav-button right-0 translate-x-1/2 hidden md:flex"
             style={{ zIndex: 10 }}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          <div className="embla relative">
-            <div 
+          {/* Mobil Görünüm (Alt alta sıralı, kopyasız) */}
+          <div className="block md:hidden">
+            <div className={`flex flex-col ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
+              {products.map((product, index) => (
+                <div key={`mobile-${index}`} className="w-full mb-6 px-2"> {/* Mobil için alt boşluk ve padding */}
+                  <div onClick={() => router.push(`/${lang}/${product.route}`)} className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] flex flex-col cursor-pointer h-full relative shadow-lg hover:shadow-xl">
+                    <div className="aspect-w-4 aspect-h-4 w-full relative">
+                      <img
+                        src={product.image}
+                        alt={t(product.title)}
+                        className="w-full h-full object-contain bg-gray-100 p-4"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="text-xl font-bold mb-4">{t(product.title)}</h3>
+                      <ul className="space-y-2 mb-6 flex-grow">
+                        {product.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="text-gray-600 text-sm flex items-center">
+                            <span className="w-1.5 h-1.5 bg-[#0065A1] rounded-full mr-2"></span>
+                            {t(feature)}
+                          </li>
+                        ))}
+                      </ul>
+                      <button className="flex items-center justify-center w-full px-4 py-2 bg-[#e6f0f7] text-gray-700 rounded-md hover:bg-[#d9e7f2] transition-colors duration-200">
+                        <span>{t('pages.home.production.learnMore')}</span>
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Masaüstü Görünüm (Carousel, kopyalı) */}
+          <div className="hidden md:block embla relative">
+            <div
               ref={emblaRef}
-              className={`${isManualControl ? "" : "animate-carousel"} overflow-visible`}
+              className={`${isManualControl ? "" : "md:animate-carousel"} overflow-visible`}
               onMouseDown={handleMouseDown}
             >
-              <div className={`flex ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
+              <div className={`flex flex-row ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
                 {[...products, ...products, ...products].map((product, index) => (
-                  <div key={index} className="flex-[0_0_25%] min-w-0 px-4 py-4">
-          <div onClick={() => router.push(`/${lang}/${product.route}`)} className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] hover:z-[100] flex flex-col cursor-pointer h-full relative shadow-lg hover:shadow-xl">
+                  // Masaüstü: md:flex-[0_0_25%], md:px-4 md:py-4
+                  <div key={`desktop-${index}`} className="md:flex-[0_0_25%] min-w-0 md:px-4 md:py-4">
+                    <div onClick={() => router.push(`/${lang}/${product.route}`)} className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] hover:z-[100] flex flex-col cursor-pointer h-full relative shadow-lg hover:shadow-xl">
                       <div className="aspect-w-4 aspect-h-4 w-full relative">
                         <img
                           src={product.image}
@@ -207,16 +244,16 @@ export function ProductionLine() {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
+              </div> {/* End Desktop flex-row */}
+            </div> {/* End Embla inner container */}
+          </div> {/* End Desktop embla relative */}
+        </div> {/* End Relative py-4 */}
 
         <style jsx>{`
           .embla {
             position: relative;
             z-index: 1;
-            overflow: hidden;
+            /* overflow: hidden; // Mobil için kaldırıldı */
             padding: 20px 0;
             margin: -20px 0;
           }
@@ -230,7 +267,7 @@ export function ProductionLine() {
             background-color: white;
             border-radius: 50%;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
+            display: none; /* Mobil için gizlendi */
             align-items: center;
             justify-content: center;
             color: #4A5568;
@@ -247,6 +284,19 @@ export function ProductionLine() {
           
           .animate-carousel {
             animation: carousel 40s linear infinite;
+          }
+          
+          /* Masaüstü stilleri */
+          @media (min-width: 768px) {
+            .embla {
+              overflow: hidden; /* Masaüstünde overflow hidden */
+            }
+            .fixed-nav-button {
+              display: flex; /* Masaüstünde göster */
+            }
+            .animate-carousel {
+              /* Animasyon sınıfı JS ile md:animate-carousel olarak eklendi */
+            }
           }
 
           .animate-carousel:hover {

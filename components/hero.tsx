@@ -156,8 +156,44 @@ export function Hero() {
   return (
     <>
       <div className="h-16 bg-white w-full"></div>
-      <div className={`relative ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'min-h-[20vh]' : isProductPage ? 'min-h-[50vh]' : 'min-h-[80vh]'} max-h-fit transition-colors duration-700 overflow-hidden bg-gradient-to-b from-[#EEF2F6] to-white`}>
-        <div className={`transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'}`}>
+      {/* Mobile Only Video/Image Section */}
+      <div className={`relative block md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
+        <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
+          {isWirePage ? (
+            <img
+              src="/images/production-line.jpg"
+              alt="Production Line"
+              className="w-full h-full object-cover"
+            />
+          ) : isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? (
+            <img
+              src={isFaqPage ? "/images/faq_background.jpg" :
+                  isRotaryPunchPage ? "/images/technology-background.jpg" :
+                  isAboutPage ? "/images/about-background.jpg" :
+                  "/images/blog-background.jpg"}
+              alt={isFaqPage ? "FAQ Background" :
+                  isRotaryPunchPage ? "Technology Background" :
+                  isAboutPage ? "About Background" :
+                  "Blog Background"}
+              className="w-full h-full object-cover brightness-[0.8]" // Slightly brighter for mobile
+            />
+          ) : (
+            <iframe
+              className="w-full h-full pointer-events-none" // Adjust size for mobile container, disable clicks
+              src={getBackgroundVideo()} // Use original params: autoplay, mute, loop, controls=0, showinfo=0
+              title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="eager"
+            />
+          )}
+        </div>
+      </div>
+
+      {/* Main Hero Section (Text Content + Desktop Background) */}
+      <div className={`relative min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit transition-colors duration-700 overflow-hidden bg-gradient-to-b from-[#EEF2F6] to-white`}>
+        {/* Desktop Only Background Video/Image */}
+        <div className={`hidden md:block transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'}`}>
           <div className="absolute inset-0 w-full h-full">
             <div className={`absolute inset-0 bg-black/30 z-10`}></div>
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
@@ -169,12 +205,12 @@ export function Hero() {
                 />
               ) : isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? (
                 <img
-                  src={isFaqPage ? "/images/faq_background.jpg" : 
-                      isRotaryPunchPage ? "/images/technology-background.jpg" : 
-                      isAboutPage ? "/images/about-background.jpg" : 
+                  src={isFaqPage ? "/images/faq_background.jpg" :
+                      isRotaryPunchPage ? "/images/technology-background.jpg" :
+                      isAboutPage ? "/images/about-background.jpg" :
                       "/images/blog-background.jpg"}
-                  alt={isFaqPage ? "FAQ Background" : 
-                      isRotaryPunchPage ? "Technology Background" : 
+                  alt={isFaqPage ? "FAQ Background" :
+                      isRotaryPunchPage ? "Technology Background" :
                       isAboutPage ? "About Background" :
                       "Blog Background"}
                   className="absolute w-full h-full object-cover brightness-[0.4]"
@@ -196,21 +232,22 @@ export function Hero() {
           </div>
         </div>
 
-        <div className={`container relative z-20 flex items-center justify-center ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'min-h-[20vh]' : isProductPage ? 'min-h-[50vh]' : 'min-h-[80vh]'} max-h-fit`}>
+        {/* Text Content Area */}
+        <div className={`container relative z-20 flex items-center justify-center min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit`}>
           <div className="text-center py-16">
             <div className="max-w-3xl mx-auto px-4">
               <div className="space-y-6">
                 { !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
-                  <span className={`inline-block px-4 py-1.5 text-sm font-semibold rounded-full transition-colors duration-700 ${isWirePage || isVideoReady ? 'bg-white/10 text-white' : 'bg-[#cfe2ee] text-[#0065A1]'}`}>
+                  <span className={`inline-block px-4 py-1.5 text-sm font-semibold rounded-full transition-colors duration-700 bg-[#cfe2ee] text-[#0065A1] ${isWirePage || isVideoReady ? 'md:bg-white/10 md:text-white' : ''}`}>
                     {heroContent.tag}
                   </span>
                 )}
-                <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight transition-colors duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'text-white' : 'text-gray-900'} ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'whitespace-nowrap' : ''}`}>
+                <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight transition-colors duration-700 text-gray-900 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:text-white' : ''} ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'whitespace-nowrap' : ''}`}>
                   {heroContent.title}
                 </h1>
                 { !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
                   <>
-                    <p className={`text-lg leading-relaxed transition-colors duration-700 ${isWirePage || isVideoReady ? 'text-white/90' : 'text-gray-600'}`}>
+                    <p className={`text-lg leading-relaxed transition-colors duration-700 text-gray-600 ${isWirePage || isVideoReady ? 'md:text-white/90' : ''}`}>
                       {heroContent.description}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -219,8 +256,8 @@ export function Hero() {
                           <QuoteDialog>
                             <DialogTrigger asChild>
                               <Button
-                                variant={isWirePage || isVideoReady ? 'white' : 'default'}
-                                className="gap-2 transition-colors duration-700"
+                                variant={'default'}
+                                className={`gap-2 transition-colors duration-700 ${isWirePage || isVideoReady ? 'md:bg-white md:text-primary md:hover:bg-white/90' : ''}`}
                               >
                                 <FileText className="w-4 h-4" />
                                 {t('menu.getQuote')}
@@ -229,8 +266,8 @@ export function Hero() {
                           </QuoteDialog>
                           {!isWirePage && (
                             <Button
-                              variant={isVideoReady ? 'outline-white' : 'outline'}
-                              className="gap-2 transition-colors duration-700"
+                              variant={'outline'}
+                              className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:border-white md:text-white md:hover:bg-white/10 md:hover:text-white' : ''}`}
                               onClick={() => setIsModalOpen(true)}
                             >
                               <Play className="w-4 h-4" />
@@ -241,16 +278,16 @@ export function Hero() {
                       ) : (
                         <>
                           <Button
-                            variant={isVideoReady ? 'white' : 'default'}
-                            className="gap-2 transition-colors duration-700"
+                            variant={'default'}
+                            className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:bg-white md:text-primary md:hover:bg-white/90' : ''}`}
                             onClick={() => setIsModalOpen(true)}
                           >
                             <Play className="w-4 h-4" />
                             {t('components.hero.watchPlaylist')}
                           </Button>
                           <Button
-                            variant={isVideoReady ? 'outline-white' : 'outline'}
-                            className="gap-2 transition-colors duration-700"
+                            variant={'outline'}
+                            className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:border-white md:text-white md:hover:bg-white/10 md:hover:text-white' : ''}`}
                           >
                             <Calculator className="w-4 h-4" />
                             {t('components.hero.calculateROI')}
@@ -263,20 +300,21 @@ export function Hero() {
               </div>
             </div>
 
+            {/* Stats Section */}
             {!isProductPage && !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
               <div className="max-w-5xl mx-auto mt-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                   {stats.map((stat, index) => (
-                    <div key={index} className={`p-6 rounded-xl transition-all duration-700 ${
+                    <div key={index} className={`p-6 rounded-xl transition-all duration-700 bg-white shadow-lg hover:shadow-xl ${
                       isVideoReady
-                        ? 'border-white hover:border-white/80 bg-white/5 hover:bg-white/10'
-                        : 'bg-white shadow-lg hover:shadow-xl'
+                        ? 'md:border md:border-white/20 md:hover:border-white/80 md:bg-white/5 md:hover:bg-white/10'
+                        : ''
                     }`}>
-                      <div className={`text-3xl font-bold mb-2 transition-colors duration-700 text-center ${
-                        isVideoReady ? 'text-white' : 'text-gray-900'
+                      <div className={`text-3xl font-bold mb-2 transition-colors duration-700 text-center text-gray-900 ${
+                        isVideoReady ? 'md:text-white' : ''
                       }`}>{stat.value}</div>
-                      <div className={`text-sm font-medium transition-colors duration-700 text-center ${
-                        isVideoReady ? 'text-white/90' : 'text-gray-500'
+                      <div className={`text-sm font-medium transition-colors duration-700 text-center text-gray-500 ${
+                        isVideoReady ? 'md:text-white/90' : ''
                       }`}>{stat.label}</div>
                     </div>
                   ))}
