@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "@/hooks/use-translations";
 import { BaseSpecification } from "./base-specification";
+import { useRouter } from 'next/navigation'; // Import useRouter
 import {
   Table,
   TableHeader,
@@ -15,6 +16,38 @@ import {
 export function ChoppingMachineSpecifications() {
   const [activeTable, setActiveTable] = useState<'production' | 'machine'>('production');
   const { t } = useTranslations();
+  const router = useRouter(); // Initialize useRouter
+
+  // Define renderHTML function locally
+  const renderHTML = (html: string) => {
+    const processedHtml = html
+      .replace(/<bold>(.*?)<\/bold>/g, '<strong>$1</strong>') // Keep bold handling if needed elsewhere
+      .replace(
+        /<a href=['"](.+?)['"]>(.*?)<\/a>/g,
+        (match, href, text) =>
+        `<span class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline cursor-pointer transition-colors" data-href="${href}">${text}</span>`
+      );
+
+    return (
+      <div
+        dangerouslySetInnerHTML={{ __html: processedHtml }}
+        onClick={(e) => {
+          const target = e.target as HTMLElement;
+          const href = target.getAttribute('data-href');
+          if (href) {
+            e.preventDefault();
+            // Check if it's an external link
+            if (href.startsWith('http://') || href.startsWith('https://')) {
+              window.open(href, '_blank', 'noopener,noreferrer');
+            } else {
+              router.push(href);
+            }
+          }
+        }}
+        className="leading-relaxed" // Removed space-y-4 as it's handled by the outer div now
+      />
+    );
+  };
 
   return (
     <BaseSpecification
@@ -22,9 +55,9 @@ export function ChoppingMachineSpecifications() {
       imageAlt={t('machines.chopping.specifications.frontView')}
     >
       <div className="space-y-4 text-justify">
-        <p className="text-gray-600">
-          {t('machines.chopping.specifications.intro.part1')}
-        </p>
+        {/* Use renderHTML for part1 */}
+        {renderHTML(t('machines.chopping.specifications.intro.part1'))}
+        {/* Render part2 directly if it doesn't contain HTML */}
         <p className="text-gray-600">
           {t('machines.chopping.specifications.intro.part2')}
         </p>
