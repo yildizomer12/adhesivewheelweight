@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   const dictionary = await getDictionary(lang || i18n.defaultLocale);
 
   return {
-    title: dictionary.pages.home.meta.title,
+    title: "From Raw Material to Finished Product", // Updated title as requested
     description: dictionary.pages.home.meta.description,
     keywords: ["wheel weights", "adhesive wheel weights", "wheel weight manufacturing", "industrial wheel weight machines"],
     metadataBase: new URL('https://www.adhesivewheelweight.com'),
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       }, {}),
     },
     openGraph: {
-      title: dictionary.pages.home.meta.title,
+      title: "From Raw Material to Finished Product", // Updated OG title
       description: dictionary.pages.home.meta.description,
       images: [
         {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
     },
     twitter: {
       card: 'summary_large_image',
-      title: dictionary.pages.home.meta.title,
+      title: "From Raw Material to Finished Product", // Updated Twitter title
       description: dictionary.pages.home.meta.description,
       images: ['/images/production-line.jpg'],
     },
