@@ -57,10 +57,8 @@ export function ChoppingMachineSpecifications() {
       <div className="space-y-4 text-justify">
         {/* Use renderHTML for part1 */}
         {renderHTML(t('machines.chopping.specifications.intro.part1'))}
-        {/* Render part2 directly if it doesn't contain HTML */}
-        <p className="text-gray-600">
-          {t('machines.chopping.specifications.intro.part2')}
-        </p>
+        {/* Use renderHTML for part2 as well */}
+        {renderHTML(t('machines.chopping.specifications.intro.part2'))}
       </div>
       
       <div className="rounded-lg border bg-white shadow-lg overflow-hidden">
