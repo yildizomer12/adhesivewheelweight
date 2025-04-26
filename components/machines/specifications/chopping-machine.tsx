@@ -49,16 +49,19 @@ export function ChoppingMachineSpecifications() {
     );
   };
 
+  const introPart1 = t('machines.chopping.specifications.intro.part1');
+  const introPart2 = t('machines.chopping.specifications.intro.part2');
+
   return (
     <BaseSpecification
       imageSrc="/images/chopping-marking-machine.png"
       imageAlt={t('machines.chopping.specifications.frontView')}
     >
       <div className="space-y-4 text-justify">
-        {/* Use renderHTML for part1 */}
-        {renderHTML(t('machines.chopping.specifications.intro.part1'))}
+        {/* Conditionally render part1 only if it's not empty */}
+        {introPart1 && renderHTML(introPart1)}
         {/* Use renderHTML for part2 as well */}
-        {renderHTML(t('machines.chopping.specifications.intro.part2'))}
+        {renderHTML(introPart2)}
       </div>
       
       <div className="rounded-lg border bg-white shadow-lg overflow-hidden">
