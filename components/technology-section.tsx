@@ -21,7 +21,7 @@ export function TechnologySection({ lang }: TechnologySectionProps) {
   const { t } = useTranslations();
 
   return (
-    <section className="w-full bg-white pt-16 pb-16">
+    <section className="w-full bg-white pt-8 md:pt-16 pb-16">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">

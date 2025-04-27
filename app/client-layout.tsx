@@ -30,6 +30,7 @@ export function ClientLayout({ children, dictionary, locale }: ClientLayoutProps
           <TranslationProvider initialDictionary={dictionary} initialLocale={locale}>
             <div className="flex min-h-screen flex-col">
               <Header />
+              {/* Removed px-6 from here */}
               <main className="flex-1">
                 {children}
               </main>

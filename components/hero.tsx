@@ -156,8 +156,8 @@ export function Hero() {
   return (
     <>
       <div className="h-16 bg-white w-full"></div>
-      {/* Mobile Only Video/Image Section */}
-      <div className={`relative block md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
+      {/* Mobile Only Video/Image Section - Hidden as requested */}
+      <div className={`relative hidden md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
         <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
           {isWirePage ? (
             <img
@@ -233,16 +233,22 @@ export function Hero() {
         </div>
 
         {/* Text Content Area */}
-        <div className={`container relative z-20 flex items-center justify-center min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit`}>
-          <div className="text-center py-16">
-            <div className="max-w-3xl mx-auto px-4">
+        {/* Removed padding from container, applying to inner content wrapper */}
+        {/* Further adjusting vertical padding for mobile, reducing bottom padding */}
+        <div className={`relative z-20 flex items-center justify-center min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit`}>
+          {/* Changed py-8 to pt-8 pb-4 for finer control on mobile, keeping md:py-16 */}
+          <div className="text-center px-6 pt-8 pb-4 md:py-16">
+            {/* Padding applied to parent div */}
+            <div className="max-w-3xl mx-auto">
+              {/* Removed padding from h1 */}
               <div className="space-y-6">
                 { !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
                   <span className={`inline-block px-4 py-1.5 text-sm font-semibold rounded-full transition-colors duration-700 bg-[#cfe2ee] text-[#0065A1] ${isWirePage || isVideoReady ? 'md:bg-white/10 md:text-white' : ''}`}>
                     {heroContent.tag}
                   </span>
                 )}
-                <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight transition-colors duration-700 text-gray-900 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:text-white' : ''} ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'whitespace-nowrap' : ''}`}>
+                {/* Removed whitespace-nowrap condition to allow wrapping on all pages */}
+                <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight transition-colors duration-700 text-gray-900 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:text-white' : ''}`}>
                   {heroContent.title}
                 </h1>
                 { !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
