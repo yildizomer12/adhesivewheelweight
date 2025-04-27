@@ -265,26 +265,24 @@ export function Hero() {
                             </DialogTrigger>
                           </QuoteDialog>
                           {!isWirePage && (
-                            <Button
-                              variant={'outline'}
-                              className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:border-white md:text-white md:hover:bg-white/10 md:hover:text-white' : ''}`}
+                            <button
+                              className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 gap-2 transition-colors duration-700 ${isVideoReady ? 'border border-white text-white hover:bg-white/10' : 'border border-input bg-background hover:bg-accent hover:text-accent-foreground'}`}
                               onClick={() => setIsModalOpen(true)}
                             >
                               <Play className="w-4 h-4" />
                               {t('components.hero.watchPlaylist')}
-                            </Button>
+                            </button>
                           )}
                         </>
                       ) : (
                         <>
-                          <Button
-                            variant={'default'}
-                            className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:bg-white md:text-primary md:hover:bg-white/90' : ''}`}
+                          <button
+                            className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 gap-2 transition-colors duration-700 bg-primary text-primary-foreground hover:bg-primary/90 ${isVideoReady ? 'md:bg-transparent md:border md:border-white md:text-white md:hover:bg-white/10' : ''}`}
                             onClick={() => setIsModalOpen(true)}
                           >
-                            <Play className="w-4 h-4" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-play w-4 h-4"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
                             {t('components.hero.watchPlaylist')}
-                          </Button>
+                          </button>
                           <Button
                             variant={'outline'}
                             className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:border-white md:text-white md:hover:bg-white/10 md:hover:text-white' : ''}`}
