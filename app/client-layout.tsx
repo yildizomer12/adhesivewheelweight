@@ -19,15 +19,15 @@ interface ClientLayoutProps {
 
 export function ClientLayout({ children, dictionary, locale }: ClientLayoutProps) {
   return (
-    <TranslationProvider initialDictionary={dictionary} initialLocale={locale}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <LocationProvider>
         <LanguageProvider>
-          <LocationProvider>
+          <TranslationProvider initialDictionary={dictionary} initialLocale={locale}>
             <div className="flex min-h-screen flex-col">
               <Header />
               <main className="flex-1">
@@ -36,9 +36,9 @@ export function ClientLayout({ children, dictionary, locale }: ClientLayoutProps
               <Footer />
             </div>
             <SocialBar />
-          </LocationProvider>
+          </TranslationProvider>
         </LanguageProvider>
-      </ThemeProvider>
-    </TranslationProvider>
+      </LocationProvider>
+    </ThemeProvider>
   );
 }

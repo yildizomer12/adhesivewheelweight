@@ -33,14 +33,19 @@ export function ChoppingMachineSpecifications() {
         dangerouslySetInnerHTML={{ __html: processedHtml }}
         onClick={(e) => {
           const target = e.target as HTMLElement;
-          const href = target.getAttribute('data-href');
-          if (href) {
-            e.preventDefault();
-            // Check if it's an external link
-            if (href.startsWith('http://') || href.startsWith('https://')) {
-              window.open(href, '_blank', 'noopener,noreferrer');
-            } else {
-              router.push(href);
+          // Find the closest ancestor (or self) with data-href attribute
+          const linkElement = target.closest<HTMLElement>('[data-href]');
+          
+          if (linkElement) {
+            const href = linkElement.getAttribute('data-href');
+            if (href) {
+              e.preventDefault();
+              // Check if it's an external link
+              if (href.startsWith('http://') || href.startsWith('https://')) {
+                window.open(href, '_blank', 'noopener,noreferrer');
+              } else {
+                router.push(href); // Use Next.js router for internal links
+              }
             }
           }
         }}
