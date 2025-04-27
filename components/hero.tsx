@@ -257,7 +257,7 @@ export function Hero() {
                             <DialogTrigger asChild>
                               <Button
                                 variant={'default'}
-                                className={`gap-2 transition-colors duration-700 ${isWirePage || isVideoReady ? 'md:bg-white md:text-primary md:hover:bg-white/90' : ''}`}
+                                className={`gap-2 transition-colors duration-700 ${isWirePage || isVideoReady ? 'md:bg-white md:text-black md:hover:bg-white/90' : ''}`}
                               >
                                 <FileText className="w-4 h-4" />
                                 {t('menu.getQuote')}
@@ -285,7 +285,7 @@ export function Hero() {
                           </button>
                           <Button
                             variant={'outline'}
-                            className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:border-white md:text-white md:hover:bg-white/10 md:hover:text-white' : ''}`}
+                            className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:bg-white md:text-black md:hover:bg-white/90' : ''}`}
                           >
                             <Calculator className="w-4 h-4" />
                             {t('components.hero.calculateROI')}
