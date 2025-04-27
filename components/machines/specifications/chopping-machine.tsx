@@ -49,7 +49,6 @@ export function ChoppingMachineSpecifications() {
     );
   };
 
-  const introPart1 = t('machines.chopping.specifications.intro.part1');
   const introPart2 = t('machines.chopping.specifications.intro.part2');
 
   return (
@@ -58,8 +57,6 @@ export function ChoppingMachineSpecifications() {
       imageAlt={t('machines.chopping.specifications.frontView')}
     >
       <div className="space-y-4 text-justify">
-        {/* Conditionally render part1 only if it's not empty */}
-        {introPart1 && renderHTML(introPart1)}
         {/* Use renderHTML for part2 as well */}
         {renderHTML(introPart2)}
       </div>
