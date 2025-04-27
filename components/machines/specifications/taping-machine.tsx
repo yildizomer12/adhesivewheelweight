@@ -2,6 +2,7 @@
 
 import { useTranslations } from "@/hooks/use-translations";
 import { BaseSpecification } from "./base-specification";
+import { renderHTML } from "@/lib/utils"; // Assuming renderHTML is here
 import {
   Table,
   TableBody,
@@ -18,9 +19,9 @@ export function TapingMachineSpecifications() {
       imageAlt="Taping and Packaging Machine"
     >
       <div className="space-y-4 text-justify">
-        <p className="text-gray-600">
-          {t('machines.taping.specifications.intro')}
-        </p>
+        <div className="text-gray-600"> {/* Changed p to div to allow block elements from renderHTML */}
+          {renderHTML(t('machines.taping.specifications.intro'))}
+        </div>
       </div>
       
       <div className="rounded-lg border bg-white shadow-lg overflow-hidden">
