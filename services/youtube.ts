@@ -6,7 +6,7 @@ export interface PlaylistItem {
 }
 
 const PLAYLIST_ID = 'PLGiOF2X6GljlJMjUlvRu8lDKTwnZJ1dvc';
-const API_KEY = process.env.YOUTUBE_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 
 export async function fetchPlaylistItems(): Promise<PlaylistItem[]> {
   try {
