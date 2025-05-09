@@ -3,10 +3,6 @@
 # Global rules
 User-agent: *
 
-# Allow language-specific content
-Allow: /en/
-Allow: /tr/
-
 # Allow public assets
 Allow: /images/
 Allow: /sitemap.xml
@@ -26,6 +22,3 @@ Disallow: /*?*
 
 # Add sitemap reference
 Sitemap: https://www.adhesivewheelweight.com/sitemap.xml
-
-# Crawl-delay directive for rate limiting
-Crawl-delay: 1

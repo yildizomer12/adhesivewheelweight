@@ -135,7 +135,7 @@ export function TechnologySection() { // lang prop removed
             <p className="text-gray-600 text-justify">Rotary Punch Technology shines in diverse sectors:</p>
             <ul className="space-y-6 text-justify">
               <li>
-                <Link href="/chopping-and-marking-machine" className="font-medium text-[#0066a1] hover:text-blue-700">
+                <Link href="/chopping-and-marking-machine" className="font-medium text-[#0066a1] hover:text-blue-700 hover:underline">
                   Wheel Weights
                 </Link>
                 <p className="mt-1 text-gray-600">Providing high-precision and rapid production for the wheel weight industry.</p>
@@ -144,7 +144,7 @@ export function TechnologySection() { // lang prop removed
                 <a href="https://rotarypunch.tech/urun-rotary-punch--clamping-profile-perforation--1631.html"
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="font-medium text-[#0066a1] hover:text-blue-700"
+                   className="font-medium text-[#0066a1] hover:text-blue-700 hover:underline"
                 >
                   Clamping Profile Perforation
                 </a>
@@ -154,7 +154,7 @@ export function TechnologySection() { // lang prop removed
                 <a href="https://rotarypunch.tech/urun-cardboard-reel-edge-protector-v-notching-machine-technical-specifications-1630.html"
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="font-medium text-[#0066a1] hover:text-blue-700"
+                   className="font-medium text-[#0066a1] hover:text-blue-700 hover:underline"
                 >
                   Cardboard Reel Edge Protector V Notching Machine
                 </a>
@@ -164,7 +164,7 @@ export function TechnologySection() { // lang prop removed
                 <a href="https://rotarypunch.tech/urun-rotary-punch-cable-tray-production-line-1633.html"
                    target="_blank"
                    rel="noopener noreferrer"
-                   className="font-medium text-[#0066a1] hover:text-blue-700"
+                   className="font-medium text-[#0066a1] hover:text-blue-700 hover:underline"
                 >
                   Cable Tray Production
                 </a>
