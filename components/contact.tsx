@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button'; // Assuming this path is correct
 
 // Define representative location type
-type RepresentativeLocation = 'uk' | 'tr' | 'in' | 'dz';
+type RepresentativeLocation = 'uk' | 'tr' | 'dz';
 
 export function Contact() {
   // Removed useTranslations hook call
@@ -161,17 +161,6 @@ export function Contact() {
                       />
                     </button>
                     <button
-                      className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'in' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
-                      onClick={() => setSelectedLocation('in')}
-                      aria-label="Select India Representative"
-                    >
-                      <img
-                        src="/images/flags/in.svg"
-                        alt="India flag"
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                    <button
                       className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'dz' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
                       onClick={() => setSelectedLocation('dz')}
                       aria-label="Select Algeria Representative"
@@ -229,28 +218,9 @@ export function Contact() {
                         </div>
                       </div>
                     )}
-                    {selectedLocation === 'in' && (
-                      <div> {/* Removed text-center */}
-                        <h3 className="font-semibold text-lg mb-1">Mr. Sanjeev Kumar {/* Hardcoded: company.contact.in.name */}</h3>
-                        <p className="text-gray-600 mb-1.5">India {/* Hardcoded: company.contact.in.location */}</p>
-                        <div className="flex flex-col"> {/* Removed items-center, removed gap */}
-                          <a
-                            href="tel:+919815232199"
-                            className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" /* Removed justify-center */
-                          >
-                            <Phone className="h-4 w-4 text-[#0065A1]" />
-                            <span>+91 981 523 2199</span>
-                          </a>
-                          <div className="flex items-center gap-3 text-gray-400 cursor-not-allowed group"> {/* Removed justify-center */}
-                            <Mail className="h-4 w-4 text-gray-400" />
-                            {/* No email */}
-                          </div>
-                        </div>
-                      </div>
-                    )}
                     {selectedLocation === 'dz' && (
                       <div> {/* Removed text-center */}
-                        <h3 className="font-semibold text-lg mb-1">Mr. Mohamed Salah Khouni {/* Hardcoded: company.contact.dz.name */}</h3>
+                        <h3 className="font-semibold text-lg mb-1">Kamel Rezaig {/* Hardcoded: company.contact.dz.name */}</h3>
                         <p className="text-gray-600 mb-1.5">Algeria {/* Hardcoded: company.contact.dz.location */}</p>
                         <div className="flex flex-col"> {/* Removed items-center, removed gap */}
                           <a
