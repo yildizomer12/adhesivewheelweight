@@ -1,7 +1,7 @@
 import Script from 'next/script';
-import { type Locale, i18n } from '@/i18n-config';
-import { getDictionary } from '@/lib/dictionary';
-import { generateOrganizationSchema } from '@/lib/schema';
+// Removed i18n imports: import { type Locale, i18n } from '@/i18n-config';
+// Removed dictionary import: import { getDictionary } from '@/lib/dictionary';
+import { generateOrganizationSchema } from '@/lib/schema'; // Assuming this function can handle 'en' or be refactored
 import { ClientLayout } from './client-layout';
 import './globals.css';
 
@@ -13,36 +13,33 @@ export function generateViewport() {
   };
 }
 
-export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
-}
+// Removed generateStaticParams function
 
 export default async function RootLayout({
   children,
-  params,
+  // Removed params prop
 }: {
   children: React.ReactNode;
-  params: { lang: Locale };
+  // Removed params type
 }) {
-  // Use URL locale or fall back to default
-  const locale = params.lang || i18n.defaultLocale;
-  
-  // Load dictionary for the locale
-  const dictionary = await getDictionary(locale);
+  // Removed locale and dictionary loading logic
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    // Set lang attribute to "en"
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/yilsa-logo.svg" />
         <meta
           name="google-site-verification"
-          content="v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY"
+          content="v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY" // Keep this verification meta tag
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: generateOrganizationSchema(locale) }}
+          // Removed 'en' argument as locale is no longer needed
+          dangerouslySetInnerHTML={{ __html: generateOrganizationSchema() }}
         />
+        {/* Add other head elements like title, description from page metadata later */}
       </head>
       <body>
         {/* Google Tag Manager - Global site tag (gtag.js) */}
@@ -60,7 +57,7 @@ export default async function RootLayout({
             });
           `}
         </Script>
-{/* Yandex.Metrika counter */}
+        {/* Yandex.Metrika counter */}
         <Script id="yandex-metrika" strategy="afterInteractive">
           {`
             (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -80,7 +77,7 @@ export default async function RootLayout({
         </Script>
         <noscript><div><img src="https://mc.yandex.ru/watch/95085832" style={{position:'absolute', left:'-9999px'}} alt="" /></div></noscript>
         {/* /Yandex.Metrika counter */}
-{/* Yandex.Metrika counter (101089454) */}
+        {/* Yandex.Metrika counter (101089454) */}
         <Script id="yandex-metrika-101089454" strategy="afterInteractive">
           {`
             (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -98,7 +95,8 @@ export default async function RootLayout({
         </Script>
         <noscript><div><img src="https://mc.yandex.ru/watch/101089454" style={{position:'absolute', left:'-9999px'}} alt="" /></div></noscript>
         {/* /Yandex.Metrika counter (101089454) */}
-        <ClientLayout dictionary={dictionary} locale={locale}>
+        {/* Removed dictionary and locale props from ClientLayout */}
+        <ClientLayout>
           {children}
         </ClientLayout>
       </body>

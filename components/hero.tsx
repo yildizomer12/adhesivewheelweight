@@ -5,12 +5,12 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { VideoModal } from './video-modal';
 import { QuoteDialog } from './quote-dialog';
-import { useTranslations } from '@/hooks/use-translations';
+// Imports removed
 import { usePathname } from 'next/navigation';
 import { DialogTrigger } from '@/components/ui/dialog';
 
 export function Hero() {
-  const { t } = useTranslations();
+  // Hook calls removed
   const pathname = usePathname();
   const isChoppingPage = pathname?.endsWith('/chopping-and-marking-machine') ?? false;
   const isTapingPage = pathname?.endsWith('/taping-and-packaging-machine') ?? false;
@@ -83,37 +83,37 @@ export function Hero() {
   const getHeroTranslations = () => {
     if (isChoppingPage) {
       return {
-        tag: t("machines.chopping.hero.tag"),
-        title: t("machines.chopping.hero.title"),
-        description: t("machines.chopping.hero.description"),
+        tag: "Wheel Weights Chopping and Marking Machine",
+        title: "High-Speed Wheel Weight Production Machine",
+        description: "Achieve unmatched production speeds of 100,000 pieces per hour with our advanced rotary punch technology",
       };
     }
     if (isTapingPage) {
       return {
-        tag: t("machines.taping.hero.tag"),
-        title: t("machines.taping.hero.title"),
-        description: t("machines.taping.hero.description"),
+        tag: "Wheel Weights Taping and Packaging Machine",
+        title: "High-Precision Automated Production",
+        description: "Transform raw wheel weights into perfectly taped and packaged products with our integrated system capable of processing 90 kg per hour",
       };
     }
     if (isWirePage) {
       return {
-        tag: t("machines.wire.hero.title"),
-        title: t("machines.wire.hero.subtitle"),
-        description: t("machines.wire.hero.description"),
+        tag: "Wire Flattening Machine", // Using title as tag for wire page
+        title: "Transform Your Production Economics",
+        description: "Convert standard 8mm wire rod into precise 11.5 x 3mm flat steel, reducing raw material costs by up to 50% while streamlining your production process",
       };
     }
     if (isDecoilerPage) {
       return {
-        tag: t("machines.decoiler.hero.tag"),
-        title: t("machines.decoiler.hero.title"),
-        description: t("machines.decoiler.hero.description"),
+        tag: "Decoiler Machine",
+        title: "Comprehensive Decoiling Solutions",
+        description: "Experience superior coil processing with our comprehensive range of decoiler machines, featuring capacities from 300kg to 10,000kg. Advanced technology meets precision engineering for optimal material handling across all industries.",
       };
     }
     if (isWheelWeightsPage) {
       return {
-        tag: t("pages.wheelWeights.hero.badge"),
-        title: t("pages.wheelWeights.hero.title"),
-        description: t("pages.wheelWeights.hero.description"),
+        tag: "Wheel Weights",
+        title: "High-Performance Adhesive Wheel Weights for Professional Tire Services",
+        description: "Discover industry-leading wheel weights with superior adherence, galvanized coating, and precise weight accuracy of ±0.5g. Manufactured using advanced Rotary Punch technology for consistent quality and performance.",
       };
     }
     if (isRotaryPunchPage) {
@@ -123,7 +123,7 @@ export function Hero() {
     }
     if (isAboutPage) {
       return {
-        title: t("pages.about.hero.title")
+        title: "About YILSA"
       };
     }
     if (isBlogPage) {
@@ -133,24 +133,25 @@ export function Hero() {
     }
     if (isFaqPage) {
       return {
-        title: t("pages.faq.title"),
+        title: "Frequently Asked Questions",
       };
     }
+    // Default/Home page
     return {
-      tag: t("components.hero.tag"),
-      title: t("components.hero.title"),
-      description: t("components.hero.description"),
+      tag: "Industry Leading Manufacturing Equipment",
+      title: "Transform Your Wheel Weights Production",
+      description: "Leading the wheel weights industry with cutting-edge rotary punch technology and integrated production solutions. Our complete manufacturing systems deliver unmatched efficiency, precision, and ROI.",
     };
   };
 
   const heroContent = getHeroTranslations();
 
   const stats = [
-    { value: '100,000', label: t('components.hero.stats.production') },
-    { value: '%50', label: t('components.hero.stats.material') },
-    { value: '±0.5g', label: t('components.hero.stats.accuracy') },
-    { value: '83,300', label: t('components.hero.stats.efficiency') },
-    { value: '10+', label: t('components.hero.stats.experience') }
+    { value: '100,000', label: "pcs/hour production capacity" },
+    { value: '%50', label: "raw material saving" },
+    { value: '±0.5g', label: "weight accuracy" },
+    { value: '83,300', label: "pcs/kWh energy efficiency" },
+    { value: '10+', label: "years industry experience" }
   ];
 
   return (
@@ -266,7 +267,7 @@ export function Hero() {
                                 className={`gap-2 transition-colors duration-700 ${isWirePage || isVideoReady ? 'md:bg-white md:text-black md:hover:bg-white/90' : ''}`}
                               >
                                 <FileText className="w-4 h-4" />
-                                {t('menu.getQuote')}
+                                Get Quote
                               </Button>
                             </DialogTrigger>
                           </QuoteDialog>
@@ -276,7 +277,7 @@ export function Hero() {
                               onClick={() => setIsModalOpen(true)}
                             >
                               <Play className="w-4 h-4" />
-                              {t('components.hero.watchPlaylist')}
+                              Watch Playlist
                             </button>
                           )}
                         </>
@@ -287,14 +288,14 @@ export function Hero() {
                             onClick={() => setIsModalOpen(true)}
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-play w-4 h-4"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                            {t('components.hero.watchPlaylist')}
+                            Watch Playlist
                           </button>
                           <Button
                             variant={'outline'}
                             className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:bg-white md:text-black md:hover:bg-white/90' : ''}`}
                           >
                             <Calculator className="w-4 h-4" />
-                            {t('components.hero.calculateROI')}
+                            Calculate ROI
                           </Button>
                         </>
                       )}

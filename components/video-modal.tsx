@@ -2,9 +2,9 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { fetchPlaylistItems, type PlaylistItem } from "@/services/youtube";
-import { useLanguage } from '@/contexts/language-context';
+// Removed useLanguage import
 import { usePathname } from 'next/navigation';
-import { translations } from '@/translations';
+// Removed translations import
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -13,9 +13,10 @@ interface VideoModalProps {
 }
 
 export const VideoModal = ({ isOpen, onClose, onVideoStateChange }: VideoModalProps) => {
-  const { language } = useLanguage();
+  // Removed language variable
   const pathname = usePathname() || '/';
-  const t = translations[language]?.video || {
+  // Use hardcoded English strings directly
+  const t = {
     closeModal: 'Close video',
     playerTitle: 'Video Player',
     noVideoSelected: 'No video selected',
@@ -24,8 +25,8 @@ export const VideoModal = ({ isOpen, onClose, onVideoStateChange }: VideoModalPr
     productVideos: 'Product Videos',
     play: 'Play'
   };
-  
-  const defaultVideoId = pathname.endsWith('/taping-and-packaging-machine') ? "Kk1yIkIKUMQ" : 
+
+  const defaultVideoId = pathname.endsWith('/taping-and-packaging-machine') ? "Kk1yIkIKUMQ" :
                         pathname.endsWith('/chopping-and-marking-machine') ? "6exCLLHulhU" : 
                         "CUrBRxySXI8";
   const [selectedVideo, setSelectedVideo] = useState<string | null>(defaultVideoId);

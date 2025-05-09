@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { i18n, isValidLocale, getPreferredLocale } from './i18n-config';
+
+// Removed i18n imports: import { i18n, isValidLocale, getPreferredLocale } from './i18n-config';
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -15,59 +16,18 @@ export function middleware(request: NextRequest) {
 
   // Skip if requesting non-page resources
   if (
-    pathname.includes('.') ||
-    pathname.startsWith('/api/') ||
-    pathname.startsWith('/_next/')
+    pathname.includes('.') || // Check for file extensions
+    pathname.startsWith('/api/') || // Skip API routes
+    pathname.startsWith('/_next/') // Skip Next.js internal routes
   ) {
-    return;
+    return NextResponse.next(); // Allow the request to proceed without modification
   }
 
-  // Check if the pathname starts with a locale
-  const pathnameLocale = pathname.split('/')[1];
+  // Removed all locale detection, redirection, rewriting, header setting, and cookie setting logic.
+  // The middleware now only handles the index.php redirect and skips static assets/API routes.
 
-  // Get preferred locale from cookie, accept-language header, or default
-  let preferredLocale = request.cookies.get('NEXT_LOCALE')?.value;
-  
-  if (!preferredLocale || !isValidLocale(preferredLocale)) {
-    preferredLocale = getPreferredLocale(request.headers.get('accept-language'));
-  }
-
-  // If URL has no locale or invalid locale, handle root path specially
-  if (!pathnameLocale || !isValidLocale(pathnameLocale)) {
-    // Allow root path to be indexed
-    if (pathname === '/') {
-      return NextResponse.rewrite(
-        new URL(`/${preferredLocale}`, request.url)
-      );
-    }
-    // Redirect other paths to add locale
-    return NextResponse.redirect(
-      new URL(
-        `/${preferredLocale}${pathname}`,
-        request.url
-      )
-    );
-  }
-
-  // Add language information to request headers
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-current-locale', pathnameLocale);
-  requestHeaders.set('x-pathname', pathname); // Add pathname header
-
-  // Create response with updated headers
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
-
-  // Update cookie with current locale
-  response.cookies.set('NEXT_LOCALE', pathnameLocale, {
-    path: '/',
-    sameSite: 'lax',
-  });
-
-  return response;
+  // Allow all other requests to proceed
+  return NextResponse.next();
 }
 
 export const config = {

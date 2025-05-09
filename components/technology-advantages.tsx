@@ -1,8 +1,7 @@
 'use client';
 
 import { Zap, Battery, Award, Maximize } from 'lucide-react';
-import { useTranslations } from '@/hooks/use-translations';
-import { type TranslationKeys } from '@/translations';
+// Removed useTranslations and TranslationKeys imports
 
 type Advantage = {
   icon: JSX.Element;
@@ -11,74 +10,54 @@ type Advantage = {
 };
 
 export function TechnologyAdvantages() {
-  const { t } = useTranslations();
-  
+  // Removed useTranslations hook call
+
+  // Updated advantages array with hardcoded English strings
   const advantages: Advantage[] = [
     {
       icon: <Zap className="h-8 w-8" />,
-      title: 'pages.home.tech.speed.title',
-      description: 'pages.home.tech.speed.description'
+      title: "High Production Speed",
+      description: "4-8 times faster than traditional presses with continuous operation and automatic feeding system."
     },
     {
       icon: <Battery className="h-8 w-8" />,
-      title: 'pages.home.tech.energy.title',
-      description: 'pages.home.tech.energy.description'
+      title: "Energy Efficiency",
+      description: "83,300 pieces/kWh vs competitor's 20,800 pieces/kWh, smaller motor requirements and lower operating costs."
     },
     {
       icon: <Award className="h-8 w-8" />,
-      title: 'pages.home.tech.quality.title',
-      description: 'pages.home.tech.quality.description'
+      title: "Superior Quality",
+      description: "Burr-free cutting, clear marking, and precise weight control for optimal performance."
     },
     {
       icon: <Maximize className="h-8 w-8" />,
-      title: 'pages.home.tech.space.title',
-      description: 'pages.home.tech.space.description'
+      title: "Space Efficiency",
+      description: "Compact design with vibration-free operation and flexible installation options."
     }
   ];
 
-  // Debug log to check translations
-  console.log('Tech section translations:', {
-    tag: t('pages.home.tech.tag'),
-    title: t('pages.home.tech.title'),
-    subtitle: t('pages.home.tech.subtitle'),
-    speed: {
-      title: t('pages.home.tech.speed.title'),
-      description: t('pages.home.tech.speed.description'),
-    },
-    energy: {
-      title: t('pages.home.tech.energy.title'),
-      description: t('pages.home.tech.energy.description'),
-    },
-    quality: {
-      title: t('pages.home.tech.quality.title'),
-      description: t('pages.home.tech.quality.description'),
-    },
-    space: {
-      title: t('pages.home.tech.space.title'),
-      description: t('pages.home.tech.space.description'),
-    },
-  });
+  // Removed console.log
 
   return (
     <section id="technology" className="py-20 bg-[#e6f0f7]">
       <div className="container">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold rounded-full bg-[#cfe2ee] text-[#0065A1]">
-            {t('pages.home.tech.tag')}
+            Technology {/* Hardcoded */}
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            {t('pages.home.tech.title')}
+            Revolutionary Rotary Punch Technology {/* Hardcoded */}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t('pages.home.tech.subtitle')}
+            Superior Performance through Innovation {/* Hardcoded */}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {advantages.map((advantage, index) => {
-            // Always show the translations, even if they match the keys
-            const title = t(advantage.title);
-            const description = t(advantage.description);
+            // Use direct strings from the updated array
+            const title = advantage.title;
+            const description = advantage.description;
 
             return (
               <div

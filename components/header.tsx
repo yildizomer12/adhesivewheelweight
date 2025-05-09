@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, ChevronDown, Facebook, Instagram, Youtube } from 'lucide-react'; // Added social icons
-import { LanguageSwitcher } from '@/components/language-switcher';
+// Removed LanguageSwitcher import
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,13 +26,13 @@ import {
 import { Button } from '@/components/ui/button'; // Added Button for SheetTrigger
 import { DialogTrigger } from '@/components/ui/dialog'; // Added DialogTrigger import
 import { QuoteDialog } from '@/components/quote-dialog';
-import { useTranslations } from '@/hooks/use-translations';
+// Removed useTranslations import
 import { usePathname } from 'next/navigation';
 
 export function Header() {
   // Removed isMenuOpen state
   const [isProductsOpen, setIsProductsOpen] = useState(false); // Kept for desktop dropdown
-  const { locale, t } = useTranslations();
+  // Removed locale and t from useTranslations
   const pathname = usePathname();
 
   // Effect to close desktop dropdown on path change
@@ -47,7 +47,7 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8"> {/* Added responsive padding */}
         <div className="flex items-center justify-between h-16">
           {/* Logo - Left */}
-          <Link href={`/${locale}`} className="flex-shrink-0 flex items-center cursor-pointer">
+          <Link href={`/`} className="flex-shrink-0 flex items-center cursor-pointer"> {/* Removed locale */}
             <Image
               src="/yilsa-logo.svg"
               alt="YILSA Logo"
@@ -63,60 +63,60 @@ export function Header() {
             {/* Products Dropdown */}
             <DropdownMenu open={isProductsOpen} onOpenChange={setIsProductsOpen}>
               <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center gap-1">
-                {t('menu.products')}
+                Products {/* Hardcoded */}
                 <ChevronDown className="h-4 w-4 opacity-50" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem asChild className="cursor-pointer">
-                  <Link href={`/${locale}/chopping-and-marking-machine`}>{t('menu.choppingAndMarkingMachine')}</Link>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href={`/chopping-and-marking-machine`}>Chopping and Marking Machine</Link> {/* Hardcoded & removed locale */}
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="cursor-pointer">
-                  <Link href={`/${locale}/taping-and-packaging-machine`}>{t('menu.tapingAndPackagingMachine')}</Link>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href={`/taping-and-packaging-machine`}>Taping and Packaging Machine</Link> {/* Hardcoded & removed locale */}
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="cursor-pointer">
-                  <Link href={`/${locale}/wire-flattening-machine`}>{t('menu.wireFlatteningMachine')}</Link>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href={`/wire-flattening-machine`}>Wire Flattening Machine</Link> {/* Hardcoded & removed locale */}
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="cursor-pointer">
-                  <Link href={`/${locale}/decoiler-machine`}>{t('menu.decoilerMachine')}</Link>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href={`/decoiler-machine`}>Decoiler Machine</Link> {/* Hardcoded & removed locale */}
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="cursor-pointer">
-                  <Link href={`/${locale}/wheel-weights`}>{t('menu.wheelWeights')}</Link>
+                <DropdownMenuItem className="cursor-pointer">
+                  <Link href={`/wheel-weights`}>Wheel Weights</Link> {/* Hardcoded & removed locale */}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
             {/* Other Links */}
-            <Link href={`/${locale}/rotary-punch`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-              {t('menu.technology')}
+            <Link href={`/rotary-punch`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+              Technology {/* Hardcoded */}
             </Link>
-            <Link href={`/${locale}/faq`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-              {t('menu.questions')}
+            <Link href={`/faq`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+              Questions {/* Hardcoded */}
             </Link>
-            <Link href={`/${locale}/about-us`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-              {t('menu.about')}
+            <Link href={`/about-us`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+              About {/* Hardcoded */}
             </Link>
             <Link href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-              {t('menu.contact')}
+              Contact {/* Hardcoded */}
             </Link>
-            <Link href={`/${locale}/blogs`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
-              {t('menu.blog')}
+            <Link href={`/blogs`} className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+              Blog {/* Hardcoded */}
             </Link>
 
             {/* Websites Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center gap-1">
-                {t('menu.websites')}
+                Websites {/* Hardcoded */}
                 <ChevronDown className="h-4 w-4 opacity-50" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem className="cursor-pointer">
-                  <Link href={locale === 'tr' ? "https://rotarypunch.com.tr/" : "https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer">{t('menu.rotaryPunchTechnology')}</Link>
+                  <Link href={"https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer">Rotary Punch Technology</Link> {/* Hardcoded & removed locale condition */}
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
-                  <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer">{t('menu.cableSupportSystems')}</Link>
+                  <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer">Cable Support Systems</Link> {/* Hardcoded */}
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
-                  <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer">{t('menu.corporateWebsite')}</Link>
+                  <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer">Corporate Website</Link> {/* Hardcoded */}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -128,7 +128,7 @@ export function Header() {
                   variant="outline"
                   className="bg-[#0065A1] text-white hover:bg-[#1974aa] hover:text-white hidden lg:inline-flex" // Added classes here
                 >
-                  {t('menu.getQuote')}
+                  Get a Quote {/* Hardcoded */}
                 </Button>
               </DialogTrigger>
             </QuoteDialog>
@@ -136,9 +136,7 @@ export function Header() {
 
           {/* Right Side: Language Switcher (Desktop) & Mobile Menu Trigger */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <div className="hidden md:block">
-              <LanguageSwitcher />
-            </div>
+            {/* Removed Language Switcher */}
 
             {/* Mobile Menu Trigger (Sheet) */}
             <div className="md:hidden">
@@ -146,7 +144,7 @@ export function Header() {
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon">
                     <Menu className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-                    <span className="sr-only">Menüyü Aç</span>
+                    <span className="sr-only">Open Menu</span> {/* Hardcoded */}
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-full sm:w-[350px] p-6 overflow-y-auto"> {/* Added width and padding */}
@@ -157,23 +155,23 @@ export function Header() {
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="products">
                         <AccordionTrigger className="text-base font-medium hover:no-underline">
-                          {t('menu.products')}
+                          Products {/* Hardcoded */}
                         </AccordionTrigger>
                         <AccordionContent className="pl-4 space-y-2"> {/* Indent content */}
                           <SheetClose asChild>
-                            <Link href={`/${locale}/chopping-and-marking-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.choppingAndMarkingMachine')}</Link>
+                            <Link href={`/chopping-and-marking-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Chopping and Marking Machine</Link> {/* Hardcoded & removed locale */}
                           </SheetClose>
                           <SheetClose asChild>
-                            <Link href={`/${locale}/taping-and-packaging-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.tapingAndPackagingMachine')}</Link>
+                            <Link href={`/taping-and-packaging-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Taping and Packaging Machine</Link> {/* Hardcoded & removed locale */}
                           </SheetClose>
                           <SheetClose asChild>
-                            <Link href={`/${locale}/wire-flattening-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.wireFlatteningMachine')}</Link>
+                            <Link href={`/wire-flattening-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Wire Flattening Machine</Link> {/* Hardcoded & removed locale */}
                           </SheetClose>
                           <SheetClose asChild>
-                            <Link href={`/${locale}/decoiler-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.decoilerMachine')}</Link>
+                            <Link href={`/decoiler-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Decoiler Machine</Link> {/* Hardcoded & removed locale */}
                           </SheetClose>
                           <SheetClose asChild>
-                            <Link href={`/${locale}/wheel-weights`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.wheelWeights')}</Link>
+                            <Link href={`/wheel-weights`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Wheel Weights</Link> {/* Hardcoded & removed locale */}
                           </SheetClose>
                         </AccordionContent>
                       </AccordionItem>
@@ -181,36 +179,36 @@ export function Header() {
 
                     {/* Other Links */}
                     <SheetClose asChild>
-                      <Link href={`/${locale}/rotary-punch`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.technology')}</Link>
+                      <Link href={`/rotary-punch`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Technology</Link> {/* Hardcoded & removed locale */}
                     </SheetClose>
                     <SheetClose asChild>
-                      <Link href={`/${locale}/faq`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.questions')}</Link>
+                      <Link href={`/faq`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Questions</Link> {/* Hardcoded & removed locale */}
                     </SheetClose>
                     <SheetClose asChild>
-                      <Link href={`/${locale}/about-us`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.about')}</Link>
+                      <Link href={`/about-us`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</Link> {/* Hardcoded & removed locale */}
                     </SheetClose>
                     <SheetClose asChild>
-                      <Link href="#contact" className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.contact')}</Link>
+                      <Link href="#contact" className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</Link> {/* Hardcoded */}
                     </SheetClose>
                      <SheetClose asChild>
-                       <Link href={`/${locale}/blogs`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.blog')}</Link>
+                       <Link href={`/blogs`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</Link> {/* Hardcoded & removed locale */}
                     </SheetClose>
 
                     {/* Websites Accordion */}
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="websites">
                         <AccordionTrigger className="text-base font-medium hover:no-underline">
-                          {t('menu.websites')}
+                          Websites {/* Hardcoded */}
                         </AccordionTrigger>
                         <AccordionContent className="pl-4 space-y-2">
                           <SheetClose asChild>
-                             <Link href={locale === 'tr' ? "https://rotarypunch.com.tr/" : "https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.rotaryPunchTechnology')}</Link>
+                             <Link href={"https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Rotary Punch Technology</Link> {/* Hardcoded & removed locale condition */}
                           </SheetClose>
                           <SheetClose asChild>
-                            <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.cableSupportSystems')}</Link>
+                            <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Cable Support Systems</Link> {/* Hardcoded */}
                           </SheetClose>
                           <SheetClose asChild>
-                            <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">{t('menu.corporateWebsite')}</Link>
+                            <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Corporate Website</Link> {/* Hardcoded */}
                           </SheetClose>
                         </AccordionContent>
                       </AccordionItem>
@@ -218,7 +216,7 @@ export function Header() {
 
                     {/* Language Switcher and Quote Dialog */}
                     <div className="pt-4 border-t border-gray-200 dark:border-gray-700 flex flex-col space-y-4 items-stretch"> {/* Changed items-start to items-stretch */}
-                      <LanguageSwitcher />
+                      {/* Removed Language Switcher */}
                       {/* Quote Dialog for Mobile */}
                       <QuoteDialog>
                         <DialogTrigger asChild>
@@ -226,7 +224,7 @@ export function Header() {
                             variant="outline"
                             className="bg-[#0065A1] text-white hover:bg-[#1974aa] hover:text-white w-full" // Added classes here
                           >
-                            {t('menu.getQuote')}
+                            Get a Quote {/* Hardcoded */}
                           </Button>
                         </DialogTrigger>
                       </QuoteDialog>

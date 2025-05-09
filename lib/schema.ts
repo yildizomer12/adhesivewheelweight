@@ -12,7 +12,7 @@ type Product = {
   manufacturer: Organization;
 };
 
-export function generateOrganizationSchema(locale: string): string {
+export function generateOrganizationSchema(): string { // Removed locale parameter
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -24,7 +24,7 @@ export function generateOrganizationSchema(locale: string): string {
       "telephone": "+90-xxx-xxx-xxxx",
       "contactType": "sales",
       "areaServed": "Worldwide",
-      "availableLanguage": ["en", "tr"]
+      "availableLanguage": ["en"] // Updated availableLanguage
     }],
     "sameAs": [
       "https://www.linkedin.com/company/yilsa",
@@ -35,7 +35,7 @@ export function generateOrganizationSchema(locale: string): string {
   return JSON.stringify(schema);
 }
 
-export function generateProductSchema(product: Product, locale: string): string {
+export function generateProductSchema(product: Product): string { // Removed locale parameter
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -70,7 +70,7 @@ export function generateProductSchema(product: Product, locale: string): string 
   return JSON.stringify(schema);
 }
 
-export function generateBreadcrumbSchema(items: { name: string; url: string }[], locale: string): string {
+export function generateBreadcrumbSchema(items: { name: string; url: string }[]): string { // Removed locale parameter
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

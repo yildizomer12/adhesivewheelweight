@@ -1,15 +1,15 @@
 'use client';
 import Link from "next/link"
-import { useTranslations } from "@/hooks/use-translations"
+// Removed useTranslations import
 
 export function Footer() {
-  const { t } = useTranslations()
+  // Removed useTranslations hook call
 
   return (
     <footer className="w-full bg-gray-100 border-t">
       <div className="container py-4 mx-auto flex justify-between items-center">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} YILSA. {t('footer.allRightsReserved')}
+          © {new Date().getFullYear()} YILSA. All rights reserved.
         </p>
       </div>
     </footer>

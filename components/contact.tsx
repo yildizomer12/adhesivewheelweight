@@ -2,19 +2,17 @@
 
 import { Info, Mail, MapPin, Phone } from 'lucide-react';
 import { useState } from 'react';
-import { useTranslations } from '@/hooks/use-translations';
-import { useLocation } from '@/contexts/location-context';
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
+// Removed useTranslations import
+// Removed useLocation import (will use local state)
+import { Button } from '@/components/ui/button'; // Assuming this path is correct
+
+// Define representative location type
+type RepresentativeLocation = 'uk' | 'tr' | 'in' | 'dz';
 
 export function Contact() {
-  const { t } = useTranslations();
-  const { location, setLocation } = useLocation();
+  // Removed useTranslations hook call
+  // Use local state for selected location, default to 'tr'
+  const [selectedLocation, setSelectedLocation] = useState<RepresentativeLocation>('tr');
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -24,8 +22,7 @@ export function Contact() {
     requirements: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [successDialogOpen, setSuccessDialogOpen] = useState(false);
-  const [errorDialogOpen, setErrorDialogOpen] = useState(false);
+  // Removed dialog state
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,15 +39,15 @@ export function Contact() {
 
       if (response.ok) {
         console.log('Contact email sent successfully');
-        setSuccessDialogOpen(true);
         setFormData({ name: '', company: '', phone: '', email: '', country: '', requirements: '' }); // Reset form
+        alert('Message sent successfully!'); // Simple alert fallback
       } else {
         console.error('Failed to send contact email');
-        setErrorDialogOpen(true);
+        alert('Failed to send message. Please try again.'); // Simple alert fallback
       }
     } catch (error) {
       console.error('Error sending contact email:', error);
-      setErrorDialogOpen(true);
+      alert('An error occurred while sending the message. Please try again.'); // Simple alert fallback
     } finally {
       setIsSubmitting(false);
     }
@@ -67,20 +64,24 @@ export function Contact() {
     <section id="contact" className="relative bg-gray-50 py-16">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
+          {/* Header Section - Centered */}
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold rounded-full bg-[#e6f0f7] text-[#0065A1]">
-              {t('company.contact.tag')}
+              Contact {/* Hardcoded: company.contact.tag */}
             </span>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('company.contact.title')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Contact Us {/* Hardcoded: company.contact.title */}</h2>
             <p className="text-lg text-gray-600">
-              {t('company.contact.subtitle')}
+              Transform your wheel weights production with our innovative solutions. Get in touch with us to discuss your requirements and discover how our solutions can benefit your business. {/* Hardcoded: company.contact.subtitle */}
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Column: Contact Info & Representative */}
             <div className="space-y-8">
+              {/* General Contact Info */}
               <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="space-y-2">
+                  {/* WhatsApp */}
                   <a
                     href="tel:+905494300020"
                     className="flex items-center group p-4 rounded-lg hover:bg-primary/5 transition-colors"
@@ -89,13 +90,14 @@ export function Contact() {
                       <Phone className="h-6 w-6" />
                     </div>
                     <div className="ml-4">
-                      <p className="font-semibold text-gray-900">{t('company.contact.whatsapp')}</p>
+                      <p className="font-semibold text-gray-900">WhatsApp {/* Hardcoded: company.contact.whatsapp */}</p>
                       <p className="text-gray-600 hover:text-[#0065A1]">
                         +90 549 430 00 20
                       </p>
                     </div>
                   </a>
 
+                  {/* Email */}
                   <a
                     href="mailto:omer.yildiz@yilsa.com.tr"
                     className="flex items-center group p-4 rounded-lg hover:bg-primary/5 transition-colors"
@@ -104,179 +106,187 @@ export function Contact() {
                       <Mail className="h-6 w-6" />
                     </div>
                     <div className="ml-4">
-                      <p className="font-semibold text-gray-900">{t('company.contact.email')}</p>
+                      <p className="font-semibold text-gray-900">Email {/* Hardcoded: company.contact.email */}</p>
                       <p className="text-gray-600 hover:text-[#0065A1]">
                         omer.yildiz@yilsa.com.tr
                       </p>
                     </div>
                   </a>
 
+                  {/* Location */}
                   <div className="flex items-center p-4 rounded-lg">
                     <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#e6f0f7] flex items-center justify-center text-[#0065A1]">
                       <MapPin className="h-6 w-6" />
                     </div>
                     <div className="ml-4">
-                      <p className="font-semibold text-gray-900">{t('company.contact.locationLabel')}</p>
-                      <p className="text-gray-600">{t('company.contact.locations.denizli')}</p>
+                      <p className="font-semibold text-gray-900">Location {/* Hardcoded: company.contact.locationLabel */}</p>
+                      <p className="text-gray-600">Denizli, Turkey {/* Hardcoded: company.contact.locations.denizli */}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
+              {/* Representative Section - Re-added flags and conditional logic */}
               <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-0 flex h-[250px] overflow-hidden">
-                {/* Left section with vertical text */}
+                {/* Left vertical label */}
                 <div className="w-12 bg-gray-100 flex items-center justify-center">
                   <span className="rotate-90 whitespace-nowrap text-[#0066a1] font-medium tracking-wider text-sm">
-                    {t('company.contact.representative.label')}
+                    Representative {/* Hardcoded: company.contact.representative.label */}
                   </span>
                 </div>
-                {/* Right section with white background */}
+                {/* Right content area */}
                 <div className="bg-white flex-grow p-6 flex flex-col">
+                  {/* Flag Buttons */}
                   <div className="flex justify-center gap-2 mb-4">
-                  <button
-                    className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${location === 'uk' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
-                    onClick={() => setLocation('uk')}
-                  >
-                    <img
-                      src="/images/flags/uk.svg"
-                      alt="UK flag"
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                  <button
-                    className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${location === 'tr' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
-                    onClick={() => setLocation('tr')}
-                  >
-                    <img
-                      src="/images/flags/tr.svg"
-                      alt="Turkey flag"
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                  <button
-                    className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${location === 'in' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
-                    onClick={() => setLocation('in')}
-                  >
-                    <img
-                      src="/images/flags/in.svg"
-                      alt="India flag"
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                  <button
-                    className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${location === 'dz' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
-                    onClick={() => setLocation('dz')}
-                  >
-                    <img
-                      src="/images/flags/dz.svg"
-                      alt="Algeria flag"
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
+                    <button
+                      className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'uk' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
+                      onClick={() => setSelectedLocation('uk')}
+                      aria-label="Select UK Representative"
+                    >
+                      <img
+                        src="/images/flags/uk.svg"
+                        alt="UK flag"
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                    <button
+                      className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'tr' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
+                      onClick={() => setSelectedLocation('tr')}
+                      aria-label="Select Turkey Representative"
+                    >
+                      <img
+                        src="/images/flags/tr.svg"
+                        alt="Turkey flag"
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                    <button
+                      className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'in' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
+                      onClick={() => setSelectedLocation('in')}
+                      aria-label="Select India Representative"
+                    >
+                      <img
+                        src="/images/flags/in.svg"
+                        alt="India flag"
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                    <button
+                      className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'dz' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
+                      onClick={() => setSelectedLocation('dz')}
+                      aria-label="Select Algeria Representative"
+                    >
+                      <img
+                        src="/images/flags/dz.svg"
+                        alt="Algeria flag"
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
                   </div>
-                  <div className="flex flex-col flex-grow">
-                  {location === 'uk' && (
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">{t('company.contact.uk.name')}</h3>
-                      <p className="text-gray-600 mb-1.5">{t('company.contact.uk.location')}</p>
-                      <div className="flex flex-col gap-1"> {/* Re-added gap-1 */}
-                        <a
-                          href="tel:+447585353603"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" // Removed mb-1
-                        >
-                          <Phone className="h-4 w-4 text-[#0065A1]" />
-                          <span>+44 758 535 3603</span>
-                        </a>
-                        <a
-                          href="mailto:ali.yildiz@yilsa.com.tr"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
-                        >
-                          <Mail className="h-4 w-4 text-[#0065A1]" />
-                          <span>ali.yildiz@yilsa.com.tr</span>
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                  {location === 'tr' && (
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">{t('company.contact.tr.name')}</h3>
-                      <p className="text-gray-600 mb-1.5">{t('company.contact.tr.location')}</p>
-                      <div className="flex flex-col gap-1"> {/* Re-added gap-1 */}
-                        <a
-                          href="tel:+905494300020"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" // Removed mb-1
-                        >
-                          <Phone className="h-4 w-4 text-[#0065A1]" />
-                          <span>+90 549 430 0020</span>
-                        </a>
-                        <a
-                          href="mailto:omer.yildiz@yilsa.com.tr"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group"
-                        >
-                          <Mail className="h-4 w-4 text-[#0065A1]" />
-                          <span>omer.yildiz@yilsa.com.tr</span>
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                  {location === 'in' && (
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">{t('company.contact.in.name')}</h3>
-                      <p className="text-gray-600 mb-1.5">{t('company.contact.in.location')}</p>
-                      <div className="flex flex-col"> {/* Removed gap-1 */}
-                        <a
-                          href="tel:+919815232199"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" // Added mb-1 like Algeria
-                        >
-                          <Phone className="h-4 w-4 text-[#0065A1]" />
-                          <span>+91 981 523 2199</span>
-                        </a>
-                        {/* Email section removed */}
-                        <div className="flex items-center gap-3 text-gray-400 cursor-not-allowed group"> {/* Mimic Algeria's empty mail section */}
-                          <Mail className="h-4 w-4 text-gray-400" />
-                          {/* Empty span or placeholder if needed */}
+                  {/* Conditional Representative Info */}
+                  <div className="flex flex-col flex-grow"> {/* Removed justify-center and text-center from here */}
+                    {selectedLocation === 'uk' && (
+                      <div> {/* Removed text-center */}
+                        <h3 className="font-semibold text-lg mb-1">Ali Yıldız {/* Hardcoded: company.contact.uk.name */}</h3>
+                        <p className="text-gray-600 mb-1.5">United Kingdom {/* Hardcoded: company.contact.uk.location */}</p>
+                        <div className="flex flex-col gap-1"> {/* Removed items-center */}
+                          <a
+                            href="tel:+447585353603"
+                            className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" /* Removed justify-center */
+                          >
+                            <Phone className="h-4 w-4 text-[#0065A1]" />
+                            <span>+44 758 535 3603</span>
+                          </a>
+                          <a
+                            href="mailto:ali.yildiz@yilsa.com.tr"
+                            className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" /* Removed justify-center */
+                          >
+                            <Mail className="h-4 w-4 text-[#0065A1]" />
+                            <span>ali.yildiz@yilsa.com.tr</span>
+                          </a>
                         </div>
                       </div>
-                    </div>
-                  )}
-                  {location === 'dz' && (
-                    <div>
-                      <h3 className="font-semibold text-lg mb-1">{t('company.contact.dz.name')}</h3>
-                      <p className="text-gray-600 mb-1.5">{t('company.contact.dz.location')}</p>
-                      <div className="flex flex-col"> {/* Removed gap-1 */}
-                        <a
-                          href="tel:+213662806228"
-                          className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" // Added mb-1
-                        >
-                          <Phone className="h-4 w-4 text-[#0065A1]" />
-                          <span>+213 662 80 62 28</span>
-                        </a>
-                        <a
-                          href="#" // Add dummy href for structural parity
-                          onClick={(e) => e.preventDefault()} // Prevent default link behavior
-                          className="flex items-center gap-3 text-gray-400 cursor-not-allowed group" // Removed explicit margin-top
-                        >
-                          <Mail className="h-4 w-4 text-gray-400" />
-                          {/* Removed placeholder text */}
-                        </a>
+                    )}
+                    {selectedLocation === 'tr' && (
+                      <div> {/* Removed text-center */}
+                        <h3 className="font-semibold text-lg mb-1">Ömer Yıldız {/* Hardcoded: company.contact.tr.name */}</h3>
+                        <p className="text-gray-600 mb-1.5">Denizli, Turkey {/* Hardcoded: company.contact.tr.location */}</p>
+                        <div className="flex flex-col gap-1"> {/* Removed items-center */}
+                          <a
+                            href="tel:+905494300020"
+                            className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" /* Removed justify-center */
+                          >
+                            <Phone className="h-4 w-4 text-[#0065A1]" />
+                            <span>+90 549 430 0020</span>
+                          </a>
+                          <a
+                            href="mailto:omer.yildiz@yilsa.com.tr"
+                            className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group" /* Removed justify-center */
+                          >
+                            <Mail className="h-4 w-4 text-[#0065A1]" />
+                            <span>omer.yildiz@yilsa.com.tr</span>
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                    <div className="flex items-center justify-center gap-2 text-xs text-[#0065A1] mt-auto">
-                      <Info className="h-3 w-3 flex-shrink-0" />
-                      <p>{t('company.contact.representative.title')}</p>
-                    </div>
+                    )}
+                    {selectedLocation === 'in' && (
+                      <div> {/* Removed text-center */}
+                        <h3 className="font-semibold text-lg mb-1">Mr. Sanjeev Kumar {/* Hardcoded: company.contact.in.name */}</h3>
+                        <p className="text-gray-600 mb-1.5">India {/* Hardcoded: company.contact.in.location */}</p>
+                        <div className="flex flex-col"> {/* Removed items-center, removed gap */}
+                          <a
+                            href="tel:+919815232199"
+                            className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" /* Removed justify-center */
+                          >
+                            <Phone className="h-4 w-4 text-[#0065A1]" />
+                            <span>+91 981 523 2199</span>
+                          </a>
+                          <div className="flex items-center gap-3 text-gray-400 cursor-not-allowed group"> {/* Removed justify-center */}
+                            <Mail className="h-4 w-4 text-gray-400" />
+                            {/* No email */}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {selectedLocation === 'dz' && (
+                      <div> {/* Removed text-center */}
+                        <h3 className="font-semibold text-lg mb-1">Mr. Mohamed Salah Khouni {/* Hardcoded: company.contact.dz.name */}</h3>
+                        <p className="text-gray-600 mb-1.5">Algeria {/* Hardcoded: company.contact.dz.location */}</p>
+                        <div className="flex flex-col"> {/* Removed items-center, removed gap */}
+                          <a
+                            href="tel:+213662806228"
+                            className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" /* Removed justify-center */
+                          >
+                            <Phone className="h-4 w-4 text-[#0065A1]" />
+                            <span>+213 662 80 62 28</span>
+                          </a>
+                          <div
+                            className="flex items-center gap-3 text-gray-400 cursor-not-allowed group" /* Removed justify-center */
+                          >
+                            <Mail className="h-4 w-4 text-gray-400" />
+                            {/* No email */}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  {/* Info text at the bottom */}
+                  <div className="flex items-center justify-center gap-2 text-xs text-[#0065A1] mt-auto">
+                    <Info className="h-3 w-3 flex-shrink-0" />
+                    <p>Contact us to become our representatives! {/* Hardcoded: company.contact.representative.title */}</p>
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Right Column: Contact Form */}
             <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <form onSubmit={handleSubmit} className="h-full flex flex-col">
+                {/* Form Fields */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('company.contact.form.contactPerson')}
+                      Contact Person {/* Hardcoded: company.contact.form.contactPerson */}
                     </label>
                     <input
                       type="text"
@@ -289,7 +299,7 @@ export function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('company.contact.form.companyName')}
+                      Company Name {/* Hardcoded: company.contact.form.companyName */}
                     </label>
                     <input
                       type="text"
@@ -304,7 +314,7 @@ export function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('company.contact.form.phone')}
+                      Phone Number {/* Hardcoded: company.contact.form.phone */}
                     </label>
                     <input
                       type="tel"
@@ -317,7 +327,7 @@ export function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t('company.contact.form.email')}
+                      Email {/* Hardcoded: company.contact.form.email */}
                     </label>
                     <input
                       type="email"
@@ -331,7 +341,7 @@ export function Contact() {
 
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('company.contact.form.country')}
+                    Country {/* Hardcoded: company.contact.form.country */}
                   </label>
                   <input
                     type="text"
@@ -344,73 +354,27 @@ export function Contact() {
 
                 <div className="flex flex-col flex-grow mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('company.contact.form.message')}
+                    Message {/* Hardcoded: company.contact.form.message */}
                   </label>
                   <textarea
                     name="requirements"
                     value={formData.requirements}
                     onChange={handleChange}
                     className="w-full h-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0065A1] focus:border-transparent resize-none"
+                    rows={4} // Added a default row count
                   />
                 </div>
 
+                {/* Submit Button */}
                 <Button
                   type="submit"
                   className="w-full bg-[#0065A1] text-white py-3 px-6 rounded-lg hover:bg-[#0065A1]/90 transition-colors font-medium"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? t('company.contact.form.submitLoading') : t('company.contact.form.submit')}
+                  {isSubmitting ? 'Submitting...' : 'Send Message'} {/* Hardcoded: company.contact.form.submitLoading / company.contact.form.submit */}
                 </Button>
               </form>
-              <AlertDialog open={successDialogOpen} onOpenChange={setSuccessDialogOpen}>
-                <AlertDialogContent>
-                  <div className="flex justify-between">
-                    <AlertDialogTitle>{t('components.contactDialog.successTitle')}</AlertDialogTitle>
-                    <button
-                      onClick={() => setSuccessDialogOpen(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                  <AlertDialogDescription>
-                    {t('components.contactDialog.successMessage')}
-                  </AlertDialogDescription>
-                  <div className="mt-6 flex justify-end">
-                    <Button
-                      onClick={() => setSuccessDialogOpen(false)}
-                      className="px-4 py-2 rounded bg-[#0065A1] text-white hover:bg-[#1974aa]"
-                    >
-                      {t('components.contactDialog.okButton')}
-                    </Button>
-                  </div>
-                </AlertDialogContent>
-              </AlertDialog>
-
-              <AlertDialog open={errorDialogOpen} onOpenChange={setErrorDialogOpen}>
-                <AlertDialogContent>
-                  <div className="flex justify-between">
-                    <AlertDialogTitle>{t('components.contactDialog.errorTitle')}</AlertDialogTitle>
-                    <button
-                      onClick={() => setErrorDialogOpen(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                  <AlertDialogDescription className="text-red-500 font-bold">
-                    {t('components.contactDialog.errorMessage')}
-                  </AlertDialogDescription>
-                  <div className="mt-6 flex justify-end">
-                    <Button
-                      onClick={() => setErrorDialogOpen(false)}
-                      className="px-4 py-2 rounded bg-[#0065A1] text-white hover:bg-[#1974aa]"
-                    >
-                      {t('components.contactDialog.okButton')}
-                    </Button>
-                  </div>
-                </AlertDialogContent>
-              </AlertDialog>
+              {/* Removed AlertDialog components */}
             </div>
           </div>
         </div>

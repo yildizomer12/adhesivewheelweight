@@ -1,13 +1,13 @@
 import { type Metadata } from 'next';
-import { type Locale, i18n } from '@/i18n-config';
+// Removed i18n import
 
 type MetadataParams = {
   title: string;
   description: string;
   keywords: string[];
-  path: string;
+  path: string; // Path relative to the root (e.g., '/about-us')
   image?: {
-    url: string;
+    url: string; // Should be absolute URL or relative to public folder
     alt: string;
     width?: number;
     height?: number;
@@ -20,23 +20,21 @@ export function generateSEOMetadata({
   keywords,
   path,
   image = {
-    url: '/images/production-line.jpg',
+    url: '/images/production-line.jpg', // Default image relative to public
     alt: 'YILSA Wheel Weight Manufacturing Equipment',
     width: 1200,
     height: 630,
   },
-}: MetadataParams, locale: Locale): Metadata {
+}: MetadataParams): Metadata { // Removed locale parameter
   const url = 'https://www.adhesivewheelweight.com';
 
-  // Generate language alternates
-  const languageAlternates = i18n.locales.reduce((acc: Record<string, string>, lang) => {
-    acc[lang] = `${url}/${lang}${path}`;
-    return acc;
-  }, {});
-  languageAlternates['x-default'] = `${url}${path}`;
+  // Removed language alternates generation
 
-  // Generate canonical URL for the specific language version of the page
-  const canonical = `${url}/${locale}${path}`;
+  // Simplified canonical URL (absolute)
+  const canonical = `${url}${path}`;
+
+  // Ensure image URL is absolute for metadata
+  const absoluteImageUrl = image.url.startsWith('/') ? `${url}${image.url}` : image.url;
 
   return {
     title: `${title} | YILSA Wheel Weight Machines`,
@@ -45,7 +43,7 @@ export function generateSEOMetadata({
     metadataBase: new URL(url),
     alternates: {
       canonical,
-      languages: languageAlternates,
+      // Removed languages alternates
     },
     robots: {
       index: true,
@@ -57,14 +55,14 @@ export function generateSEOMetadata({
     },
     openGraph: {
       type: 'website',
-      locale: locale,
-      url: `${url}/${locale}${path}`,
+      locale: 'en_US', // Hardcoded locale
+      url: canonical, // Use simplified canonical URL
       title,
       description,
       siteName: 'YILSA Wheel Weight Machines',
       images: [
         {
-          url: image.url,
+          url: absoluteImageUrl, // Use absolute image URL
           width: image.width,
           height: image.height,
           alt: image.alt,
@@ -75,15 +73,17 @@ export function generateSEOMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [image.url],
+      images: [absoluteImageUrl], // Use absolute image URL
       creator: '@YilsaMachines',
       site: '@YilsaMachines',
     },
     verification: {
-      google: 'YOUR-GOOGLE-VERIFICATION-ID', // You'll need to replace this with actual verification ID
+      // Keep existing verification if correct, otherwise update
+      google: 'v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY',
     },
-    other: {
-      'google-site-verification': 'YOUR-GOOGLE-VERIFICATION-ID', // You'll need to replace this with actual verification ID
-    },
+    // 'other' might not be necessary if 'verification' is used
+    // other: {
+    //   'google-site-verification': 'v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY',
+    // },
   };
 }

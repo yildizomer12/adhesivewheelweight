@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from "react";
-import { useTranslations } from "@/hooks/use-translations";
+// Removed useTranslations import
 
 interface BaseSpecificationProps {
   title?: string;
@@ -16,19 +16,19 @@ export function BaseSpecification({
   subtitle, 
   imageSrc, 
   imageAlt,
-  children 
+  children
 }: BaseSpecificationProps) {
-  const { t } = useTranslations();
+  // Removed useTranslations hook call
 
   return (
     <section className="w-full bg-white" style={{ paddingTop: '4rem', paddingBottom: '2px' }}>
       <div className="container">
         <div className="text-center mb-12">
           <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold rounded-full bg-[#e6f0f7] text-[#0065A1]">
-            {title || t('sections.productSpecifications')}
+            {title || "Product Specifications"} {/* Hardcoded fallback */}
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold">
-            {subtitle || t('sections.keyFeatures')}
+            {subtitle || "Key Features & Technical Specifications"} {/* Hardcoded fallback */}
           </h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

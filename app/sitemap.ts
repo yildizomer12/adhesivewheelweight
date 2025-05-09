@@ -1,30 +1,18 @@
 // app/sitemap.ts
 import { MetadataRoute } from 'next';
-import { i18n } from '@/i18n-config'; // Assuming your i18n config is here
+// Removed i18n import
 
 const BASE_URL = 'https://www.adhesivewheelweight.com'; // Make sure this is your production URL
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [];
 
-  // Add default language route (e.g., English)
+  // Add root route
   routes.push({
-    url: `${BASE_URL}/${i18n.defaultLocale}`,
+    url: BASE_URL, // Root URL
     lastModified: new Date(),
     changeFrequency: 'yearly',
     priority: 1,
-  });
-
-  // Add other language routes
-  i18n.locales.forEach((locale) => {
-    if (locale !== i18n.defaultLocale) {
-      routes.push({
-        url: `${BASE_URL}/${locale}`,
-        lastModified: new Date(),
-        changeFrequency: 'yearly',
-        priority: 0.8, // Slightly lower priority for non-default languages
-      });
-    }
   });
 
   // --- Add static pages ---
@@ -38,30 +26,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'taping-and-packaging-machine',
     'wheel-weights',
     'wire-flattening-machine',
+    // Add the specific blog post slug
+    'blogs/adhesive-wheel-weights-production'
   ];
 
+  // Add each static page route once, without locale
   staticPages.forEach((page) => {
-    i18n.locales.forEach((locale) => {
-      routes.push({
-        url: `${BASE_URL}/${locale}/${page}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.7,
-      });
+    routes.push({
+      url: `${BASE_URL}/${page}`, // URL without locale segment
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8, // Adjusted priority as there's only one version
     });
   });
 
-  // Example: Add dynamic routes (e.g., blog posts, machine details)
+  // Example: Add dynamic routes (e.g., other blog posts)
   // const blogPosts = await getBlogPosts(); // Fetch your dynamic content
   // blogPosts.forEach((post) => {
-  //   i18n.locales.forEach((locale) => {
+  //   // Skip the one already added statically if necessary
+  //   if (post.slug !== 'adhesive-wheel-weights-production') {
   //     routes.push({
-  //       url: `${BASE_URL}/${locale}/blog/${post.slug}`, // Adjust URL structure as needed
+  //       url: `${BASE_URL}/blogs/${post.slug}`, // URL without locale segment
   //       lastModified: post.updatedAt || new Date(),
   //       changeFrequency: 'weekly',
-  //       priority: 0.6,
+  //       priority: 0.7,
   //     });
-  //   });
+  //   }
   // });
 
   return routes;

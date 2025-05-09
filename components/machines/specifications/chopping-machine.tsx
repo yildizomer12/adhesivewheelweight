@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from "react";
-import { useTranslations } from "@/hooks/use-translations";
+import Link from 'next/link'; 
+
 import { BaseSpecification } from "./base-specification";
-import { useRouter } from 'next/navigation'; // Import useRouter
 import {
   Table,
   TableHeader,
@@ -15,128 +15,110 @@ import {
 
 export function ChoppingMachineSpecifications() {
   const [activeTable, setActiveTable] = useState<'production' | 'machine'>('production');
-  const { t } = useTranslations();
-  const router = useRouter(); // Initialize useRouter
+  
+  
 
-  // Define renderHTML function locally
-  const renderHTML = (html: string) => {
-    const processedHtml = html
-      .replace(/<bold>(.*?)<\/bold>/g, '<strong>$1</strong>') // Keep bold handling if needed elsewhere
-      .replace(
-        /<a href=['"](.+?)['"]>(.*?)<\/a>/g,
-        (match, href, text) =>
-        `<span class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline cursor-pointer transition-colors" data-href="${href}">${text}</span>`
-      );
+  const linkClassName = "text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline cursor-pointer transition-colors";
 
-    return (
-      <div
-        dangerouslySetInnerHTML={{ __html: processedHtml }}
-        onClick={(e) => {
-          const target = e.target as HTMLElement;
-          // Find the closest ancestor (or self) with data-href attribute
-          const linkElement = target.closest<HTMLElement>('[data-href]');
-          
-          if (linkElement) {
-            const href = linkElement.getAttribute('data-href');
-            if (href) {
-              e.preventDefault();
-              // Check if it's an external link
-              if (href.startsWith('http://') || href.startsWith('https://')) {
-                window.open(href, '_blank', 'noopener,noreferrer');
-              } else {
-                router.push(href); // Use Next.js router for internal links
-              }
-            }
-          }
-        }}
-        className="leading-relaxed" // Removed space-y-4 as it's handled by the outer div now
-      />
-    );
-  };
-
-  const introPart2 = t('machines.chopping.specifications.intro.part2');
+  
+  const introContent = (
+    <>
+      <p>
+        Following the initial <Link href='/wire-flattening-machine' className={linkClassName}>Wire Flattening Machine</Link>, the precisely shaped steel profile enters our advanced chopping and marking stage. Our dedicated wheel weight machine performs high-speed, high-accuracy cutting, transforming the continuous flattened wire into individual segments destined to become Automotive Wheel Weights.
+      </p>
+      <p>
+        This wheel weight manufacturing machine ensures each Wheel weight piece meets exact length and weight specifications, critical for both OEM Wheel Weights and aftermarket applications, including precursors for Wheel weihgt stic on types. Markings indicating weight values can also be applied during this automated process.
+      </p>
+      <p>
+        As leading wheel weights machine manufacturers and wheel weights machine producers, we guarantee consistency and precision in every semi-finished piece. These precisely cut segments are now ready for final processing.
+      </p>
+      <p>
+        Our machines is designed to compete with industry leaders such as: <Link href='https://shop.wegmann-automotive.com/en/' target="_blank" rel="noopener noreferrer" className={linkClassName}>Wegmann-Automotive (Germany)</Link> and <Link href='https://www.bendpak.com/' target="_blank" rel="noopener noreferrer" className={linkClassName}>Bendpak (USA)</Link>,
+      </p>
+    </>
+  );
 
   return (
     <BaseSpecification
       imageSrc="/images/chopping-marking-machine.png"
-      imageAlt={t('machines.chopping.specifications.frontView')}
+      imageAlt={"Front view"} // Hardcoded
     >
       <div className="space-y-4 text-justify">
-        {/* Use renderHTML for part2 as well */}
-        {renderHTML(introPart2)}
+        {/* Replaced renderHTML call with JSX content */}
+        {introContent}
       </div>
-      
+
       <div className="rounded-lg border bg-white shadow-lg overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-100 hover:bg-gray-100 cursor-pointer select-none">
-              <TableHead 
+              <TableHead
                 onClick={() => setActiveTable('production')}
                 className={`text-center hover:bg-gray-200 transition-colors w-1/2 ${activeTable === 'production' ? 'bg-gray-800 text-white hover:bg-gray-800' : ''}`}
               >
-                {t('machines.chopping.specifications.tabs.production')}
+                Production Specifications {/* Hardcoded */}
               </TableHead>
-              <TableHead 
+              <TableHead
                 onClick={() => setActiveTable('machine')}
                 className={`text-center hover:bg-gray-200 transition-colors w-1/2 ${activeTable === 'machine' ? 'bg-gray-800 text-white hover:bg-gray-800' : ''}`}
               >
-                {t('machines.chopping.specifications.tabs.machine')}
+                Machine Specifications {/* Hardcoded */}
               </TableHead>
             </TableRow>
           </TableHeader>
-          
+
           {activeTable === 'production' ? (
             <TableBody>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.production.capacity')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.production.capacityValue')}</TableCell>
+                <TableCell className="font-medium">Production Capacity</TableCell> {/* Hardcoded */}
+                <TableCell>100,000 pcs/hour (double feed)</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.production.energy')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.production.energyValue')}</TableCell>
+                <TableCell className="font-medium">Energy Consumption</TableCell> {/* Hardcoded */}
+                <TableCell>1.37 kWh per 100,000 pieces</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.production.stripWidth')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.production.stripWidthValue')}</TableCell>
+                <TableCell className="font-medium">Strip Width (5g)</TableCell> {/* Hardcoded */}
+                <TableCell>11.5 mm</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.production.cutLength')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.production.cutLengthValue')}</TableCell>
+                <TableCell className="font-medium">Cut Length</TableCell> {/* Hardcoded */}
+                <TableCell>19 mm fixed</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.production.rawMaterial')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.production.rawMaterialValue')}</TableCell>
+                <TableCell className="font-medium">Raw Material</TableCell> {/* Hardcoded */}
+                <TableCell>St37 steel strip in roll</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.production.thickness')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.production.thicknessValue')}</TableCell>
+                <TableCell className="font-medium">Material Thickness</TableCell> {/* Hardcoded */}
+                <TableCell>~3 mm</TableCell> {/* Hardcoded */}
               </TableRow>
             </TableBody>
           ) : (
             <TableBody>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.machine.dimensions')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.machine.dimensionsValue')}</TableCell>
+                <TableCell className="font-medium">Dimensions</TableCell> {/* Hardcoded */}
+                <TableCell>60cm x 80cm x 130cm</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.machine.weight')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.machine.weightValue')}</TableCell>
+                <TableCell className="font-medium">Weight</TableCell> {/* Hardcoded */}
+                <TableCell>720 kg</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.machine.drive')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.machine.driveValue')}</TableCell>
+                <TableCell className="font-medium">Drive System</TableCell> {/* Hardcoded */}
+                <TableCell>3 kW Motor with AC Drive</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.machine.control')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.machine.controlValue')}</TableCell>
+                <TableCell className="font-medium">Control System</TableCell> {/* Hardcoded */}
+                <TableCell>Delta PLC with 7" Display</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.machine.cutting')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.machine.cuttingValue')}</TableCell>
+                <TableCell className="font-medium">Cutting System</TableCell> {/* Hardcoded */}
+                <TableCell>70 precision blades</TableCell> {/* Hardcoded */}
               </TableRow>
               <TableRow className="hover:bg-gray-50">
-                <TableCell className="font-medium">{t('machines.chopping.specifications.machine.marking')}</TableCell>
-                <TableCell>{t('machines.chopping.specifications.machine.markingValue')}</TableCell>
+                <TableCell className="font-medium">Marking System</TableCell> {/* Hardcoded */}
+                <TableCell>4 customizable drums</TableCell> {/* Hardcoded */}
               </TableRow>
             </TableBody>
           )}

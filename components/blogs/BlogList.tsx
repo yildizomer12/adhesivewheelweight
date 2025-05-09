@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { useTranslation } from '@/contexts/translation-context';
+// Removed useTranslation import
 
-import { Dictionary } from '@/types/i18n';
+// Removed Dictionary import
 
 interface Blog {
   title: string;
@@ -16,15 +16,17 @@ const BLOG_SLUGS = [
 ] as const;
 
 const BlogList: React.FC = () => {
-  const { t } = useTranslation();
+  // Removed useTranslation hook call
 
-  const blogs: Blog[] = BLOG_SLUGS.map(({ slug, key }) => {
-    return {
-      title: t(`blogs.${key}.blogListTitle`) || 'No Title',
-      description: t(`blogs.${key}.blogListDescription`) || 'No Description',
-      link: `/blogs/${slug}`,
-    };
-  });
+  // Define blogs array directly with hardcoded English strings
+  const blogs: Blog[] = [
+    {
+      title: "Adhesive Wheel Weights Production", // Hardcoded from dictionaries/en/blogs/adhesive-wheel-weights-production.json
+      description: "YILSA, a pioneer in wheel weight production machinery, offers complete production lines featuring rotary punch technology that delivers high-speed, precise manufacturing with minimal energy consumption and zero waste, providing companies a competitive edge in the market.", // Hardcoded
+      link: "/blogs/adhesive-wheel-weights-production"
+    }
+    // Add other blogs here if needed in the future
+  ];
 
   return (
     <div className="container mx-auto py-10">

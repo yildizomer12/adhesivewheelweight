@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useTranslations } from '@/hooks/use-translations';
+// Removed useTranslations import
 
 const CheckIcon = () => (
   <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-green-500 mt-1">
@@ -28,7 +28,7 @@ const PressIcon = () => (
 );
 
 export function ChoppingAndMarkingMachineDescription() {
-  const { t } = useTranslations();
+  // Removed useTranslations hook call
 
   return (
     <div>
@@ -38,10 +38,10 @@ export function ChoppingAndMarkingMachineDescription() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold rounded-full bg-[#e6f0f7] text-[#0065A1]">
-                {t('machines.chopping.comparison.title')}
+                Technology Comparison
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                {t('machines.chopping.comparison.subtitle')}
+                Advanced Technology vs Traditional Methods
               </h2>
             </div>
 
@@ -52,29 +52,29 @@ export function ChoppingAndMarkingMachineDescription() {
                   <div className="w-12 h-12 rounded-full bg-[#e6f0f7] flex items-center justify-center">
                     <RotaryIcon />
                   </div>
-                  <h3 className="text-xl font-semibold">{t('machines.chopping.comparison.rotary.title')}</h3>
+                  <h3 className="text-xl font-semibold">Rotary Punch Technology</h3>
                 </div>
                 
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
                     <CheckIcon />
-                    <span>{t('machines.chopping.comparison.rotary.speed')}</span>
+                    <span>100,000 pieces/hour production speed</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckIcon />
-                    <span>{t('machines.chopping.comparison.rotary.efficiency')}</span>
+                    <span>83,300 pieces/kWh energy efficiency</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckIcon />
-                    <span>{t('machines.chopping.comparison.rotary.motion')}</span>
+                    <span>Continuous rotary motion for smooth operation</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckIcon />
-                    <span>{t('machines.chopping.comparison.rotary.feeding')}</span>
+                    <span>Self-feeding mechanism</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckIcon />
-                    <span>{t('machines.chopping.comparison.rotary.cuts')}</span>
+                    <span>Burr-free, precise cuts</span>
                   </li>
                 </ul>
               </div>
@@ -85,29 +85,29 @@ export function ChoppingAndMarkingMachineDescription() {
                   <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
                     <PressIcon />
                   </div>
-                  <h3 className="text-xl font-semibold">{t('machines.chopping.comparison.traditional.title')}</h3>
+                  <h3 className="text-xl font-semibold">Traditional Press Systems</h3>
                 </div>
 
                 <ul className="space-y-4 text-gray-600">
                   <li className="flex items-start gap-3">
                     <MinusIcon />
-                    <span>{t('machines.chopping.comparison.traditional.speed')}</span>
+                    <span>25,000 pieces/hour production speed</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <MinusIcon />
-                    <span>{t('machines.chopping.comparison.traditional.efficiency')}</span>
+                    <span>20,800 pieces/kWh energy efficiency</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <MinusIcon />
-                    <span>{t('machines.chopping.comparison.traditional.motion')}</span>
+                    <span>Intermittent motion causing vibration</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <MinusIcon />
-                    <span>{t('machines.chopping.comparison.traditional.feeding')}</span>
+                    <span>Requires external feeding unit</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <MinusIcon />
-                    <span>{t('machines.chopping.comparison.traditional.cuts')}</span>
+                    <span>Burrs and cutting angle distortion</span>
                   </li>
                 </ul>
               </div>
@@ -117,26 +117,26 @@ export function ChoppingAndMarkingMachineDescription() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div className="text-center p-6 bg-[#e6f0f7] rounded-xl shadow-xl">
                   <div className="text-4xl font-bold text-[#0065A1] mb-2">
-                    {t('machines.chopping.comparison.stats.production.value')}
+                    4x
                   </div>
                   <div className="text-gray-600">
-                    {t('machines.chopping.comparison.stats.production.label')}
+                    Faster Production
                   </div>
                 </div>
                 <div className="text-center p-6 bg-[#e6f0f7] rounded-xl shadow-xl">
                   <div className="text-4xl font-bold text-[#0065A1] mb-2">
-                    {t('machines.chopping.comparison.stats.energy.value')}
+                    80%
                   </div>
                   <div className="text-gray-600">
-                    {t('machines.chopping.comparison.stats.energy.label')}
+                    Energy Savings
                   </div>
                 </div>
                 <div className="text-center p-6 bg-[#e6f0f7] rounded-xl shadow-xl">
                   <div className="text-4xl font-bold text-[#0065A1] mb-2">
-                    {t('machines.chopping.comparison.stats.waste.value')}
+                    0%
                   </div>
                   <div className="text-gray-600">
-                    {t('machines.chopping.comparison.stats.waste.label')}
+                    Material Waste
                   </div>
                 </div>
               </div>
@@ -151,15 +151,15 @@ export function ChoppingAndMarkingMachineDescription() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold rounded-full bg-[#e6f0f7] text-[#0065A1]">
-                {t('machines.chopping.description.tag')}
+                Product Description
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                {t('machines.chopping.description.title')}
+                Core of Your Production Line
               </h2>
             </div>
             <div className="mt-8 text-justify">
               <p className="text-gray-600">
-                {t('machines.chopping.description.intro')}
+                The Wheel Weights Chopping and Marking Machine stands as the cornerstone of efficient wheel weight manufacturing. As the central component in the production line, it transforms raw material into precisely cut and clearly marked weights, setting the foundation for all subsequent processing steps.
               </p>
             </div>
             <div className="relative overflow-hidden rounded-xl shadow-lg bg-white w-3/4 mx-auto mt-8">
@@ -171,29 +171,29 @@ export function ChoppingAndMarkingMachineDescription() {
             </div>
             <div className="mt-8 text-justify">
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                {t('machines.chopping.description.technology.title')}
+                Advanced Operation System
               </h3>
               <p className="text-gray-600">
-                {t('machines.chopping.description.technology.description')}
+                The machine's dual-drum design incorporates both cutting and marking functions in a single, streamlined process. While the primary drums handle precise cutting without material waste, the integrated marking drums simultaneously imprint weight values and brand information with exceptional clarity. This synchronized operation ensures consistent quality across high-volume production runs.
               </p>
 
               <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-                {t('machines.chopping.description.benefits.title')}
+                Superior Production Benefits
               </h3>
               <p className="text-gray-600">
-                {t('machines.chopping.description.benefits.intro')}
+                The rotary punch technology delivers three key advantages over traditional press systems:
               </p>
               <ul className="list-disc pl-6 mt-4 space-y-2 text-gray-600">
-                <li>{t('machines.chopping.description.benefits.list.energy')}</li>
-                <li>{t('machines.chopping.description.benefits.list.quality')}</li>
-                <li>{t('machines.chopping.description.benefits.list.space')}</li>
+                <li>Energy efficiency: Consuming just 1.37 kWh per 100,000 pieces, representing an 80% reduction in energy usage</li>
+                <li>Quality consistency: Produces burr-free cuts with clear markings through continuous rotational force</li>
+                <li>Space optimization: Compact design with vertical punch mechanism requires minimal floor space while maintaining maximum output</li>
               </ul>
 
               <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-                {t('machines.chopping.description.integration.title')}
+                Integration & Automation
               </h3>
               <p className="text-gray-600">
-                {t('machines.chopping.description.integration.description')}
+                The machine seamlessly connects with both upstream wire flattening and downstream taping processes. Its self-feeding mechanism eliminates the need for additional feeding units, while the precision-controlled output ensures smooth transition to subsequent processing stages. The entire system is managed through an advanced Delta PLC control system with a 7" display interface, enabling real-time monitoring and adjustment of production parameters.
               </p>
             </div>
           </div>

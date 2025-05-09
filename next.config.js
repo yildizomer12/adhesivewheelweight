@@ -15,10 +15,7 @@ const nextConfig = {
         source: '/sitemap.xml',
         destination: '/api/sitemap',
       },
-      {
-        source: '/',
-        destination: '/en',
-      },
+      // Removed rewrite for root to /en
     ];
   },
 

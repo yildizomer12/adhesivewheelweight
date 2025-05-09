@@ -1,19 +1,26 @@
-export default function NotFound() {
+"use client";
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+// Bileşen props'una params ekleyerek lang değerini alalım
+export default function LocalizedNotFound({ params }: { params: { lang: string } }) {
+  const router = useRouter();
+  const { lang } = params; // Dil parametresini al
+
+  useEffect(() => {
+    if (lang) { // lang değeri mevcutsa yönlendirme yap
+      // Mevcut dile göre dinamik URL oluştur ve yönlendir
+      router.replace(`/${lang}/taping-and-packaging-machine`);
+    }
+    // lang yoksa veya beklenmedik bir durum olursa diye bir fallback düşünülebilir,
+    // ancak App Router yapısında [lang] segmenti zorunlu olduğu için genelde lang bulunur.
+  }, [router, lang]); // router ve lang'ı bağımlılık dizisine ekle
+
+  // Yönlendirme gerçekleşirken bir yükleme mesajı göster
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="space-y-4 text-center">
-        <h2 className="text-2xl font-semibold">
-          Page Not Found
-        </h2>
-        <div className="flex justify-center">
-          <a
-            href="/"
-            className="rounded-md bg-blue-500 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-600"
-          >
-            Return Home
-          </a>
-        </div>
-      </div>
+      <p>Yönlendiriliyor...</p>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 'use client';
 
-import { useTranslations } from "@/hooks/use-translations";
+// Removed useTranslations import
 
 export function WireFlatteningMachineDescription() {
-  const { t } = useTranslations();
-  
+  // Removed useTranslations hook call
+
   return (
     <div>
       <section className="w-full bg-white pt-16 pb-16">
@@ -12,52 +12,39 @@ export function WireFlatteningMachineDescription() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold rounded-full bg-[#e6f0f7] text-[#0065A1]">
-                {t('sections.productDescription')}
+                Product Description {/* Hardcoded */}
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold">
-                {t('machines.wire.description.title')}
+                Purpose-Built Innovation {/* Hardcoded */}
               </h2>
             </div>
-            
-            <div className="mt-8 text-justify">
-              <p className="text-gray-600">
-                {t('machines.wire.description.intro')}
-              </p>
-            </div>
 
-            <div className="mt-8 text-justify">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                {t('machines.wire.description.economic.title')}
+            <div className="mt-8 text-justify space-y-4">
+              <h3 className="text-2xl font-semibold text-gray-900">
+                Wire Flattening and Shaping: The First Step in Precision Adhesive Wheel Weight Manufacturing
               </h3>
               <p className="text-gray-600">
-                {t('machines.wire.description.economic.description')}
+                The Wire Flattening Machine is the essential first step in the Adhesive Wheel Weight Production Line, transforming raw fi8 wire rod into flat, uniform metal strips. This process ensures that the material is properly prepared for the subsequent chopping, marking, taping, and packaging stages.
               </p>
-
-              <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-                {t('machines.wire.description.technical.title')}
-              </h3>
               <p className="text-gray-600">
-                {t('machines.wire.description.technical.description')}
+                While global manufacturers like FENN Torin (USA) and Maschinenfabrik NIEHOFF (Germany) offer high-speed flattening technologies for a broad range of industries, our specialized system is exclusively designed for the production of adhesive wheel weights. Unlike multi-purpose flattening mills, our machine is optimized for:
               </p>
-
-              <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-                {t('machines.wire.description.benefits.title')}
-              </h3>
-              <ul className="list-disc pl-6 mt-4 space-y-2 text-gray-600">
-                <li>{t('machines.wire.description.benefits.list.processing')}</li>
-                <li>{t('machines.wire.description.benefits.list.quality')}</li>
-                <li>{t('machines.wire.description.benefits.list.operation')}</li>
-                <li>{t('machines.wire.description.benefits.list.cost')}</li>
-                <li>{t('machines.wire.description.benefits.list.integration')}</li>
-                <li>{t('machines.wire.description.benefits.list.usability')}</li>
+              <ul className="list-disc pl-6 space-y-1 text-gray-600">
+                <li>High surface quality to ensure optimal adhesive bonding</li>
+                <li>Consistent strip thickness and width for precise die-cutting</li>
+                <li>Easy integration with downstream automation</li>
               </ul>
-
-              <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-                {t('machines.wire.description.integration.title')}
-              </h3>
               <p className="text-gray-600">
-                {t('machines.wire.description.integration.description')}
+                Inspired by global standards but tailored to your specific application, our solution combines cost efficiency, local service, and high-performance output—offering an ideal balance for businesses focused on wheel weight production.
               </p>
+              <div className="mt-6 space-x-4">
+                <a href="/chopping-and-marking-machine" className="text-blue-600 hover:underline">
+                  🔗 Next step: Chopping and Marking Machine →
+                </a>
+                <a href="/taping-and-packaging-machine" className="text-blue-600 hover:underline">
+                  🔗 Final step: Taping and Packaging Machine →
+                </a>
+              </div>
             </div>
           </div>
         </div>
