@@ -6,7 +6,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { useTranslations } from '@/hooks/use-translations';
 
 const faqSections = [
   {
@@ -294,7 +293,6 @@ const faqSections = [
 ];
 
 export function FAQSections() {
-  const { t } = useTranslations();
 
   return (
     <section id="faq-sections" className="py-20 bg-white">
@@ -304,7 +302,7 @@ export function FAQSections() {
             {faqSections.map((section, sectionIndex) => (
               <AccordionItem key={sectionIndex} value={`section-${sectionIndex}`} className="glass-card border-none shadow-lg">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline text-left">
-                  <h3 className="font-semibold text-lg">{t(section.category as any)}</h3>
+                  <h3 className="font-semibold text-lg">{section.category}</h3>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4 pt-0">
                   <Accordion type="single" collapsible className="space-y-4">
@@ -315,10 +313,10 @@ export function FAQSections() {
                         className="border-none"
                       >
                         <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                          <span className="text-left font-semibold">{t(faq.question as any)}</span>
+                          <span className="text-left font-semibold">{faq.question}</span>
                         </AccordionTrigger>
                         <AccordionContent className="px-6 pb-4 pt-0 text-gray-600">
-                          {t(faq.answer as any)}
+                          {faq.answer}
                         </AccordionContent>
                       </AccordionItem>
                     ))}

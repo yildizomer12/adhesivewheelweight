@@ -1,4 +1,3 @@
-import { i18n } from '@/i18n-config';
 import { NextResponse } from 'next/server';
 
 const domain = 'https://www.adhesivewheelweight.com';
@@ -38,77 +37,41 @@ function generateSitemapXML(): string {
         xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`;
 
   // Add home pages
-  i18n.locales.forEach((locale) => {
-    xml += `  <url>
-    <loc>${domain}/${locale}${routes.home.path}</loc>
-    ${i18n.locales
-      .filter((l) => l !== locale)
-      .map(
-        (l) =>
-          `    <xhtml:link rel="alternate" hreflang="${l}" href="${domain}/${l}${routes.home.path}"/>`
-      )
-      .join('\n')}
+  xml += `  <url>
+    <loc>${domain}${routes.home.path}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${routes.home.changefreq}</changefreq>
     <priority>${routes.home.priority}</priority>
   </url>\n`;
-  });
 
   // Add machine pages
   routes.machines.forEach((page) => {
-    i18n.locales.forEach((locale) => {
-      xml += `  <url>
-    <loc>${domain}/${locale}/${page.path}</loc>
-    ${i18n.locales
-      .filter((l) => l !== locale)
-      .map(
-        (l) =>
-          `    <xhtml:link rel="alternate" hreflang="${l}" href="${domain}/${l}/${page.path}"/>`
-      )
-      .join('\n')}
+    xml += `  <url>
+    <loc>${domain}/${page.path}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>\n`;
-    });
   });
 
   // Add information pages
   routes.info.forEach((page) => {
-    i18n.locales.forEach((locale) => {
-      xml += `  <url>
-    <loc>${domain}/${locale}/${page.path}</loc>
-    ${i18n.locales
-      .filter((l) => l !== locale)
-      .map(
-        (l) =>
-          `    <xhtml:link rel="alternate" hreflang="${l}" href="${domain}/${l}/${page.path}"/>`
-      )
-      .join('\n')}
+    xml += `  <url>
+    <loc>${domain}/${page.path}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>\n`;
-    });
   });
 
   // Add blog pages
   routes.blogs.forEach((page) => {
-    i18n.locales.forEach((locale) => {
-      xml += `  <url>
-    <loc>${domain}/${locale}/${page.path}</loc>
-    ${i18n.locales
-      .filter((l) => l !== locale)
-      .map(
-        (l) =>
-          `    <xhtml:link rel="alternate" hreflang="${l}" href="${domain}/${l}/${page.path}"/>`
-      )
-      .join('\n')}
+    xml += `  <url>
+    <loc>${domain}/${page.path}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>\n`;
-    });
   });
 
   xml += '</urlset>';
