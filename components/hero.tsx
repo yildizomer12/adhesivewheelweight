@@ -158,7 +158,7 @@ export function Hero() {
     <>
       <div className="h-16 bg-white w-full"></div>
       {/* Mobile Only Video/Image Section - Hidden as requested */}
-      <div className={`relative hidden md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
+      <div className={`relative md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
         <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
           {isWirePage ? (
             <img
