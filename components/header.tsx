@@ -63,8 +63,10 @@ export function Header() {
             {/* Products Dropdown */}
             <DropdownMenu open={isProductsOpen} onOpenChange={setIsProductsOpen}>
               <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center gap-1">
-                Products {/* Hardcoded */}
-                <ChevronDown className="h-4 w-4 opacity-50" />
+                <span>
+                  Products {/* Hardcoded */}
+                  <ChevronDown className="h-4 w-4 opacity-50" />
+                </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem className="cursor-pointer">
@@ -105,8 +107,10 @@ export function Header() {
             {/* Websites Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center gap-1">
-                Websites {/* Hardcoded */}
-                <ChevronDown className="h-4 w-4 opacity-50" />
+                <span>
+                  Websites {/* Hardcoded */}
+                  <ChevronDown className="h-4 w-4 opacity-50" />
+                </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem className="cursor-pointer">
@@ -123,13 +127,10 @@ export function Header() {
 
             {/* Quote Dialog for Desktop */}
             <QuoteDialog>
-              <DialogTrigger asChild>
-                <Button
-                  variant="outline"
-                  className="bg-[#0065A1] text-white hover:bg-[#1974aa] hover:text-white hidden lg:inline-flex" // Added classes here
-                >
-                  Get a Quote {/* Hardcoded */}
-                </Button>
+              <DialogTrigger className="hidden lg:inline-flex">
+                <span className="inline-flex justify-center rounded-md bg-[#0065A1] px-4 py-2 text-sm font-medium text-white hover:bg-[#1974aa] focus:outline-none">
+                  Get a Quote
+                </span>
               </DialogTrigger>
             </QuoteDialog>
           </div>
@@ -141,11 +142,8 @@ export function Header() {
             {/* Mobile Menu Trigger (Sheet) */}
             <div className="md:hidden">
               <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-                    <span className="sr-only">Open Menu</span> {/* Hardcoded */}
-                  </Button>
+                <SheetTrigger>
+                  <Menu className="h-6 w-6 text-gray-600 dark:text-gray-300 cursor-pointer" />
                 </SheetTrigger>
                 <SheetContent side="right" className="w-full sm:w-[350px] p-6 overflow-y-auto"> {/* Added width and padding */}
                   {/* Optional: Add SheetHeader if needed */}
@@ -154,61 +152,61 @@ export function Header() {
                     {/* Products Accordion */}
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="products">
-                        <AccordionTrigger className="text-base font-medium hover:no-underline">
-                          Products {/* Hardcoded */}
+                        <AccordionTrigger className="text-base font-medium hover:no-underline text-left">
+                          <span>Products</span> {/* Hardcoded */}
                         </AccordionTrigger>
                         <AccordionContent className="pl-4 space-y-2"> {/* Indent content */}
-                          <SheetClose asChild>
-                            <Link href={`/chopping-and-marking-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Chopping and Marking Machine</Link> {/* Hardcoded & removed locale */}
+                          <SheetClose>
+                            <Link href={`/chopping-and-marking-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Chopping and Marking Machine</Link>
                           </SheetClose>
-                          <SheetClose asChild>
-                            <Link href={`/taping-and-packaging-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Taping and Packaging Machine</Link> {/* Hardcoded & removed locale */}
+                          <SheetClose>
+                            <Link href={`/taping-and-packaging-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Taping and Packaging Machine</Link>
                           </SheetClose>
-                          <SheetClose asChild>
-                            <Link href={`/wire-flattening-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Wire Flattening Machine</Link> {/* Hardcoded & removed locale */}
+                          <SheetClose>
+                            <Link href={`/wire-flattening-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Wire Flattening Machine</Link>
                           </SheetClose>
-                          <SheetClose asChild>
-                            <Link href={`/decoiler-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Decoiler Machine</Link> {/* Hardcoded & removed locale */}
+                          <SheetClose>
+                            <Link href={`/decoiler-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Decoiler Machine</Link>
                           </SheetClose>
-                          <SheetClose asChild>
-                            <Link href={`/wheel-weights`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Wheel Weights</Link> {/* Hardcoded & removed locale */}
+                          <SheetClose>
+                            <Link href={`/wheel-weights`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Wheel Weights</Link>
                           </SheetClose>
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
 
                     {/* Other Links */}
-                    <SheetClose asChild>
-                      <Link href={`/rotary-punch`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Technology</Link> {/* Hardcoded & removed locale */}
+                    <SheetClose>
+                      <Link href={`/rotary-punch`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Technology</Link>
                     </SheetClose>
-                    <SheetClose asChild>
-                      <Link href={`/faq`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Questions</Link> {/* Hardcoded & removed locale */}
+                    <SheetClose>
+                      <Link href={`/faq`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Questions</Link>
                     </SheetClose>
-                    <SheetClose asChild>
-                      <Link href={`/about-us`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</Link> {/* Hardcoded & removed locale */}
+                    <SheetClose>
+                      <Link href={`/about-us`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">About</Link>
                     </SheetClose>
-                    <SheetClose asChild>
-                      <Link href="#contact" className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</Link> {/* Hardcoded */}
+                    <SheetClose>
+                      <Link href="#contact" className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Contact</Link>
                     </SheetClose>
-                     <SheetClose asChild>
-                       <Link href={`/blogs`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</Link> {/* Hardcoded & removed locale */}
+                    <SheetClose>
+                      <Link href={`/blogs`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Blog</Link>
                     </SheetClose>
 
                     {/* Websites Accordion */}
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="websites">
-                        <AccordionTrigger className="text-base font-medium hover:no-underline">
-                          Websites {/* Hardcoded */}
+                        <AccordionTrigger className="text-base font-medium hover:no-underline text-left">
+                          <span>Websites</span> {/* Hardcoded */}
                         </AccordionTrigger>
                         <AccordionContent className="pl-4 space-y-2">
-                          <SheetClose asChild>
-                             <Link href={"https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Rotary Punch Technology</Link> {/* Hardcoded & removed locale condition */}
+                          <SheetClose>
+                            <Link href={"https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Rotary Punch Technology</Link>
                           </SheetClose>
-                          <SheetClose asChild>
-                            <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Cable Support Systems</Link> {/* Hardcoded */}
+                          <SheetClose>
+                            <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Cable Support Systems</Link>
                           </SheetClose>
-                          <SheetClose asChild>
-                            <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Corporate Website</Link> {/* Hardcoded */}
+                          <SheetClose>
+                            <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Corporate Website</Link>
                           </SheetClose>
                         </AccordionContent>
                       </AccordionItem>
@@ -219,13 +217,10 @@ export function Header() {
                       {/* Removed Language Switcher */}
                       {/* Quote Dialog for Mobile */}
                       <QuoteDialog>
-                        <DialogTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className="bg-[#0065A1] text-white hover:bg-[#1974aa] hover:text-white w-full" // Added classes here
-                          >
-                            Get a Quote {/* Hardcoded */}
-                          </Button>
+                        <DialogTrigger className="w-full">
+                          <span className="inline-flex w-full justify-center rounded-md bg-[#0065A1] px-4 py-2 text-sm font-medium text-white hover:bg-[#1974aa] focus:outline-none">
+                            Get a Quote
+                          </span>
                         </DialogTrigger>
                       </QuoteDialog>
                       {/* Mobile Social Links */}
