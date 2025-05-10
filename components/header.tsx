@@ -59,14 +59,12 @@ export function Header() {
           </Link>
 
           {/* Navigation - Center (Desktop) */}
-          <div className="hidden md:flex md:items-center md:space-x-6 lg:space-x-8 flex-1 justify-center"> {/* Adjusted spacing */}
+          <div className="hidden md:flex md:items-baseline md:space-x-6 lg:space-x-8 flex-1 justify-center"> {/* Adjusted spacing & alignment */}
             {/* Products Dropdown */}
             <DropdownMenu open={isProductsOpen} onOpenChange={setIsProductsOpen}>
-              <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center gap-1">
-                <span>
-                  Products {/* Hardcoded */}
-                  <ChevronDown className="h-4 w-4 opacity-50" />
-                </span>
+              <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center align-baseline">
+                <span>Products</span> {/* Hardcoded */}
+                <ChevronDown className="h-4 w-4 opacity-50 ml-1" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem className="cursor-pointer">
@@ -106,11 +104,9 @@ export function Header() {
 
             {/* Websites Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center gap-1">
-                <span>
-                  Websites {/* Hardcoded */}
-                  <ChevronDown className="h-4 w-4 opacity-50" />
-                </span>
+              <DropdownMenuTrigger className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none inline-flex items-center align-baseline">
+                <span>Websites</span> {/* Hardcoded */}
+                <ChevronDown className="h-4 w-4 opacity-50 ml-1" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem className="cursor-pointer">
@@ -156,19 +152,19 @@ export function Header() {
                           <span>Products</span> {/* Hardcoded */}
                         </AccordionTrigger>
                         <AccordionContent className="pl-4 space-y-2"> {/* Indent content */}
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href={`/chopping-and-marking-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Chopping and Marking Machine</Link>
                           </SheetClose>
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href={`/taping-and-packaging-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Taping and Packaging Machine</Link>
                           </SheetClose>
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href={`/wire-flattening-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Wire Flattening Machine</Link>
                           </SheetClose>
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href={`/decoiler-machine`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Decoiler Machine</Link>
                           </SheetClose>
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href={`/wheel-weights`} className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Wheel Weights</Link>
                           </SheetClose>
                         </AccordionContent>
@@ -176,19 +172,19 @@ export function Header() {
                     </Accordion>
 
                     {/* Other Links */}
-                    <SheetClose>
+                    <SheetClose asChild>
                       <Link href={`/rotary-punch`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Technology</Link>
                     </SheetClose>
-                    <SheetClose>
+                    <SheetClose asChild>
                       <Link href={`/faq`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Questions</Link>
                     </SheetClose>
-                    <SheetClose>
+                    <SheetClose asChild>
                       <Link href={`/about-us`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">About</Link>
                     </SheetClose>
-                    <SheetClose>
+                    <SheetClose asChild>
                       <Link href="#contact" className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Contact</Link>
                     </SheetClose>
-                    <SheetClose>
+                    <SheetClose asChild>
                       <Link href={`/blogs`} className="block py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Blog</Link>
                     </SheetClose>
 
@@ -199,13 +195,13 @@ export function Header() {
                           <span>Websites</span> {/* Hardcoded */}
                         </AccordionTrigger>
                         <AccordionContent className="pl-4 space-y-2">
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href={"https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Rotary Punch Technology</Link>
                           </SheetClose>
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Cable Support Systems</Link>
                           </SheetClose>
-                          <SheetClose>
+                          <SheetClose asChild>
                             <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer" className="block py-1 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-left w-full">Corporate Website</Link>
                           </SheetClose>
                         </AccordionContent>
