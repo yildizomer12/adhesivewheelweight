@@ -67,21 +67,21 @@ export function Header() {
                 <ChevronDown className="h-4 w-4 opacity-50 ml-1" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href={`/chopping-and-marking-machine`}>Chopping and Marking Machine</Link> {/* Hardcoded & removed locale */}
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href={`/taping-and-packaging-machine`}>Taping and Packaging Machine</Link> {/* Hardcoded & removed locale */}
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href={`/wire-flattening-machine`}>Wire Flattening Machine</Link> {/* Hardcoded & removed locale */}
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href={`/decoiler-machine`}>Decoiler Machine</Link> {/* Hardcoded & removed locale */}
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href={`/wheel-weights`}>Wheel Weights</Link> {/* Hardcoded & removed locale */}
-                </DropdownMenuItem>
+                <Link href={`/chopping-and-marking-machine`}>
+                  <DropdownMenuItem className="cursor-pointer">Chopping and Marking Machine</DropdownMenuItem>
+                </Link>
+                <Link href={`/taping-and-packaging-machine`}>
+                  <DropdownMenuItem className="cursor-pointer">Taping and Packaging Machine</DropdownMenuItem>
+                </Link>
+                <Link href={`/wire-flattening-machine`}>
+                  <DropdownMenuItem className="cursor-pointer">Wire Flattening Machine</DropdownMenuItem>
+                </Link>
+                <Link href={`/decoiler-machine`}>
+                  <DropdownMenuItem className="cursor-pointer">Decoiler Machine</DropdownMenuItem>
+                </Link>
+                <Link href={`/wheel-weights`}>
+                  <DropdownMenuItem className="cursor-pointer">Wheel Weights</DropdownMenuItem>
+                </Link>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -109,15 +109,15 @@ export function Header() {
                 <ChevronDown className="h-4 w-4 opacity-50 ml-1" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href={"https://rotarypunch.tech/"} target="_blank" rel="noopener noreferrer">Rotary Punch Technology</Link> {/* Hardcoded & removed locale condition */}
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer">Cable Support Systems</Link> {/* Hardcoded */}
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer">Corporate Website</Link> {/* Hardcoded */}
-                </DropdownMenuItem>
+                <Link href="https://rotarypunch.tech/" target="_blank" rel="noopener noreferrer">
+                  <DropdownMenuItem className="cursor-pointer">Rotary Punch Technology</DropdownMenuItem>
+                </Link>
+                <Link href="https://www.cableladdertrays.com/" target="_blank" rel="noopener noreferrer">
+                  <DropdownMenuItem className="cursor-pointer">Cable Support Systems</DropdownMenuItem>
+                </Link>
+                <Link href="https://www.yilsa.com.tr/" target="_blank" rel="noopener noreferrer">
+                  <DropdownMenuItem className="cursor-pointer">Corporate Website</DropdownMenuItem>
+                </Link>
               </DropdownMenuContent>
             </DropdownMenu>
 
