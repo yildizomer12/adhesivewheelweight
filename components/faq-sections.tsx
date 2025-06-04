@@ -12,10 +12,6 @@ const faqSections = [
     category: "General Questions about YILSA Machines",
     questions: [
       {
-        question: "Where are YILSA machines manufactured?",
-        answer: "Except for electrical and electronic parts, all components are manufactured in-house."
-      },
-      {
         question: "What kind of technical support is offered?",
         answer: "Internal technical support is available whenever required."
       },
