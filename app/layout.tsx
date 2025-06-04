@@ -34,6 +34,7 @@ export default async function RootLayout({
           name="google-site-verification"
           content="v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY" // Keep this verification meta tag
         />
+        <meta name="yandex-verification" content="47ab2ac2ad4e4fe4" />
         <script
           type="application/ld+json"
           // Removed 'en' argument as locale is no longer needed
