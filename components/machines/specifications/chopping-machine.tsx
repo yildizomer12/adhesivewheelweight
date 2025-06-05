@@ -23,17 +23,18 @@ export function ChoppingMachineSpecifications() {
   
   const introContent = (
     <>
+      <h2 className="text-3xl font-bold text-center mb-6">Chopping and marking machine</h2>
       <p>
-        Following the initial <Link href='/wire-flattening-machine' className={linkClassName}>Wire Flattening Machine</Link>, the precisely shaped steel profile enters our advanced chopping and marking stage. Our dedicated wheel weight machine performs high-speed, high-accuracy cutting, transforming the continuous flattened wire into individual segments destined to become Automotive Wheel Weights.
+        Chopping and marking machine, used to <strong>manufacture wheel weights</strong>. Produces 5 gr <strong>stick-on wheel weights</strong> by cutting 19 mm long pieces from 11.5 mm wide rolled metal strip. 19 mm length is fixed. <strong>Steel Balancing Weights</strong> are produced in the desired weight by changing the width of the strip. A 23 mm wide strip is used to produce 10 gr. Desired gr and oz values can be obtained by using different strip widths.
       </p>
       <p>
-        This wheel weight manufacturing machine ensures each Wheel weight piece meets exact length and weight specifications, critical for both OEM Wheel Weights and aftermarket applications, including precursors for Wheel weihgt stic on types. Markings indicating weight values can also be applied during this automated process.
+        During production, <strong>automotive wheel weights</strong> are marked with the desired brand logo and product weights descriptions.
       </p>
       <p>
-        As leading wheel weights machine manufacturers and wheel weights machine producers, we guarantee consistency and precision in every semi-finished piece. These precisely cut segments are now ready for final processing.
+        <strong>High-precision Wheel Weights</strong> have a precision of ±0.5 gr. The machine can be set to 5 gr - 5 gr or 5 gr - 10 gr. SAE 1006/1008 type flat wire or slit steel sheets can be used as raw material.
       </p>
       <p>
-        Our machines is designed to compete with industry leaders such as: <Link href='https://shop.wegmann-automotive.com/en/' target="_blank" rel="noopener noreferrer" className={linkClassName}>Wegmann-Automotive (Germany)</Link> and <Link href='https://www.bendpak.com/' target="_blank" rel="noopener noreferrer" className={linkClassName}>Bendpak (USA)</Link>,
+        As trusted <strong>wheel weight machine manufacturers</strong>, our systems deliver accuracy and speed, competing with top brands like Wegmann Automotive and <strong>BendPak</strong> USA.
       </p>
     </>
   );
