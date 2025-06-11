@@ -18,16 +18,12 @@ export function TapingMachineSpecifications() {
   const descriptionContent = (
     <>
       <p>
-        The final automated stage in our production line involves preparing the precisely cutting segments by <Link href='/chopping-and-marking-machine' className={linkClassName}>Chopping and Marking Machine</Link> for market readiness, particularly focusing on Adhesive Wheel Weights. The final automation stage in our production line involves the precise stacking and packaging of the cut segments, with a particular focus on the Adhesive Wheel Weights, making them ready for market. Our sophisticated taping and packaging machine meticulously applies high-performance adhesive tape, transforming the segments into Self-adhesive Balancing Weights.
-      </p>
-      <p>
-        This process is optimized for producing Steel Wheel Weights, especially popular Fe stick on wheel weight types designed for modern wheel weights for aluminum wheels. The machine then accurately arranges these Steel Balancing Weights onto release liner strips and prepares them for final packaging, ensuring product integrity and ease of use for technicians. The result is a finished product ready for distribution.
-      </p>
-      <p>
-        Our Taping and Packaging Machine is aligned with the latest industry standards. Similar to the high-efficiency machines used by leading manufacturers like <Link href='https://www.3m.com/3M/en_US/post-factory-installation-us/wheel-weights/' target="_blank" rel="noopener noreferrer" className={linkClassName}>3M (USA)</Link>, <Link href='https://www.plombco.com/steel-passenger-car-clip-on-wheel-weights/' target="_blank" rel="noopener noreferrer" className={linkClassName}>Plombco (USA)</Link> known for their advanced automation and precision in wheel weight production, our machine offers superior performance.
-      </p>
-      <p>
-        If you want to compare our production with the process in this video, please visit our <Link href='https://www.youtube.com/watch?v=Q4on1c-EqHQ&list=PLGiOF2X6GljlJMjUlvRu8lDKTwnZJ1dvc' target="_blank" rel="noopener noreferrer" className={linkClassName}>youtube channel</Link>
+        <strong>Lead-Free Wheel Weight</strong> production is ideal with our <strong>Taping and Packaging Machine</strong>. <strong>Steel wheel weights</strong> lined from the sorting drum pass through <strong>5g/10g wheel weight</strong> channels to be arranged. <strong>Wheel Weights</strong> are aligned on extra tape 5×4+10×4.<br/>
+        The <strong>wheel weight machine</strong> is adjustable for 5-5g and 5-10g, or can be produced only for 5-5g, which is more economical. Our company <strong>YILSA</strong> foresees this version to become a trend and recommends it.<br/>
+        As <strong>wheel weight machine producers</strong>, our machines produce <strong>extra blue tape 5g/10g wheel weights</strong>. Our machines can also use <strong>extra paper tape</strong>.<br/>
+        The automation of our <strong>Adhesive Wheel Weight Machine</strong> is developed by our own staff as a result of years of experience. Therefore, our <strong>wheel weight producing machines</strong> work smoothly and are user-experience focused.<br/>
+        Should not be confused with a <strong>Wheel Weight Die-Casting Machine</strong>. Our machines do not produce <strong>clip-on wheel weight</strong> or <strong>lead wheel weight</strong>.<br/>
+        They are suitable for <strong>wheel weights for aluminum wheels</strong>, <strong>motorcycle wheel weight</strong>, and <strong>truck wheel weight</strong>.
       </p>
     </>
   );
