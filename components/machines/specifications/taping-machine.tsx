@@ -17,6 +17,7 @@ export function TapingMachineSpecifications() {
   
   const descriptionContent = (
     <>
+      <h2 className="text-4xl font-bold mb-4">Taping and Packaging Machine.</h2>
       <p>
         <strong>Lead-Free Wheel Weight</strong> production is ideal with our <strong>Taping and Packaging Machine</strong>. <strong>Steel wheel weights</strong> lined from the sorting drum pass through <strong>5g/10g wheel weight</strong> channels to be arranged. <strong>Wheel Weights</strong> are aligned on extra tape 5×4+10×4.<br/>
         The <strong>wheel weight machine</strong> is adjustable for 5-5g and 5-10g, or can be produced only for 5-5g, which is more economical. Our company <strong>YILSA</strong> foresees this version to become a trend and recommends it.<br/>
