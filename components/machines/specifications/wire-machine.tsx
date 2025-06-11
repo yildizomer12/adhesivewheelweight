@@ -19,7 +19,13 @@ export function WireMachineSpecifications() {
     >
       <div className="space-y-4 text-justify">
         <p className="text-gray-600">
-          Our state-of-the-art wheel weight production begins with the most cost-effective and reliable raw material: Ø8 steel wire rod. This fundamental step involves transforming the round wire into a precisely dimensioned flat profile, the essential base for high-quality Lead-Free Wheel Weights. \nUtilizing advanced wire slattening and shaping technology within our specialized steel wire flattening machine, we ensure consistent material properties and dimensions crucial for accurate Wheel Balancing Weights. This initial process is critical for guaranteeing the performance and reliability of the final product. The precision achieved here sets the foundation for subsequent manufacturing stages. Learn more about how this shaped wire is prepared by Chopping and Marking Machine for the next step. Additionally, while global manufacturers such as FENN Torin (USA) and Maschinenfabrik NIEHOFF (Germany) offer high-speed flattening technologies for a wide range of industries, our specialized system is designed exclusively for the production of adhesive wheel weights {/* Hardcoded */}
+          Our <strong>Wire Flattening Machine</strong> transforms Φ8 1006 and 1008 grade wire rod into smooth 11.5×3 mm flat metal strips. The flattening process ensures the precision required for manufacturing <strong>Fe stick-on wheel weights</strong> and provides a smooth surface that improves the adhesion of pressure-sensitive tapes.<br/>
+          <br/>
+          The strips produced by the <strong>Wire Flattening Machine</strong> play a critical role in ensuring that the manufactured <strong>adhesive stick-on wheel weights</strong> stay securely on the rim and maintain accurate <strong>wheel balancing</strong>.<br/>
+          <br/>
+          This machine is not used in the production of <strong>lead clip-on wheel weights</strong> or rounded <strong>tire balance wheel weights</strong>.<br/>
+          <br/>
+          It is ideal for manufacturing <strong>straight corner wheel weights</strong> <strong>Fe sticker</strong>, <strong>Fe/steel/iron adhesive wheel balance weights</strong>, and <strong>zinc-coated wheel weights</strong>.
         </p>
       </div>
 
