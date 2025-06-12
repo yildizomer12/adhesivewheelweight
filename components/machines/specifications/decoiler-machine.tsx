@@ -22,8 +22,11 @@ export function DecoilerMachineSpecifications() {
       imageAlt={"Key Features & Technical Specifications"} // Hardcoded
     >
       <div className="space-y-4 text-justify">
+        <h2 className="text-2xl font-bold mb-2">Decoiler Machine</h2>
         <p className="text-gray-600">
-          YILSA decoiler machines combine innovative engineering with robust performance, delivering reliable operation across diverse applications. From light-duty processing to heavy industrial use, our range offers precision control, enhanced safety features, and superior material handling capabilities. Available in both mechanical and hydraulic configurations to meet your specific production requirements. {/* Hardcoded */}
+          <strong>YILSA Coil Feeders & Uncoilers machines</strong> deliver superior performance and operate reliably across a wide range of applications. From light-duty tasks to heavy industrial use, we offer versatile solutions.<br/><br/>
+          Our product range extends from <strong>manual decoiler machine</strong> to <strong>manual/hydraulic decoiler machine</strong>. Additionally, for <strong>wire rod straightening and cutting machines</strong>, we manufacture both <strong>Horizontal Decoiler</strong> and <strong>Pallet Decoiler</strong> machines.<br/><br/>
+          We also produce <strong>sheet metal decoilers</strong> for <strong>press feeding systems</strong>.
         </p>
       </div>
 
