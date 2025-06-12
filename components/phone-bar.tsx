@@ -24,7 +24,7 @@ export function PhoneBarMobile() {
     <div className="fixed bottom-0 left-1/2 -translate-x-1/2 z-[100] md:hidden">
       <div className="flex flex-row gap-3 bg-white/90 backdrop-blur-sm rounded-t-full shadow-lg py-2 px-4 hover:bg-white transition-colors duration-300 items-center">
         <a
-          href="tel:+905494300020"
+          href="http://wa.me/905494300020"
           aria-label="Phone Number"
           className="text-gray-600 hover:text-[#0065A1] transition-colors flex items-center gap-2"
         >
