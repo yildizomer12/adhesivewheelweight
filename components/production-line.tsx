@@ -136,7 +136,7 @@ export function ProductionLine() {
         <div className="relative py-4">
           <button
             onClick={scrollPrev}
-            className="fixed-nav-button left-0 -translate-x-1/2 hidden md:flex"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
             style={{ zIndex: 10 }}
           >
             <ChevronLeft className="w-6 h-6" />
@@ -144,7 +144,7 @@ export function ProductionLine() {
           
           <button
             onClick={scrollNext}
-            className="fixed-nav-button right-0 translate-x-1/2 hidden md:flex"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
             style={{ zIndex: 10 }}
           >
             <ChevronRight className="w-6 h-6" />
