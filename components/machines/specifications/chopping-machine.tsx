@@ -34,7 +34,7 @@ export function ChoppingMachineSpecifications() {
         <strong>High-precision Wheel Weights</strong> have a precision of ±0.5 gr. The machine can be set to 5 gr - 5 gr or 5 gr - 10 gr. SAE 1006/1008 type flat wire or slit steel sheets can be used as raw material.
       </p>
       <p>
-        As trusted <strong>wheel weight machine manufacturers</strong>, our systems deliver accuracy and speed, competing with top brands like Wegmann Automotive and <strong>BendPak</strong> USA.
+        As trusted <strong>wheel weight machine manufacturers</strong>, our systems deliver accuracy and speed, competing with top brands like Wegmann Automotive and BendPak USA.
       </p>
     </>
   );
