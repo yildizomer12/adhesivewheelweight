@@ -19,11 +19,12 @@ export function TapingMachineSpecifications() {
     <>
       <h2 className="text-4xl font-bold mb-4">Taping and Packaging Machine.</h2>
       <p>
-        <strong>Lead-Free Wheel Weight</strong> production is ideal with our <strong>Taping and Packaging Machine</strong>. <strong>Steel wheel weights</strong> lined from the sorting drum pass through <strong>5g/10g wheel weight</strong> channels to be arranged. <strong>Wheel Weights</strong> are aligned on extra tape 5×4+10×4.<br/>
-        The <strong>wheel weight machine</strong> is adjustable for 5-5g and 5-10g, or can be produced only for 5-5g, which is more economical. Our company <strong>YILSA</strong> foresees this version to become a trend and recommends it.<br/>
-        As <strong>wheel weight machine producers</strong>, our machines produce <strong>extra blue tape 5g/10g wheel weights</strong>. Our machines can also use <strong>extra paper tape</strong>.<br/>
-        The automation of our <strong>Adhesive Wheel Weight Machine</strong> is developed by our own staff as a result of years of experience. Therefore, our <strong>wheel weight producing machines</strong> work smoothly and are user-experience focused.<br/>
-        Should not be confused with a <strong>Wheel Weight Die-Casting Machine</strong>. Our machines do not produce <strong>clip-on wheel weight</strong> or <strong>lead wheel weight</strong>.<br/>
+        <strong>Lead-Free Wheel Weight</strong> production is ideal with our <strong>Taping and Packaging Machine</strong>. <strong>Steel wheel weights</strong> lined from the sorting drum pass through <strong>5g/10g wheel weight</strong> channels to be arranged.<br/><br/>
+        <strong>Wheel Weights</strong> are aligned on extra tape 5×4+10×4.<br/><br/>
+        The <strong>wheel weight machine</strong> is adjustable for 5-5g and 5-10g, or can be produced only for 5-5g, which is more economical. Our company <strong>YILSA</strong> foresees this version to become a trend and recommends it.<br/><br/>
+        As <strong>wheel weight machine producers</strong>, our machines produce <strong>extra blue tape 5g/10g wheel weights</strong>. Our machines can also use <strong>extra paper tape</strong>.<br/><br/>
+        The automation of our <strong>Adhesive Wheel Weight Machine</strong> is developed by our own staff as a result of years of experience. Therefore, our <strong>wheel weight producing machines</strong> work smoothly and are user-experience focused.<br/><br/>
+        Should not be confused with a <strong>Wheel Weight Die-Casting Machine</strong>. Our machines do not produce <strong>clip-on wheel weight</strong> or <strong>lead wheel weight</strong>.<br/><br/>
         They are suitable for <strong>wheel weights for aluminum wheels</strong>, <strong>motorcycle wheel weight</strong>, and <strong>truck wheel weight</strong>.
       </p>
     </>

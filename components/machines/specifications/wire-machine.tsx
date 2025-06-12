@@ -18,6 +18,7 @@ export function WireMachineSpecifications() {
       imageAlt="Wire Flattening Machine"
     >
       <div className="space-y-4 text-justify">
+        <h2 className="text-2xl font-bold mb-2">Wire Flattening Machine</h2>
         <p className="text-gray-600">
           Our <strong>Wire Flattening Machine</strong> transforms Φ8 1006 and 1008 grade wire rod into smooth 11.5×3 mm flat metal strips. The flattening process ensures the precision required for manufacturing <strong>Fe stick-on wheel weights</strong> and provides a smooth surface that improves the adhesion of pressure-sensitive tapes.<br/>
           <br/>
