@@ -19,12 +19,13 @@ export function WheelWeightsSpecifications() {
       imageSrc="/images/wheel-weights.png"
       imageAlt="Wheel Weights"
     >
-      <div className="space-y-4 text-justify">
-        <p className="text-gray-600">
-          Our wheel weights combine precision engineering with premium materials to deliver superior performance and reliability. They feature self-adhesive technology with high-quality adhesive tape, ensuring secure attachment. The galvanized coating enhances corrosion resistance, while the sharp edges guarantee precise fitment and a professional appearance. The weight accuracy is maintained within ±0.5g per strip. These wheel weights are available in versatile combinations to meet all balancing needs, and each box contains 50-100 strips of professional-grade weights. {/* Hardcoded */}
-        </p>
-      </div>
-
+      <h2 className="text-2xl font-bold mb-2">Adhesive Wheel weight</h2>
+      <p className="text-gray-600 text-justify mb-6">
+        Our <strong>wheel weights for tires</strong> are applied onto <strong>high-quality adhesive tape</strong>, ensuring maximum bond strength. Thanks to this, our <strong>Stick-On Adhesive Tape Wheel Weight</strong> products deliver outstanding performance and reliability.<br/><br/>
+        <strong>Zinc Coated Stick-On Balance Wheel Weight Lead-Free Cars SUVs Trucks Wheel Balancers</strong> offer excellent corrosion resistance. Their sharp-edged design ensures precise fitment and a professional appearance, making them ideal <strong>wheel weights for the service market</strong>.<br/><br/>
+        Weight accuracy is maintained within ±0.5 g per strip, ensuring that our <strong>Tire / Wheel Balancing Weights Sticky</strong> products keep your wheels perfectly balanced as intended.<br/><br/>
+        Our <strong>Self-adhesive Balancing Weights</strong> are manufactured using our in-house developed <strong>wheel weight producing machines</strong>.
+      </p>
       <div className="rounded-lg border bg-white shadow-lg overflow-hidden">
         <Table>
           <TableHeader>
