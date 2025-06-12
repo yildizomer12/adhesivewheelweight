@@ -3,6 +3,7 @@ import Script from 'next/script';
 // Removed dictionary import: import { getDictionary } from '@/lib/dictionary';
 import { generateOrganizationSchema } from '@/lib/schema'; // Assuming this function can handle 'en' or be refactored
 import { ClientLayout } from './client-layout';
+import { PhoneBarDesktop, PhoneBarMobile } from '@/components/phone-bar';
 import './globals.css';
 
 export function generateViewport() {
@@ -78,6 +79,8 @@ export default async function RootLayout({
         <noscript><div><img src="https://mc.yandex.ru/watch/102386845" style={{position:'absolute', left:'-9999px'}} alt="" /></div></noscript>
         {/* Removed dictionary and locale props from ClientLayout */}
         <ClientLayout>
+          <PhoneBarDesktop />
+          <PhoneBarMobile />
           {children}
         </ClientLayout>
       </body>
