@@ -42,7 +42,6 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: generateOrganizationSchema() }}
         />
         {/* Add other head elements like title, description from page metadata later */}
-        <script src="https://analytics.ahrefs.com/analytics.js" data-key="nngauHgYCD8c89IY1mUeLg" async></script>
       </head>
       <body>
         {/* Google Tag Manager - Global site tag (gtag.js) */}

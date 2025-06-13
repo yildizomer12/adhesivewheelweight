@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, CSSProperties } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
 // Removed useTranslations import
 import { useRouter } from 'next/navigation'; // Removed useParams
@@ -65,15 +65,15 @@ export function ProductionLine() {
   const router = useRouter();
   // Removed lang and t variables
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isManualControl, setIsManualControl] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    dragFree: true,
-    containScroll: false,
-    align: 'start',
-    slidesToScroll: 1
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { 
+      loop: true,
+      dragFree: true,
+      containScroll: false,
+      align: 'start',
+      slidesToScroll: 1
+    }
+  );
 
   useEffect(() => {
     if (emblaApi) {
@@ -84,39 +84,13 @@ export function ProductionLine() {
     }
   }, [emblaApi]);
 
-  const resetAutoplay = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      setIsManualControl(false);
-    }, 1000);
-  }, []);
-
   const scrollPrev = useCallback(() => {
-    setIsManualControl(true);
     if (emblaApi) emblaApi.scrollPrev();
-    resetAutoplay();
-  }, [emblaApi, resetAutoplay]);
+  }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    setIsManualControl(true);
     if (emblaApi) emblaApi.scrollNext();
-    resetAutoplay();
-  }, [emblaApi, resetAutoplay]);
-
-  const handleMouseDown = useCallback(() => {
-    setIsManualControl(true);
-    resetAutoplay();
-  }, [resetAutoplay]);
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
+  }, [emblaApi]);
 
   return (
     <section id="products" className="py-16 bg-white">
@@ -137,7 +111,7 @@ export function ProductionLine() {
           <button
             onClick={scrollPrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
-            style={{ zIndex: 10 }}
+            style={{ zIndex: 10 } as CSSProperties}
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -145,7 +119,7 @@ export function ProductionLine() {
           <button
             onClick={scrollNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
-            style={{ zIndex: 10 }}
+            style={{ zIndex: 10 } as CSSProperties}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -189,8 +163,7 @@ export function ProductionLine() {
           <div className="hidden md:block embla relative">
             <div
               ref={emblaRef}
-              className={`${isManualControl ? "" : "md:animate-carousel"} overflow-visible`}
-              onMouseDown={handleMouseDown}
+              className="overflow-visible"
             >
               <div className={`flex flex-row ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
                 {[...products, ...products, ...products].map((product, index) => (
@@ -261,10 +234,6 @@ export function ProductionLine() {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           }
           
-          .animate-carousel {
-            animation: carousel 40s linear infinite;
-          }
-          
           /* Masaüstü stilleri */
           @media (min-width: 768px) {
             .embla {
@@ -272,22 +241,6 @@ export function ProductionLine() {
             }
             .fixed-nav-button {
               display: flex; /* Masaüstünde göster */
-            }
-            .animate-carousel {
-              /* Animasyon sınıfı JS ile md:animate-carousel olarak eklendi */
-            }
-          }
-
-          .animate-carousel:hover {
-            animation-play-state: paused;
-          }
-
-          @keyframes carousel {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
             }
           }
         `}</style>
