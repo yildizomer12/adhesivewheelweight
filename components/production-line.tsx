@@ -134,22 +134,6 @@ export function ProductionLine() {
         </div>
 
         <div className="relative py-4">
-          <button
-            onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
-            style={{ zIndex: 10 }}
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          
-          <button
-            onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
-            style={{ zIndex: 10 }}
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
           {/* Mobil Görünüm (Alt alta sıralı, kopyasız) */}
           <div className="block md:hidden">
             <div className={`flex flex-col ${!isLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
@@ -187,6 +171,22 @@ export function ProductionLine() {
 
           {/* Masaüstü Görünüm (Carousel, kopyalı) */}
           <div className="hidden md:block embla relative">
+            <button
+              onClick={scrollPrev}
+              className="fixed-nav-button left-0 -translate-x-1/2"
+              style={{ zIndex: 10 }}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            
+            <button
+              onClick={scrollNext}
+              className="fixed-nav-button right-0 translate-x-1/2"
+              style={{ zIndex: 10 }}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
             <div
               ref={emblaRef}
               className={`${isManualControl ? "" : "md:animate-carousel"} overflow-visible`}
