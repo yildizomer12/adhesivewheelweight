@@ -5,6 +5,7 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const response = NextResponse.next();
 
   // Redirect /index.php to root
   if (pathname === '/index.php') {
@@ -20,14 +21,30 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/api/') || // Skip API routes
     pathname.startsWith('/_next/') // Skip Next.js internal routes
   ) {
-    return NextResponse.next(); // Allow the request to proceed without modification
+    return response; // Allow the request to proceed without modification
   }
+
+  // Add compression headers for text-based content
+  const acceptsGzip = request.headers.get('accept-encoding')?.includes('gzip');
+  const acceptsBrotli = request.headers.get('accept-encoding')?.includes('br');
+  
+  if (acceptsBrotli) {
+    response.headers.set('Content-Encoding', 'br');
+  } else if (acceptsGzip) {
+    response.headers.set('Content-Encoding', 'gzip');
+  }
+
+  // Add performance optimization headers
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-XSS-Protection', '1; mode=block');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
   // Removed all locale detection, redirection, rewriting, header setting, and cookie setting logic.
   // The middleware now only handles the index.php redirect and skips static assets/API routes.
 
   // Allow all other requests to proceed
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
