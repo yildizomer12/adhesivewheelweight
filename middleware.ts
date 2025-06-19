@@ -36,7 +36,19 @@ export function middleware(request: NextRequest) {
 
   // Add performance optimization headers
   response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('X-Frame-Options', 'DENY');
+  
+  // Set X-Frame-Options to allow Yandex Metrica domains
+  const referer = request.headers.get('referer') || '';
+  const allowedDomains = /^https?:\/\/([^\/]+\.)?(adhesivewheelweight\.com|webvisor\.com|metri[ck]a\.yandex\.(com|ru|by|com\.tr))\//;
+  
+  if (allowedDomains.test(referer)) {
+    // Allow framing from Yandex Metrica and your own domain
+    response.headers.set('X-Frame-Options', 'SAMEORIGIN');
+  } else {
+    // Deny framing from all other domains
+    response.headers.set('X-Frame-Options', 'DENY');
+  }
+  
   response.headers.set('X-XSS-Protection', '1; mode=block');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
