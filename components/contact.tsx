@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button'; // Assuming this path is correct
 
 // Define representative location type
-type RepresentativeLocation = 'uk' | 'tr' | 'dz';
+type RepresentativeLocation = 'uk' | 'tr' | 'mena';
 
 export function Contact() {
   // Removed useTranslations hook call
@@ -161,13 +161,13 @@ export function Contact() {
                       />
                     </button>
                     <button
-                      className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'dz' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
-                      onClick={() => setSelectedLocation('dz')}
-                      aria-label="Select Algeria Representative"
+                      className={`relative w-8 h-8 rounded-full overflow-hidden transition-transform hover:scale-110 ${selectedLocation === 'mena' ? 'ring-2 ring-[#0065A1] ring-offset-2' : ''}`}
+                      onClick={() => setSelectedLocation('mena')}
+                      aria-label="Select MENA Representative"
                     >
                       <img
-                        src="/images/flags/dz.svg"
-                        alt="Algeria flag"
+                        src="/images/flags/mena.svg"
+                        alt="MENA flag"
                         className="w-full h-full object-cover"
                       />
                     </button>
@@ -218,17 +218,17 @@ export function Contact() {
                         </div>
                       </div>
                     )}
-                    {selectedLocation === 'dz' && (
+                    {selectedLocation === 'mena' && (
                       <div> {/* Removed text-center */}
-                        <h3 className="font-semibold text-lg mb-1">Kamel Rezaig {/* Hardcoded: company.contact.dz.name */}</h3>
-                        <p className="text-gray-600 mb-1.5">Algeria {/* Hardcoded: company.contact.dz.location */}</p>
+                        <h3 className="font-semibold text-lg mb-1">Izzaldin Aamir {/* Hardcoded: company.contact.dz.name */}</h3>
+                        <p className="text-gray-600 mb-1.5">Middle East and Africa {/* Hardcoded: company.contact.dz.location */}</p>
                         <div className="flex flex-col"> {/* Removed items-center, removed gap */}
                           <a
-                            href="tel:+213662806228"
+                            href="tel:+249123069496"
                             className="flex items-center gap-3 text-gray-600 hover:text-[#0065A1] group mb-1" /* Removed justify-center */
                           >
                             <Phone className="h-4 w-4 text-[#0065A1]" />
-                            <span>+213 662 80 62 28</span>
+                            <span>+249 12 306 9496</span>
                           </a>
                           <div
                             className="flex items-center gap-3 text-gray-400 cursor-not-allowed group" /* Removed justify-center */
