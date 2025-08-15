@@ -133,7 +133,7 @@ export function ProductionLine() {
               {products.map((product, index) => (
                 <div key={`mobile-${index}`} className="w-full mb-6 px-2"> {/* Mobil için alt boşluk ve padding */}
                   <div onClick={() => router.push(`/${product.route}`)} className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] flex flex-col cursor-pointer h-full relative shadow-lg hover:shadow-xl"> {/* Removed lang */}
-                    <div className="aspect-w-4 aspect-h-4 w-full relative">
+                    <div className="w-full h-64 relative bg-gray-100">
                       <Image
                         src={product.image}
                         alt={product.title}
@@ -176,7 +176,7 @@ export function ProductionLine() {
                   // Masaüstü: md:flex-[0_0_25%], md:px-4 md:py-4
                   <div key={`desktop-${index}`} className="md:flex-[0_0_25%] min-w-0 md:px-4 md:py-4">
                     <div onClick={() => router.push(`/${product.route}`)} className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] hover:z-[100] flex flex-col cursor-pointer h-full relative shadow-lg hover:shadow-xl"> {/* Removed lang */}
-                      <div className="aspect-w-4 aspect-h-4 w-full relative">
+                      <div className="w-full h-64 relative bg-gray-100">
                         <Image
                           src={product.image}
                           alt={product.title}
