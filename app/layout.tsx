@@ -33,8 +33,15 @@ export default async function RootLayout({
         <link rel="icon" href="/yilsa-logo.svg" />
         <meta
           name="google-site-verification"
-          content="v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY" // Keep this verification meta tag
+          content="v4TkfPcQIcmiJU7-RWI3oRiKhEbWbQwUS18K81XC4EY"
         />
+        {/* Preconnect to critical third-party domains */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://mc.yandex.ru" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://i.ytimg.com" />
+        <link rel="dns-prefetch" href="https://static.doubleclick.net" />
+        <link rel="dns-prefetch" href="https://yt3.ggpht.com" />
         <script
           type="application/ld+json"
           // Removed 'en' argument as locale is no longer needed
@@ -45,10 +52,10 @@ export default async function RootLayout({
       <body>
         {/* Google Tag Manager - Global site tag (gtag.js) */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=G-WQ1XCRQE7F`}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -58,8 +65,9 @@ export default async function RootLayout({
             });
           `}
         </Script>
-        {/* Yandex.Metrika counter */}
-        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `
+        {/* Yandex.Metrika counter - Optimized loading */}
+        <Script id="yandex-metrika" strategy="lazyOnload">
+          {`
            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
            m[i].l=1*new Date();
            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -73,7 +81,8 @@ export default async function RootLayout({
                 webvisor:true,
                 ecommerce:"dataLayer"
            });
-        `}} />
+          `}
+        </Script>
         <noscript>
           <div>
             <img src="https://mc.yandex.ru/watch/102386845" style={{position:'absolute', left:'-9999px'}} alt="" />

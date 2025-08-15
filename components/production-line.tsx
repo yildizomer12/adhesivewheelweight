@@ -3,6 +3,7 @@
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCallback, useEffect, useState, CSSProperties } from "react";
 import useEmblaCarousel from 'embla-carousel-react';
+import Image from 'next/image';
 // Removed useTranslations import
 import { useRouter } from 'next/navigation'; // Removed useParams
 // Removed ProductKey type
@@ -112,6 +113,7 @@ export function ProductionLine() {
             onClick={scrollPrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
             style={{ zIndex: 10 } as CSSProperties}
+            aria-label="Previous product"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -120,6 +122,7 @@ export function ProductionLine() {
             onClick={scrollNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors duration-200"
             style={{ zIndex: 10 } as CSSProperties}
+            aria-label="Next product"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -131,11 +134,14 @@ export function ProductionLine() {
                 <div key={`mobile-${index}`} className="w-full mb-6 px-2"> {/* Mobil için alt boşluk ve padding */}
                   <div onClick={() => router.push(`/${product.route}`)} className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] flex flex-col cursor-pointer h-full relative shadow-lg hover:shadow-xl"> {/* Removed lang */}
                     <div className="aspect-w-4 aspect-h-4 w-full relative">
-                      <img
+                      <Image
                         src={product.image}
-                        alt={product.title} // Use direct string
-                        className="w-full h-full object-contain bg-gray-100 p-4"
+                        alt={product.title}
+                        fill
+                        className="object-contain p-4"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         loading="lazy"
+                        quality={85}
                       />
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
@@ -171,11 +177,14 @@ export function ProductionLine() {
                   <div key={`desktop-${index}`} className="md:flex-[0_0_25%] min-w-0 md:px-4 md:py-4">
                     <div onClick={() => router.push(`/${product.route}`)} className="glass-card rounded-xl overflow-hidden transition-all duration-300 hover:translate-y-[-4px] hover:z-[100] flex flex-col cursor-pointer h-full relative shadow-lg hover:shadow-xl"> {/* Removed lang */}
                       <div className="aspect-w-4 aspect-h-4 w-full relative">
-                        <img
+                        <Image
                           src={product.image}
-                          alt={product.title} // Use direct string
-                          className="w-full h-full object-contain bg-gray-100 p-4"
+                          alt={product.title}
+                          fill
+                          className="object-contain p-4"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                           loading="lazy"
+                          quality={85}
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-grow">

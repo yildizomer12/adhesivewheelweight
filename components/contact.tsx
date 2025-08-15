@@ -169,6 +169,7 @@ export function Contact() {
                         src="/images/flags/mena.svg"
                         alt="MENA flag"
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </button>
                   </div>

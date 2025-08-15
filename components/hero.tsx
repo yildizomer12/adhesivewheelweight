@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 import { VideoModal } from './video-modal';
 import { QuoteDialog } from './quote-dialog';
+import { YouTubeFacade } from './youtube-facade';
+import Image from 'next/image';
 // Imports removed
 import { usePathname } from 'next/navigation';
 import { DialogTrigger } from '@/components/ui/dialog';
@@ -161,13 +163,17 @@ export function Hero() {
       <div className={`relative md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
         <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
           {isWirePage ? (
-            <img
+            <Image
               src="/images/production-line.jpg"
               alt="Production Line"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+              quality={85}
             />
           ) : isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? (
-            <img
+            <Image
               src={isFaqPage ? "/images/faq_background.jpg" :
                   isRotaryPunchPage ? "/images/technology-background.jpg" :
                   isAboutPage ? "/images/about-background.jpg" :
@@ -176,7 +182,11 @@ export function Hero() {
                   isRotaryPunchPage ? "Technology Background" :
                   isAboutPage ? "About Background" :
                   "Blog Background"}
-              className="w-full h-full object-cover brightness-[0.8]" // Slightly brighter for mobile
+              fill
+              className="object-cover brightness-[0.8]"
+              sizes="100vw"
+              priority
+              quality={85}
             />
           ) : (
             <iframe
@@ -199,13 +209,17 @@ export function Hero() {
             <div className={`absolute inset-0 bg-black/30 z-10`}></div>
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
               {isWirePage ? (
-                <img
+                <Image
                   src="/images/production-line.jpg"
                   alt="Production Line"
-                  className="absolute w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority
+                  quality={85}
                 />
               ) : isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? (
-                <img
+                <Image
                   src={isFaqPage ? "/images/faq_background.jpg" :
                       isRotaryPunchPage ? "/images/technology-background.jpg" :
                       isAboutPage ? "/images/about-background.jpg" :
@@ -214,7 +228,11 @@ export function Hero() {
                       isRotaryPunchPage ? "Technology Background" :
                       isAboutPage ? "About Background" :
                       "Blog Background"}
-                  className="absolute w-full h-full object-cover brightness-[0.4]"
+                  fill
+                  className="object-cover brightness-[0.4]"
+                  sizes="100vw"
+                  priority
+                  quality={85}
                 />
               ) : (
                 <iframe
