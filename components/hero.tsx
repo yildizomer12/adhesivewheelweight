@@ -164,7 +164,7 @@ export function Hero() {
         <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
           {isWirePage ? (
             <Image
-              src="/images/production-line.jpg"
+              src="/images/production-line-extended.jpg"
               alt="Production Line"
               fill
               className="object-cover"
@@ -176,7 +176,7 @@ export function Hero() {
             <Image
               src={isFaqPage ? "/images/faq_background.jpg" :
                   isRotaryPunchPage ? "/images/technology-background.jpg" :
-                  isAboutPage ? "/images/about-background.jpg" :
+                  isAboutPage ? "/images/common-background.jpg" :
                   "/images/blog-background.jpg"}
               alt={isFaqPage ? "FAQ Background" :
                   isRotaryPunchPage ? "Technology Background" :
@@ -210,7 +210,7 @@ export function Hero() {
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
               {isWirePage ? (
                 <Image
-                  src="/images/production-line.jpg"
+                  src="/images/production-line-extended.jpg"
                   alt="Production Line"
                   fill
                   className="object-cover"
@@ -222,7 +222,7 @@ export function Hero() {
                 <Image
                   src={isFaqPage ? "/images/faq_background.jpg" :
                       isRotaryPunchPage ? "/images/technology-background.jpg" :
-                      isAboutPage ? "/images/about-background.jpg" :
+                      isAboutPage ? "/images/common-background.jpg" :
                       "/images/blog-background.jpg"}
                   alt={isFaqPage ? "FAQ Background" :
                       isRotaryPunchPage ? "Technology Background" :

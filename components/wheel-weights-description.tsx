@@ -48,7 +48,7 @@ export default function WheelWeightsDescription() {
               </p>
               <div className="relative overflow-hidden rounded-xl shadow-lg bg-white w-3/4 mx-auto mt-8">
                 <img
-                  src="/images/production-line.bmp"
+                  src="/images/production-line.jpg"
                   alt="Production Line"
                   className="w-full h-auto object-contain"
                 />

@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords,
     path,
     image: { // Using default image, consider a specific one for the blog post
-      url: '/images/production-line-highlight.bmp', // Changed from placeholder
+      url: '/images/production-line.jpg', // Changed from placeholder
       alt: 'Adhesive Wheel Weight Production Line Detail',
       width: 1200, // Adjust if image dimensions differ
       height: 630,
