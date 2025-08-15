@@ -222,7 +222,7 @@ export function Contact() {
                     {selectedLocation === 'mena' && (
                       <div> {/* Removed text-center */}
                         <h3 className="font-semibold text-lg mb-1">Izzaldin Aamir {/* Hardcoded: company.contact.dz.name */}</h3>
-                        <p className="text-gray-600 mb-1.5">Middle East and Africa {/* Hardcoded: company.contact.dz.location */}</p>
+                        <p className="text-gray-600 mb-1.5">Middle East and North Africa {/* Hardcoded: company.contact.dz.location */}</p>
                         <div className="flex flex-col"> {/* Removed items-center, removed gap */}
                           <a
                             href="tel:+249123069496"
