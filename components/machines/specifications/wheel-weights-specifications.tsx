@@ -16,7 +16,7 @@ export function WheelWeightsSpecifications() {
 
   return (
     <BaseSpecification
-      imageSrc="/images/wheel-weights.png"
+      imageSrc="/images/wheel-weights.webp"
       imageAlt="Wheel Weights"
     >
       <h2 className="text-2xl font-bold mb-2">Adhesive Wheel weight</h2>

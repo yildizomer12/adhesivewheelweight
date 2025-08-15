@@ -12,7 +12,7 @@ import { useRouter } from 'next/navigation'; // Removed useParams
 const products: { title: string; image: string; features: string[]; route: string }[] = [
   {
     title: "Decoiler Machine",
-    image: "/images/decoiler-machine.png",
+    image: "/images/decoiler-machine.webp",
     features: [
       "2000 kg coil capacity",
       "Hydraulic mandrel system",
@@ -22,7 +22,7 @@ const products: { title: string; image: string; features: string[]; route: strin
   },
   {
     title: "Wire Flattening Machine",
-    image: "/images/wire-flattening-machine.png",
+    image: "/images/wire-flattening-machine.webp",
     features: [
       "Direct M8 wire processing",
       "11.5 x 3 mm output",
@@ -32,7 +32,7 @@ const products: { title: string; image: string; features: string[]; route: strin
   },
   {
     title: "Chopping and Marking Machine",
-    image: "/images/chopping-marking-machine.png",
+    image: "/images/chopping-marking-machine.webp",
     features: [
       "100,000 pcs/hour capacity",
       "Rotary punch technology",
@@ -42,7 +42,7 @@ const products: { title: string; image: string; features: string[]; route: strin
   },
   {
     title: "Taping and Packaging Machine",
-    image: "/images/taping-packaging-machine.png",
+    image: "/images/taping-packaging-machine.webp",
     features: [
       "5g+5g and 5g+10g configurations",
       "Real-time monitoring",
@@ -52,7 +52,7 @@ const products: { title: string; image: string; features: string[]; route: strin
   },
   {
     title: "Wheel Weights Production",
-    image: "/images/wheel-weights.png",
+    image: "/images/wheel-weights.webp",
     features: [
       "Self-adhesive with galvanized coating",
       "Weight accuracy: ±0.5g per strip",

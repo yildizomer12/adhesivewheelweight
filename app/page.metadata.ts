@@ -29,6 +29,6 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords,
     path,
     // Optional: Specify a different image if needed for the homepage
-    // image: { url: '/images/homepage-specific.jpg', alt: 'Homepage Image' }
+    // image: { url: '/images/homepage-specific.webp', alt: 'Homepage Image' }
   });
 }

@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords,
     path,
     image: { // Using default production line image, consider a specific wheel weight image
-      url: '/images/production-line-extended.jpg', // Changed from placeholder '/images/wheel-weights.png'
+      url: '/images/production-line-extended.webp', // Changed from placeholder '/images/wheel-weights.webp'
       alt: 'YILSA Adhesive Wheel Weights',
       width: 1200,
       height: 630,

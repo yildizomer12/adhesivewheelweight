@@ -33,7 +33,7 @@ export function TapingMachineSpecifications() {
 
   return (
     <BaseSpecification
-      imageSrc="/images/taping-packaging-machine.png"
+      imageSrc="/images/taping-packaging-machine.webp"
       imageAlt="Taping and Packaging Machine"
     >
       <div className="space-y-4 text-justify">

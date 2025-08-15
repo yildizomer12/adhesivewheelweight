@@ -14,7 +14,7 @@ export function WireMachineSpecifications() {
 
   return (
     <BaseSpecification
-      imageSrc="/images/wire-flattening-machine.png"
+      imageSrc="/images/wire-flattening-machine.webp"
       imageAlt="Wire Flattening Machine"
     >
       <div className="space-y-4 text-justify">

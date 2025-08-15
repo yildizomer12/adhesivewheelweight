@@ -28,7 +28,7 @@ export default function DecoilerMachineDescription() {
 
             <div className="relative overflow-hidden rounded-xl shadow-lg bg-white w-3/4 mx-auto mt-8">
               <img
-                src="/images/production-line-with-decoiler-machine.jpg"
+                src="/images/production-line-with-decoiler-machine.webp"
                 alt="Production line"
                 className="w-full h-auto object-contain"
               />

@@ -20,7 +20,7 @@ export function generateSEOMetadata({
   keywords,
   path,
   image = {
-    url: '/images/production-line-extended.jpg', // Default image relative to public
+    url: '/images/production-line-extended.webp', // Default image relative to public
     alt: 'YILSA Wheel Weight Manufacturing Equipment',
     width: 1200,
     height: 630,

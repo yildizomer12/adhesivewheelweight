@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords,
     path,
     image: { // Specific image for this page
-      url: '/images/wire-flattening-machine.png', // Placeholder, confirm if exists
+      url: '/images/wire-flattening-machine.webp', // Placeholder, confirm if exists
       alt: 'YILSA Wire Flattening Machine',
       width: 1200, // Adjust if image dimensions differ
       height: 630,

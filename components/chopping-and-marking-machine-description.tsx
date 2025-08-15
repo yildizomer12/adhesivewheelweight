@@ -164,7 +164,7 @@ export function ChoppingAndMarkingMachineDescription() {
             </div>
             <div className="relative overflow-hidden rounded-xl shadow-lg bg-white w-3/4 mx-auto mt-8">
               <img
-                src="/images/production-line.jpg"
+                src="/images/production-line.webp"
                 alt="Complete wheel weight production line with highlighted Chopping and Marking Machine"
                 className="w-full h-auto object-contain"
               />

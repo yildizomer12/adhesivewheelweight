@@ -164,7 +164,7 @@ export function Hero() {
         <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
           {isWirePage ? (
             <Image
-              src="/images/production-line-extended.jpg"
+              src="/images/production-line-extended.webp"
               alt="Production Line"
               fill
               className="object-cover"
@@ -174,10 +174,10 @@ export function Hero() {
             />
           ) : isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? (
             <Image
-              src={isFaqPage ? "/images/faq_background.jpg" :
-                  isRotaryPunchPage ? "/images/technology-background.jpg" :
-                  isAboutPage ? "/images/common-background.jpg" :
-                  "/images/blog-background.jpg"}
+              src={isFaqPage ? "/images/faq_background.webp" :
+                  isRotaryPunchPage ? "/images/technology-background.webp" :
+                  isAboutPage ? "/images/common-background.webp" :
+                  "/images/blog-background.webp"}
               alt={isFaqPage ? "FAQ Background" :
                   isRotaryPunchPage ? "Technology Background" :
                   isAboutPage ? "About Background" :
@@ -210,7 +210,7 @@ export function Hero() {
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
               {isWirePage ? (
                 <Image
-                  src="/images/production-line-extended.jpg"
+                  src="/images/production-line-extended.webp"
                   alt="Production Line"
                   fill
                   className="object-cover"
@@ -220,10 +220,10 @@ export function Hero() {
                 />
               ) : isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? (
                 <Image
-                  src={isFaqPage ? "/images/faq_background.jpg" :
-                      isRotaryPunchPage ? "/images/technology-background.jpg" :
-                      isAboutPage ? "/images/common-background.jpg" :
-                      "/images/blog-background.jpg"}
+                  src={isFaqPage ? "/images/faq_background.webp" :
+                      isRotaryPunchPage ? "/images/technology-background.webp" :
+                      isAboutPage ? "/images/common-background.webp" :
+                      "/images/blog-background.webp"}
                   alt={isFaqPage ? "FAQ Background" :
                       isRotaryPunchPage ? "Technology Background" :
                       isAboutPage ? "About Background" :

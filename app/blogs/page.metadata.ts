@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords,
     path,
     image: { // Specific image for this page
-      url: '/images/blog-background.jpg',
+      url: '/images/blog-background.webp',
       alt: 'YILSA Blog - Wheel Weight Manufacturing Insights',
       width: 1200,
       height: 630,

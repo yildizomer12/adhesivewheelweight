@@ -32,7 +32,7 @@ export function YouTubeFacade({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.webp`;
   
   const getEmbedUrl = useCallback(() => {
     const params = new URLSearchParams({

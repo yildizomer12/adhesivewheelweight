@@ -18,7 +18,7 @@ export function DecoilerMachineSpecifications() {
 
   return (
     <BaseSpecification
-      imageSrc="/images/decoiler-machine.png"
+      imageSrc="/images/decoiler-machine.webp"
       imageAlt={"Key Features & Technical Specifications"} // Hardcoded
     >
       <div className="space-y-4 text-justify">

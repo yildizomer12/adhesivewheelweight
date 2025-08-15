@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords,
     path,
     image: { // Specific image for this page
-      url: '/images/decoiler-machine.png',
+      url: '/images/decoiler-machine.webp',
       alt: 'YILSA Industrial Decoiler Machine',
       width: 1200, // Adjust if image dimensions differ
       height: 630,

@@ -41,7 +41,7 @@ export function ChoppingMachineSpecifications() {
 
   return (
     <BaseSpecification
-      imageSrc="/images/chopping-marking-machine.png"
+      imageSrc="/images/chopping-marking-machine.webp"
       imageAlt={"Front view"} // Hardcoded
     >
       <div className="space-y-4 text-justify">
