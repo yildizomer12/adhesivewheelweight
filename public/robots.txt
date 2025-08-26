@@ -1,0 +1,24 @@
+# www.adhesivewheelweight.com robots.txt
+
+# Global rules
+User-agent: *
+
+# Allow public assets
+Allow: /images/
+Allow: /sitemap.xml
+
+# Block private routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*/components/
+Disallow: /contexts/
+Disallow: /hooks/
+Disallow: /lib/
+Disallow: /services/
+Disallow: /types/
+
+# Prevent duplicate content
+Disallow: /*?*
+
+# Add sitemap reference
+Sitemap: https://www.adhesivewheelweight.com/sitemap.xml
