@@ -65,15 +65,24 @@ export function OptimizedYouTube({
   }
 
   return (
-    <div id={`youtube-${videoId}`} className={className}>
+    <div id={`youtube-${videoId}`} className={`relative ${className}`}>
+      {!isLoaded && (
+        <div className="youtube-placeholder">
+          <div className="youtube-loading">
+            <div className="youtube-play-icon">▶</div>
+          </div>
+        </div>
+      )}
+      
       {isIntersecting && (
         <iframe
-          className="w-full h-full"
+          className={`w-full h-full ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           src={isLoaded ? `https://www.youtube.com/embed/${videoId}?${params}` : undefined}
           title="YouTube Video Player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           loading={loading}
+          onLoad={() => setIsLoaded(true)}
           style={{
             border: 'none',
             position: 'absolute',
@@ -81,7 +90,8 @@ export function OptimizedYouTube({
             left: 0,
             width: '100%',
             height: '100%',
-            pointerEvents: 'none'
+            pointerEvents: 'none',
+            transition: 'opacity 0.3s ease-in'
           }}
         />
       )}

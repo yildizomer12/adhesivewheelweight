@@ -2,7 +2,7 @@
 
 import { Play, FileText, Calculator } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { VideoModal } from './video-modal';
 import { QuoteDialog } from './quote-dialog';
 // Imports removed
@@ -31,35 +31,18 @@ export function Hero() {
   const backgroundVideoRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    if (!isWirePage) {
-      const timer = setTimeout(() => {
-        setIsVideoReady(true);
-      }, 1500);
-      return () => clearTimeout(timer);
-    } else {
-      setIsVideoReady(true);
-    }
-  }, [isWirePage]);
+    // Remove the delay for video readiness - load immediately
+    setIsVideoReady(true);
+  }, []);
 
-  const handleVideoStateChange = (isPlaying: boolean) => {
+  const handleVideoStateChange = useCallback((isPlaying: boolean) => {
     if (isWirePage) return;
     
     setIsBackgroundVideoPlaying(isPlaying);
 
-    if (backgroundVideoRef.current?.contentWindow) {
-      try {
-        backgroundVideoRef.current.contentWindow.postMessage(
-          JSON.stringify({
-            event: 'command',
-            func: isPlaying ? 'playVideo' : 'pauseVideo'
-          }),
-          '*'
-        );
-      } catch (error) {
-        console.error('Error controlling background video:', error);
-      }
-    }
-  };
+    // Remove YouTube API control to reduce JavaScript execution
+    // This was causing significant main thread work
+  }, [isWirePage]);
 
   const getBackgroundVideo = () => {
     if (isChoppingPage) {
