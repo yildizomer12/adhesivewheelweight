@@ -3,6 +3,13 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Target modern browsers to avoid unnecessary polyfills
+  experimental: {
+    esmExternals: 'loose',
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   images: {
     unoptimized: false,
     formats: ['image/webp', 'image/avif'],
