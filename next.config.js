@@ -3,7 +3,11 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
+  images: {
+    unoptimized: false,
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 31536000, // 1 year
+  },
   
   // Configure trailing slashes and i18n handling
   trailingSlash: false,
@@ -19,7 +23,7 @@ const nextConfig = {
     ];
   },
 
-  // Headers for SEO and security
+  // Headers for SEO, security, and performance
   async headers() {
     return [
       {
@@ -71,6 +75,35 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=3600, must-revalidate',
+          },
+        ],
+      },
+      // Cache static assets for 1 year
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/image/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Cache public assets for 1 year
+      {
+        source: '/(.*)\\.(ico|svg|jpg|jpeg|png|gif|webp|avif|woff|woff2|ttf|eot|css|js)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
