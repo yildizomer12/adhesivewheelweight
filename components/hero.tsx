@@ -5,12 +5,11 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { VideoModal } from './video-modal';
 import { QuoteDialog } from './quote-dialog';
-// Imports removed
 import { usePathname } from 'next/navigation';
 import { DialogTrigger } from '@/components/ui/dialog';
+import Image from 'next/image';
 
 export function Hero() {
-  // Hook calls removed
   const pathname = usePathname();
   const isChoppingPage = pathname?.endsWith('/chopping-and-marking-machine') ?? false;
   const isTapingPage = pathname?.endsWith('/taping-and-packaging-machine') ?? false;
@@ -24,43 +23,63 @@ export function Hero() {
   const isProductPage = (isChoppingPage || isTapingPage || isWirePage || isDecoilerPage || isWheelWeightsPage) && 
     !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage;
 
-  const [isVideoReady, setIsVideoReady] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBackgroundVideoPlaying, setIsBackgroundVideoPlaying] = useState(!isWirePage);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLIFrameElement>(null);
   const backgroundVideoRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    // Remove the delay for video readiness - load immediately
-    setIsVideoReady(true);
+    // Sayfa yüklendiğinde hemen videoyu yükle
+    setShouldLoadVideo(true);
   }, []);
 
   const handleVideoStateChange = useCallback((isPlaying: boolean) => {
     if (isWirePage) return;
     
     setIsBackgroundVideoPlaying(isPlaying);
-
-    // Remove YouTube API control to reduce JavaScript execution
-    // This was causing significant main thread work
   }, [isWirePage]);
 
-  const getBackgroundVideo = () => {
-    if (isChoppingPage) {
-      return "https://www.youtube.com/embed/6exCLLHulhU?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&start=6&playlist=6exCLLHulhU&hd=1&vq=hd1080&quality=hd1080&highQuality=1&enablejsapi=1&origin=https://wheelweights.yilsamakine.com";
-    }
-    if (isTapingPage) {
-      return "https://www.youtube.com/embed/Kk1yIkIKUMQ?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&start=33&playlist=Kk1yIkIKUMQ&hd=1&vq=hd1080&quality=hd1080&highQuality=1&enablejsapi=1&origin=https://wheelweights.yilsamakine.com";
-    }
-    if (isWirePage) {
-      return "https://www.youtube.com/embed/CUrBRxySXI8?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&start=0&playlist=CUrBRxySXI8&hd=1&vq=hd1080&quality=hd1080&highQuality=1&enablejsapi=1&origin=https://wheelweights.yilsamakine.com";
-    }
-    if (isDecoilerPage) {
-      return "https://www.youtube.com/embed/iaVqUmbvuHM?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&start=0&playlist=iaVqUmbvuHM&hd=1&vq=hd1080&quality=hd1080&highQuality=1&enablejsapi=1&origin=https://wheelweights.yilsamakine.com";
-    }
-    if (isWheelWeightsPage) {
-      return "https://www.youtube.com/embed/CUrBRxySXI8?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&start=144&playlist=CUrBRxySXI8&hd=1&vq=hd1080&quality=hd1080&highQuality=1&enablejsapi=1&origin=https://wheelweights.yilsamakine.com";
-    }
-    return "https://www.youtube.com/embed/CUrBRxySXI8?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&playsinline=1&rel=0&showinfo=0&start=144&playlist=CUrBRxySXI8&hd=1&vq=hd1080&quality=hd1080&highQuality=1&enablejsapi=1&origin=https://wheelweights.yilsamakine.com";
+  const getVideoId = () => {
+    if (isChoppingPage) return "6exCLLHulhU";
+    if (isTapingPage) return "Kk1yIkIKUMQ";
+    if (isWirePage) return "CUrBRxySXI8";
+    if (isDecoilerPage) return "iaVqUmbvuHM";
+    if (isWheelWeightsPage) return "CUrBRxySXI8";
+    return "CUrBRxySXI8";
+  };
+
+  const getThumbnailUrl = (videoId: string, quality: 'maxres' | 'hq' | 'mq' = 'maxres') => {
+    const qualities = {
+      maxres: `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+      hq: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+      mq: `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`
+    };
+    return qualities[quality];
+  };
+
+  const getOptimizedYouTubeUrl = (videoId: string) => {
+    const params = new URLSearchParams({
+      autoplay: '1',
+      mute: '1',
+      controls: '0',
+      disablekb: '1',
+      fs: '0',
+      loop: '1',
+      modestbranding: '1',
+      playsinline: '1',
+      rel: '0',
+      showinfo: '0',
+      playlist: videoId,
+      hd: '1',
+      vq: 'hd1080',
+      quality: 'hd1080',
+      highQuality: '1',
+      enablejsapi: '1',
+      origin: typeof window !== 'undefined' ? window.location.origin : ''
+    });
+    return `https://www.youtube.com/embed/${videoId}?${params}`;
   };
 
   const getHeroTranslations = () => {
@@ -80,7 +99,7 @@ export function Hero() {
     }
     if (isWirePage) {
       return {
-        tag: "Wire Flattening Machine", // Using title as tag for wire page
+        tag: "Wire Flattening Machine",
         title: "Transform Your Production Economics",
         description: "Convert standard 8mm wire rod into precise 11.5 x 3mm flat steel, reducing raw material costs by up to 50% while streamlining your production process",
       };
@@ -140,9 +159,9 @@ export function Hero() {
   return (
     <>
       <div className="h-16 bg-white w-full"></div>
-      {/* Mobile Only Video/Image Section - Hidden as requested */}
-      <div className={`relative md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
-        <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
+      {/* Mobile Only Video/Image Section */}
+      <div className="relative md:hidden overflow-hidden bg-black">
+        <div className="w-full aspect-video">
           {isWirePage ? (
             <img
               src="/images/production-line-extended.webp"
@@ -159,28 +178,46 @@ export function Hero() {
                   isRotaryPunchPage ? "Technology Background" :
                   isAboutPage ? "About Background" :
                   "Blog Background"}
-              className="w-full h-full object-cover brightness-[0.8]" // Slightly brighter for mobile
+              className="w-full h-full object-cover brightness-[0.4]"
             />
           ) : (
-            <iframe
-              className="w-full h-full pointer-events-none" // Adjust size for mobile container, disable clicks
-              src={getBackgroundVideo()} // Use original params: autoplay, mute, loop, controls=0, showinfo=0
-              title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="eager"
-            />
+            <div className="w-full h-full hero-video-container">
+              <iframe
+                className="w-full h-full pointer-events-none"
+                src={getOptimizedYouTubeUrl(getVideoId())}
+                title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="eager"
+                onLoad={() => setIsVideoLoaded(true)}
+                style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in' }}
+              />
+              {!isVideoLoaded && (
+                <Image
+                  src={getThumbnailUrl(getVideoId(), 'hq')}
+                  alt="Video thumbnail"
+                  fill
+                  className="object-cover"
+                  priority
+                  onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.src = getThumbnailUrl(getVideoId(), 'mq');
+                  }}
+                  style={{ opacity: isVideoLoaded ? 0 : 1, transition: 'opacity 0.3s ease-out' }}
+                />
+              )}
+            </div>
           )}
         </div>
       </div>
 
-      {/* Main Hero Section (Text Content + Desktop Background) */}
-      <div className={`relative min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit transition-colors duration-700 overflow-hidden bg-gradient-to-b from-[#EEF2F6] to-white`}>
+      {/* Main Hero Section */}
+      <div className={`relative min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit overflow-hidden bg-black`}>
         {/* Desktop Only Background Video/Image */}
-        <div className={`hidden md:block transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="hidden md:block">
           <div className="absolute inset-0 w-full h-full">
-            <div className={`absolute inset-0 bg-black/30 z-10`}></div>
-            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 bg-black/30 z-10"></div>
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden hero-video-container">
               {isWirePage ? (
                 <img
                   src="/images/production-line-extended.webp"
@@ -200,44 +237,56 @@ export function Hero() {
                   className="absolute w-full h-full object-cover brightness-[0.4]"
                 />
               ) : (
-                <iframe
-                  ref={backgroundVideoRef}
-                  className="absolute w-[130%] h-[130%] scale-[1.75] origin-center transform-gpu"
-                  src={getBackgroundVideo()}
-                  title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="eager"
-                  width="1920"
-                  height="1080"
-                />
+                <>
+                  <iframe
+                    ref={backgroundVideoRef}
+                    className="absolute w-[130%] h-[130%] scale-[1.75] origin-center transform-gpu"
+                    src={getOptimizedYouTubeUrl(getVideoId())}
+                    title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    loading="eager"
+                    width="1920"
+                    height="1080"
+                    onLoad={() => setIsVideoLoaded(true)}
+                    style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in' }}
+                  />
+                  {!isVideoLoaded && (
+                    <Image
+                      src={getThumbnailUrl(getVideoId(), 'maxres')}
+                      alt="Video thumbnail"
+                      fill
+                      className="object-cover"
+                      priority
+                      onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.src = getThumbnailUrl(getVideoId(), 'hq');
+                      }}
+                      style={{ opacity: isVideoLoaded ? 0 : 1, transition: 'opacity 0.3s ease-out' }}
+                    />
+                  )}
+                </>
               )}
             </div>
           </div>
         </div>
 
         {/* Text Content Area */}
-        {/* Removed padding from container, applying to inner content wrapper */}
-        {/* Further adjusting vertical padding for mobile, reducing bottom padding */}
         <div className={`relative z-20 flex items-center justify-center min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit`}>
-          {/* Changed py-8 to pt-8 pb-4 for finer control on mobile, keeping md:py-16 */}
           <div className="text-center px-6 pt-8 pb-4 md:py-16">
-            {/* Padding applied to parent div */}
             <div className="max-w-3xl mx-auto">
-              {/* Removed padding from h1 */}
               <div className="space-y-6">
                 { !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
-                  <span className={`inline-block px-4 py-1.5 text-sm font-semibold rounded-full transition-colors duration-700 bg-[#cfe2ee] text-[#0065A1] ${isWirePage || isVideoReady ? 'md:bg-white/10 md:text-white' : ''}`}>
+                  <span className="inline-block px-4 py-1.5 text-sm font-semibold rounded-full bg-white/10 text-white">
                     {heroContent.tag}
                   </span>
                 )}
-                {/* Removed whitespace-nowrap condition to allow wrapping on all pages */}
-                <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight transition-colors duration-700 text-gray-900 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:text-white' : ''}`}>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white">
                   {heroContent.title}
                 </h1>
                 { !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
                   <>
-                    <p className={`text-lg leading-relaxed transition-colors duration-700 text-gray-600 ${isWirePage || isVideoReady ? 'md:text-white/90' : ''}`}>
+                    <p className="text-lg leading-relaxed text-white/90">
                       {heroContent.description}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -247,7 +296,7 @@ export function Hero() {
                             <DialogTrigger asChild>
                               <Button
                                 variant={'default'}
-                                className={`gap-2 transition-colors duration-700 ${isWirePage || isVideoReady ? 'md:bg-white md:text-black md:hover:bg-white/90' : ''}`}
+                                className="gap-2 bg-white text-black hover:bg-white/90"
                               >
                                 <FileText className="w-4 h-4" />
                                 Get Quote
@@ -256,7 +305,7 @@ export function Hero() {
                           </QuoteDialog>
                           {!isWirePage && (
                             <button
-                              className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 gap-2 transition-colors duration-700 ${isVideoReady ? 'border border-white text-white hover:bg-white/10' : 'border border-input bg-background hover:bg-accent hover:text-accent-foreground'}`}
+                              className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 gap-2 border border-white text-white hover:bg-white/10"
                               onClick={() => setIsModalOpen(true)}
                             >
                               <Play className="w-4 h-4" />
@@ -267,15 +316,15 @@ export function Hero() {
                       ) : (
                         <>
                           <button
-                            className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 gap-2 transition-colors duration-700 bg-primary text-primary-foreground hover:bg-primary/90 ${isVideoReady ? 'md:bg-transparent md:border md:border-white md:text-white md:hover:bg-white/10' : ''}`}
+                            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 gap-2 bg-transparent border border-white text-white hover:bg-white/10"
                             onClick={() => setIsModalOpen(true)}
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-play w-4 h-4"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                            <Play className="w-4 h-4" />
                             Watch Playlist
                           </button>
                           <Button
                             variant={'outline'}
-                            className={`gap-2 transition-colors duration-700 ${isVideoReady ? 'md:bg-white md:text-black md:hover:bg-white/90' : ''}`}
+                            className="gap-2 bg-white text-black hover:bg-white/90"
                           >
                             <Calculator className="w-4 h-4" />
                             Calculate ROI
@@ -293,17 +342,9 @@ export function Hero() {
               <div className="max-w-5xl mx-auto mt-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                   {stats.map((stat, index) => (
-                    <div key={index} className={`p-6 rounded-xl transition-all duration-700 bg-white shadow-lg hover:shadow-xl ${
-                      isVideoReady
-                        ? 'md:border md:border-white/20 md:hover:border-white/80 md:bg-white/5 md:hover:bg-white/10'
-                        : ''
-                    }`}>
-                      <div className={`text-3xl font-bold mb-2 transition-colors duration-700 text-center text-gray-900 ${
-                        isVideoReady ? 'md:text-white' : ''
-                      }`}>{stat.value}</div>
-                      <div className={`text-sm font-medium transition-colors duration-700 text-center text-gray-500 ${
-                        isVideoReady ? 'md:text-white/90' : ''
-                      }`}>{stat.label}</div>
+                    <div key={index} className="p-6 rounded-xl bg-white/5 border border-white/20 hover:border-white/80 hover:bg-white/10 transition-all duration-700">
+                      <div className="text-3xl font-bold mb-2 text-center text-white">{stat.value}</div>
+                      <div className="text-sm font-medium text-center text-white/90">{stat.label}</div>
                     </div>
                   ))}
                 </div>
