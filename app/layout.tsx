@@ -40,17 +40,6 @@ export default async function RootLayout({
           // Removed 'en' argument as locale is no longer needed
           dangerouslySetInnerHTML={{ __html: generateOrganizationSchema() }}
         />
-        
-        {/* Preconnect to third-party domains */}
-        <link rel="preconnect" href="https://www.youtube.com" />
-        <link rel="preconnect" href="https://mc.yandex.ru" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google.com" />
-        <link rel="dns-prefetch" href="https://www.youtube.com" />
-        <link rel="dns-prefetch" href="https://mc.yandex.ru" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google.com" />
-        
         {/* Add other head elements like title, description from page metadata later */}
       </head>
       <body>
@@ -69,28 +58,22 @@ export default async function RootLayout({
             });
           `}
         </Script>
-        {/* Yandex.Metrika counter - optimized with Next.js Script */}
-        <Script
-          id="yandex-metrika"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              m[i].l=1*new Date();
-              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-              (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        {/* Yandex.Metrika counter */}
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `
+           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+           m[i].l=1*new Date();
+           for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+           k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-              ym(102386845, "init", {
-                   clickmap:true,
-                   trackLinks:true,
-                   accurateTrackBounce:true,
-                   webvisor:true,
-                   ecommerce:"dataLayer"
-              });
-            `,
-          }}
-        />
+           ym(102386845, "init", {
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true,
+                ecommerce:"dataLayer"
+           });
+        `}} />
         <noscript>
           <div>
             <img src="https://mc.yandex.ru/watch/102386845" style={{position:'absolute', left:'-9999px'}} alt="" />
