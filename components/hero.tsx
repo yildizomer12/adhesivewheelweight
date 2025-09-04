@@ -31,7 +31,7 @@ export function Hero() {
   const backgroundVideoRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    // Sayfa yüklendiğinde hemen videoyu yükle
+    // Load video immediately for better user experience
     setShouldLoadVideo(true);
   }, []);
 
@@ -182,16 +182,18 @@ export function Hero() {
             />
           ) : (
             <div className="w-full h-full hero-video-container">
-              <iframe
-                className="w-full h-full pointer-events-none"
-                src={getOptimizedYouTubeUrl(getVideoId())}
-                title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="eager"
-                onLoad={() => setIsVideoLoaded(true)}
-                style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in' }}
-              />
+              {shouldLoadVideo ? (
+                <iframe
+                  className="w-full h-full pointer-events-none"
+                  src={getOptimizedYouTubeUrl(getVideoId())}
+                  title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  onLoad={() => setIsVideoLoaded(true)}
+                  style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in' }}
+                />
+              ) : null}
               {!isVideoLoaded && (
                 <Image
                   src={getThumbnailUrl(getVideoId(), 'hq')}
@@ -238,19 +240,21 @@ export function Hero() {
                 />
               ) : (
                 <>
-                  <iframe
-                    ref={backgroundVideoRef}
-                    className="absolute w-[130%] h-[130%] scale-[1.75] origin-center transform-gpu"
-                    src={getOptimizedYouTubeUrl(getVideoId())}
-                    title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="eager"
-                    width="1920"
-                    height="1080"
-                    onLoad={() => setIsVideoLoaded(true)}
-                    style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in' }}
-                  />
+                  {shouldLoadVideo ? (
+                    <iframe
+                      ref={backgroundVideoRef}
+                      className="absolute w-[130%] h-[130%] scale-[1.75] origin-center transform-gpu"
+                      src={getOptimizedYouTubeUrl(getVideoId())}
+                      title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      loading="lazy"
+                      width="1920"
+                      height="1080"
+                      onLoad={() => setIsVideoLoaded(true)}
+                      style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in' }}
+                    />
+                  ) : null}
                   {!isVideoLoaded && (
                     <Image
                       src={getThumbnailUrl(getVideoId(), 'maxres')}

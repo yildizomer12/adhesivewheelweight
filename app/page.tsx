@@ -1,10 +1,27 @@
 // Removed Locale and getDictionary imports
 import { Hero } from '@/components/hero';
-import { ProductionLine } from '@/components/production-line';
-import { TechnologyAdvantages } from '@/components/technology-advantages';
-import { FAQ } from '@/components/faq';
-import { Contact } from '@/components/contact';
-import { About } from '@/components/about';
+import dynamic from 'next/dynamic';
+
+// Lazy load components that aren't immediately visible
+const ProductionLine = dynamic(() => import('@/components/production-line').then(mod => mod.ProductionLine), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const TechnologyAdvantages = dynamic(() => import('@/components/technology-advantages').then(mod => mod.TechnologyAdvantages), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const FAQ = dynamic(() => import('@/components/faq').then(mod => mod.FAQ), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const About = dynamic(() => import('@/components/about').then(mod => mod.About), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+
+const Contact = dynamic(() => import('@/components/contact').then(mod => mod.Contact), {
+  loading: () => <div className="min-h-[400px]" />,
+});
 
 export { generateMetadata } from './page.metadata';
 

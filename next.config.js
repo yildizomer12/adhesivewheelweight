@@ -3,10 +3,21 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
+  images: {
+    domains: ['i.ytimg.com'],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
   
   // Configure trailing slashes and i18n handling
   trailingSlash: false,
+  
+  // Enable compression
+  compress: true,
+  
+  // Enable SWC minification
+  swcMinify: true,
   
   // Rewrite rules for SEO and sitemap
   async rewrites() {
