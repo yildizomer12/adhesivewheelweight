@@ -202,7 +202,7 @@ export function Hero() {
       </div>
 
       {/* Main Hero Section (Text Content + Desktop Background) */}
-      <div className={`relative min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit transition-colors duration-700 overflow-hidden bg-gradient-to-b from-[#EEF2F6] to-white`}>
+      <div className={`relative py-8 ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:py-8' : isProductPage ? 'md:py-16' : 'md:py-16'} transition-colors duration-700 overflow-hidden bg-gradient-to-b from-[#EEF2F6] to-white`}>
         {/* Desktop Only Background Video/Image */}
         <div className={`hidden md:block transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'}`}>
           <div className="absolute inset-0 w-full h-full">
@@ -243,8 +243,6 @@ export function Hero() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="eager"
-                  width="1920"
-                  height="1080"
                 />
               )}
             </div>
@@ -254,9 +252,9 @@ export function Hero() {
         {/* Text Content Area */}
         {/* Removed padding from container, applying to inner content wrapper */}
         {/* Further adjusting vertical padding for mobile, reducing bottom padding */}
-        <div className={`relative z-20 flex items-center justify-center min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit`}>
+        <div className="relative z-20 flex items-center justify-center">
           {/* Changed py-8 to pt-8 pb-4 for finer control on mobile, keeping md:py-16 */}
-          <div className="text-center px-6 pt-8 pb-4 md:py-16">
+          <div className="text-center px-6 pt-8 pb-4 md:py-8">
             {/* Padding applied to parent div */}
             <div className="max-w-3xl mx-auto">
               {/* Removed padding from h1 */}
@@ -325,7 +323,7 @@ export function Hero() {
 
             {/* Stats Section */}
             {!isProductPage && !isFaqPage && !isRotaryPunchPage && !isAboutPage && !isBlogPage && (
-              <div className="max-w-5xl mx-auto mt-16">
+              <div className="max-w-5xl mx-auto mt-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
                   {stats.map((stat, index) => (
                     <div key={index} className={`p-6 rounded-xl transition-all duration-700 bg-white shadow-lg hover:shadow-xl ${
