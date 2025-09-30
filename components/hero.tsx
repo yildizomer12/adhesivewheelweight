@@ -161,7 +161,7 @@ export function Hero() {
       <div className="h-16 bg-white w-full"></div>
       {/* Mobile Only Video/Image Section - Hidden as requested */}
       <div className={`relative md:hidden transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'} overflow-hidden`}>
-        <div className="w-full aspect-video"> {/* Maintain aspect ratio */}
+        <div className="relative w-full aspect-video overflow-hidden"> {/* Maintain aspect ratio */}
           {isWirePage ? (
             <Image
               src="/images/production-line-extended.webp"
@@ -190,7 +190,7 @@ export function Hero() {
             />
           ) : (
             <iframe
-              className="w-full h-full pointer-events-none" // Adjust size for mobile container, disable clicks
+              className="absolute inset-0 w-auto h-auto min-w-full min-h-full pointer-events-none" // Cover container, crop top/bottom as needed
               src={getBackgroundVideo()} // Use original params: autoplay, mute, loop, controls=0, showinfo=0
               title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -202,7 +202,7 @@ export function Hero() {
       </div>
 
       {/* Main Hero Section (Text Content + Desktop Background) */}
-      <div className={`relative min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit transition-colors duration-700 overflow-hidden bg-gradient-to-b from-[#EEF2F6] to-white`}>
+      <div className={`relative transition-colors duration-700 overflow-hidden bg-gradient-to-b from-[#EEF2F6] to-white py-10 md:py-16 lg:py-24`}>
         {/* Desktop Only Background Video/Image */}
         <div className={`hidden md:block transition-opacity duration-700 ${isWirePage || isVideoReady || isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'opacity-100' : 'opacity-0'}`}>
           <div className="absolute inset-0 w-full h-full">
@@ -237,7 +237,7 @@ export function Hero() {
               ) : (
                 <iframe
                   ref={backgroundVideoRef}
-                  className="absolute w-[130%] h-[130%] scale-[1.75] origin-center transform-gpu"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[56.25vw]"
                   src={getBackgroundVideo()}
                   title={isChoppingPage ? "Chopping and Marking Machine" : isTapingPage ? "Taping and Packaging Machine" : "Wheel Weights Production"}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -254,9 +254,9 @@ export function Hero() {
         {/* Text Content Area */}
         {/* Removed padding from container, applying to inner content wrapper */}
         {/* Further adjusting vertical padding for mobile, reducing bottom padding */}
-        <div className={`relative z-20 flex items-center justify-center min-h-fit ${isFaqPage || isRotaryPunchPage || isAboutPage || isBlogPage ? 'md:min-h-[20vh]' : isProductPage ? 'md:min-h-[50vh]' : 'md:min-h-[80vh]'} max-h-fit`}>
-          {/* Changed py-8 to pt-8 pb-4 for finer control on mobile, keeping md:py-16 */}
-          <div className="text-center px-6 pt-8 pb-4 md:py-16">
+        <div className={`relative z-20 flex items-center justify-center`}>
+          {/* Vertical spacing handled by outer container */}
+          <div className="text-center px-6">
             {/* Padding applied to parent div */}
             <div className="max-w-3xl mx-auto">
               {/* Removed padding from h1 */}
